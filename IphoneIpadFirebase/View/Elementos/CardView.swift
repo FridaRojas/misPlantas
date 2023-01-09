@@ -33,8 +33,9 @@ struct CardView: View {
                 }
                 
             }.padding()
-                .background(Color.white.opacity(0.5))
+                .background(Color.white.opacity(0.8))
                 .cornerRadius(8)
+                .shadow(radius: 4)
         
             Text("Recamara")
                 .font(.custom("Noteworthy", size: 15))

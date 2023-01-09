@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D89FBFC2968BFDA00AE5258 /* CeldaHabitaciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89FBFB2968BFDA00AE5258 /* CeldaHabitaciones.swift */; };
+		2D89FBFE2968C40500AE5258 /* NavBarHabitaciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89FBFD2968C40500AE5258 /* NavBarHabitaciones.swift */; };
+		2D89FC002968C4F800AE5258 /* FiltroHabitaciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89FBFF2968C4F800AE5258 /* FiltroHabitaciones.swift */; };
+		2D89FC022968C99600AE5258 /* Habitacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89FC012968C99600AE5258 /* Habitacion.swift */; };
+		2D8ADF8A2967A5F300CAD46C /* SaludoNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF892967A5F300CAD46C /* SaludoNavBar.swift */; };
+		2D8ADF8C2967ADFD00CAD46C /* TabViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF8B2967ADFD00CAD46C /* TabViewMain.swift */; };
+		2D8ADF8E2967AE4E00CAD46C /* RecordatoriosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF8D2967AE4E00CAD46C /* RecordatoriosView.swift */; };
+		2D8ADF902967AF2A00CAD46C /* ConfiguracionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF8F2967AF2A00CAD46C /* ConfiguracionView.swift */; };
+		2D8ADF922967BBA200CAD46C /* AgregarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF912967BBA200CAD46C /* AgregarView.swift */; };
+		2D8ADF942967BC4400CAD46C /* BuscaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF932967BC4400CAD46C /* BuscaView.swift */; };
 		CFE73A3F25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A3E25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift */; };
 		CFE73A4125B75D9D002DB2A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A4025B75D9D002DB2A6 /* ContentView.swift */; };
 		CFE73A4325B75D9F002DB2A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFE73A4225B75D9F002DB2A6 /* Assets.xcassets */; };
@@ -14,10 +24,19 @@
 		CFE73A5125B76522002DB2A6 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A5025B76521002DB2A6 /* Home.swift */; };
 		CFE73A5425B7653E002DB2A6 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A5325B7653E002DB2A6 /* NavBar.swift */; };
 		CFE73A5725B7654B002DB2A6 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A5625B7654B002DB2A6 /* CardView.swift */; };
-		CFE73A5A25B76559002DB2A6 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A5925B76559002DB2A6 /* ButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D89FBFB2968BFDA00AE5258 /* CeldaHabitaciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeldaHabitaciones.swift; sourceTree = "<group>"; };
+		2D89FBFD2968C40500AE5258 /* NavBarHabitaciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarHabitaciones.swift; sourceTree = "<group>"; };
+		2D89FBFF2968C4F800AE5258 /* FiltroHabitaciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltroHabitaciones.swift; sourceTree = "<group>"; };
+		2D89FC012968C99600AE5258 /* Habitacion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitacion.swift; sourceTree = "<group>"; };
+		2D8ADF892967A5F300CAD46C /* SaludoNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaludoNavBar.swift; sourceTree = "<group>"; };
+		2D8ADF8B2967ADFD00CAD46C /* TabViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewMain.swift; sourceTree = "<group>"; };
+		2D8ADF8D2967AE4E00CAD46C /* RecordatoriosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordatoriosView.swift; sourceTree = "<group>"; };
+		2D8ADF8F2967AF2A00CAD46C /* ConfiguracionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguracionView.swift; sourceTree = "<group>"; };
+		2D8ADF912967BBA200CAD46C /* AgregarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarView.swift; sourceTree = "<group>"; };
+		2D8ADF932967BC4400CAD46C /* BuscaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscaView.swift; sourceTree = "<group>"; };
 		CFE73A3B25B75D9D002DB2A6 /* IphoneIpadFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IphoneIpadFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE73A3E25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IphoneIpadFirebaseApp.swift; sourceTree = "<group>"; };
 		CFE73A4025B75D9D002DB2A6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,7 +46,6 @@
 		CFE73A5025B76521002DB2A6 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		CFE73A5325B7653E002DB2A6 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		CFE73A5625B7654B002DB2A6 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		CFE73A5925B76559002DB2A6 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +59,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D89FC032968F27800AE5258 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CFE73A3225B75D9D002DB2A6 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +85,7 @@
 		CFE73A3D25B75D9D002DB2A6 /* IphoneIpadFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				2D89FC032968F27800AE5258 /* Model */,
 				CFE73A4E25B764F1002DB2A6 /* View */,
 				CFE73A3E25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift */,
 				CFE73A4025B75D9D002DB2A6 /* ContentView.swift */,
@@ -82,7 +108,13 @@
 			isa = PBXGroup;
 			children = (
 				CFE73A4F25B764F9002DB2A6 /* Elementos */,
+				2D8ADF8B2967ADFD00CAD46C /* TabViewMain.swift */,
 				CFE73A5025B76521002DB2A6 /* Home.swift */,
+				2D89FC012968C99600AE5258 /* Habitacion.swift */,
+				2D8ADF912967BBA200CAD46C /* AgregarView.swift */,
+				2D8ADF8F2967AF2A00CAD46C /* ConfiguracionView.swift */,
+				2D8ADF8D2967AE4E00CAD46C /* RecordatoriosView.swift */,
+				2D8ADF932967BC4400CAD46C /* BuscaView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -92,7 +124,10 @@
 			children = (
 				CFE73A5325B7653E002DB2A6 /* NavBar.swift */,
 				CFE73A5625B7654B002DB2A6 /* CardView.swift */,
-				CFE73A5925B76559002DB2A6 /* ButtonView.swift */,
+				2D8ADF892967A5F300CAD46C /* SaludoNavBar.swift */,
+				2D89FBFB2968BFDA00AE5258 /* CeldaHabitaciones.swift */,
+				2D89FBFD2968C40500AE5258 /* NavBarHabitaciones.swift */,
+				2D89FBFF2968C4F800AE5258 /* FiltroHabitaciones.swift */,
 			);
 			path = Elementos;
 			sourceTree = "<group>";
@@ -166,12 +201,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D8ADF922967BBA200CAD46C /* AgregarView.swift in Sources */,
+				2D89FC002968C4F800AE5258 /* FiltroHabitaciones.swift in Sources */,
+				2D89FBFE2968C40500AE5258 /* NavBarHabitaciones.swift in Sources */,
+				2D89FBFC2968BFDA00AE5258 /* CeldaHabitaciones.swift in Sources */,
+				2D89FC022968C99600AE5258 /* Habitacion.swift in Sources */,
+				2D8ADF942967BC4400CAD46C /* BuscaView.swift in Sources */,
 				CFE73A4125B75D9D002DB2A6 /* ContentView.swift in Sources */,
 				CFE73A5425B7653E002DB2A6 /* NavBar.swift in Sources */,
-				CFE73A5A25B76559002DB2A6 /* ButtonView.swift in Sources */,
 				CFE73A5125B76522002DB2A6 /* Home.swift in Sources */,
 				CFE73A3F25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift in Sources */,
 				CFE73A5725B7654B002DB2A6 /* CardView.swift in Sources */,
+				2D8ADF8E2967AE4E00CAD46C /* RecordatoriosView.swift in Sources */,
+				2D8ADF8A2967A5F300CAD46C /* SaludoNavBar.swift in Sources */,
+				2D8ADF902967AF2A00CAD46C /* ConfiguracionView.swift in Sources */,
+				2D8ADF8C2967ADFD00CAD46C /* TabViewMain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

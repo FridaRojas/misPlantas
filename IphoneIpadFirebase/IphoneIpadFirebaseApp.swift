@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct IphoneIpadFirebaseApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabViewMain()
+            //Home()
         }
     }
 }
