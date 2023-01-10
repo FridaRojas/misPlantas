@@ -20,7 +20,7 @@ struct CeldaHabitaciones: View {
                 .resizable()
                 .frame(width: 50,height: 50)
                 .clipShape(Circle())
-            VStack{
+            VStack(alignment: .leading){
                 Text(nombre)
                     .font(.custom("Noteworthy", size: 20))
                     .bold()
@@ -29,10 +29,12 @@ struct CeldaHabitaciones: View {
                     .font(.custom("Noteworthy", size: 10))
                     .foregroundColor(.black)
             }
+            Spacer()
             Image(systemName: iluminacion == "sol" ? "sun.min.fill" : iluminacion == "sombra" ? "cloud.fill" : "cloud.sun.fill")
                 .font(.title)
                 .foregroundColor(Color("primario"))
-        }.padding()
+        }.padding(.all, 20)
+            .frame(height: 100)
             .background(Color.white.opacity(0.8))
             .cornerRadius(8)
             .shadow(radius: 4)

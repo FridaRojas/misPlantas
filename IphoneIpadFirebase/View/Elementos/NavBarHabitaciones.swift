@@ -11,7 +11,7 @@ struct NavBarHabitaciones: View {
     var nombreHabitacion : String
     var numeroPlantas : String
     var body: some View {
-        VStack{
+        VStack(spacing: 10){
             HStack {
                 Text(nombreHabitacion)
                     .padding()
@@ -19,18 +19,17 @@ struct NavBarHabitaciones: View {
                     .foregroundColor(.black)
                 
                 Spacer()
-                
             }
             HStack {
+                Spacer()
                 Text("Aqui tienes \(numeroPlantas) plantas")
                     .padding(.leading)
                     .font(.custom("Noteworthy", size: 15))
                     .foregroundColor(.black)
                 
-                Spacer()
             }
             
-        }.padding(.top, 40)
+        }.padding(.top, 60)
     }
 }
 

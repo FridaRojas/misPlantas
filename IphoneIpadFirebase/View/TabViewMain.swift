@@ -21,8 +21,7 @@ struct TabViewMain: View {
                     Home()
                 }
                 else if self.selected == 1{
-                    Habitacion(nombreHabitacion: "Recamara Principal", numeroPlantas: "8")
-                    //BuscaView()
+                    BuscaView()
                 }
                 else if self.selected == 2{
                     AgregarView()

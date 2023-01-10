@@ -19,20 +19,28 @@ struct Home: View {
     
     var body: some View {
         ZStack(alignment: .bottom){
-            
-            VStack{
+            NavigationView(){
+                VStack{
                 //NavBar()
-                SaludoNavBar()
-                ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 2), count: getColumns()), spacing: 2){
-                        ForEach(1...9, id:\.self){ _ in
-                            CardView()
-                                .padding(.all)
-                        }
+                    NavBarHome()
+                
+                    ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
+                        VStack (spacing: 15){
+                            NavigationLink(destination: Habitacion(nombreHabitacion: "Recamara 1", numeroPlantas: "3")){
+                                CeldaPlantasView(nombreHabitacion: "Recamara 1", imagen: "fondoHabitacion1")
+                            }
+                            CeldaPlantasView(nombreHabitacion: "Recamara 2", imagen: "fondoHabitacion1")
+                            CeldaPlantasView(nombreHabitacion: "Recamara 3", imagen: "fondoHabitacion1")
+                            CeldaPlantasView(nombreHabitacion: "Recamara 4", imagen: "fondoHabitacion1")
+                            CeldaPlantasView(nombreHabitacion: "Recamara 5", imagen: "fondoHabitacion1")
+                            CeldaPlantasView(nombreHabitacion: "Recamara 6", imagen: "fondoHabitacion1")
+                        }.padding()
+                        
                     }
-                }
-            }.background(Image("fondo1").resizable())
-                .edgesIgnoringSafeArea(.all)
+                }.background(Image("fondo1").resizable())
+                    .edgesIgnoringSafeArea(.all)
+                
+            }
         }
     }
 }

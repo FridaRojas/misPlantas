@@ -18,6 +18,7 @@ struct Habitacion: View {
             
         }.background(Image("fondo1").resizable())
             .edgesIgnoringSafeArea(.all)
+            .navigationBarTitle("")
     }
 }
 

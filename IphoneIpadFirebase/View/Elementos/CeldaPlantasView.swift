@@ -7,21 +7,28 @@
 
 import SwiftUI
 
-struct ListaHabitacionesView: View {
+struct CeldaPlantasView: View {
+    var nombreHabitacion : String
+    var imagen :String
+    
     var body: some View {
-        var nombreHabitacion : String
         
         HStack{
-            VStack{
+            VStack(alignment: .leading){
                 Spacer()
-                Text(nombreHabitacion).foregroundColor(.white).bold()
+                HStack{
+                    Spacer()
+                    Image("cactus").resizable().frame(width: 50, height: 50).clipShape(Circle())
+                    Image("cactus2").resizable().frame(width: 50, height: 50).clipShape(Circle())
+                    Image("poto").resizable().frame(width: 50, height: 50).clipShape(Circle())
+                }
+                Text(nombreHabitacion).foregroundColor(.black)
             }
-            Spacer()
-        }.padding()
-            .frame(width: .infinity, height: 45)
-            .background(Image(""))
+        }.padding(.all, 20)
+            .frame(height: 120)
+            .background(Color.white.opacity(0.8))
             .cornerRadius(8)
-            .shadow(radius: 5)
+            .shadow(radius: 4)
         
         /*
         VStack{

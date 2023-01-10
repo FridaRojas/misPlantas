@@ -14,27 +14,51 @@ struct FiltroHabitaciones: View {
     var body: some View {
         VStack(alignment: .center){
             //Spacer()
-            BotonSeleccion(seleccionIlumina: self.$seleccionIlumina)
+            
+            HStack {
+                BotonSeleccion(seleccionIlumina: self.$seleccionIlumina)
+                //Spacer()
+            }
             
             if self.seleccionIlumina == 0{
-                //plantas de sol
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
-                    CeldaHabitaciones(foto: "", nombre: "", fechaRiego: "", iluminacion: "")
+                    NavigationLink(destination: DetallePlanta(foto: "cactusmounstro", nombre: "Cactus Mounstro")){
+                        CeldaHabitaciones(foto: "cactusmounstro", nombre: "Cactus Mounstro", fechaRiego: "10/01/2023", iluminacion: "sol")
+                    }
                     CeldaHabitaciones(foto: "cactusmounstro", nombre: "Cactus Mounstro", fechaRiego: "10/01/2023", iluminacion: "sol")
-                    CeldaHabitaciones(foto: "Cactusorgano", nombre: "Cactus Organo", fechaRiego: "10/01/2023", iluminacion: "sol")
+                    CeldaHabitaciones(foto: "Cactussorgano", nombre: "Cactus Organo", fechaRiego: "10/01/2023", iluminacion: "sol")
                     CeldaHabitaciones(foto: "manitososo", nombre: "Manitas de Oso", fechaRiego: "10/01/2023", iluminacion: "sol")
+                    CeldaHabitaciones(foto: "monstera", nombre: "Monstera Deliciosa", fechaRiego: "10/01/2023", iluminacion: "sombra")
+                    CeldaHabitaciones(foto: "helecho", nombre: "Helecho", fechaRiego: "10/01/2023", iluminacion: "sombra")
+                    CeldaHabitaciones(foto: "croton", nombre: "Croton", fechaRiego: "10/01/2023", iluminacion: "ambos")
+                    CeldaHabitaciones(foto: "potos", nombre: "Potos", fechaRiego: "10/01/2023", iluminacion: "ambos")
                 }
             }
             else if self.seleccionIlumina == 1{
+                //plantas de sol
+                ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
+                    CeldaHabitaciones(foto: "cactusmounstro", nombre: "Cactus Mounstro", fechaRiego: "10/01/2023", iluminacion: "sol")
+                    CeldaHabitaciones(foto: "Cactussorgano", nombre: "Cactus Organo", fechaRiego: "10/01/2023", iluminacion: "sol")
+                    CeldaHabitaciones(foto: "manitososo", nombre: "Manitas de Oso", fechaRiego: "10/01/2023", iluminacion: "sol")
+                }
+            }
+            else if self.seleccionIlumina == 2{
                 //plantas de sombra
-                CeldaHabitaciones(foto: "monstera", nombre: "Monstera Deliciosa", fechaRiego: "10/01/2023", iluminacion: "sombra")
-                CeldaHabitaciones(foto: "helecho", nombre: "Helecho", fechaRiego: "10/01/2023", iluminacion: "sombra")
+                ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
+                    CeldaHabitaciones(foto: "monstera", nombre: "Monstera Deliciosa", fechaRiego: "10/01/2023", iluminacion: "sombra")
+                    CeldaHabitaciones(foto: "helecho", nombre: "Helecho", fechaRiego: "10/01/2023", iluminacion: "sombra")
+                }
+                
             }
             else{
                 //ambas
-                CeldaHabitaciones(foto: "croton", nombre: "Croton", fechaRiego: "10/01/2023", iluminacion: "ambos")
-                CeldaHabitaciones(foto: "potos", nombre: "Potos", fechaRiego: "10/01/2023", iluminacion: "ambos")
+                ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
+                    CeldaHabitaciones(foto: "croton", nombre: "Croton", fechaRiego: "10/01/2023", iluminacion: "ambos")
+                    CeldaHabitaciones(foto: "potos", nombre: "Potos", fechaRiego: "10/01/2023", iluminacion: "ambos")
+                }
+                
             }
+            Spacer()
             
         }.edgesIgnoringSafeArea(.all)
         
@@ -50,49 +74,61 @@ struct BotonSeleccion : View {
         
         VStack{
             
-            Spacer(minLength: 0)
+            //Spacer(minLength: 0)
             
             HStack{
-                
                 Button(action: {
                     self.seleccionIlumina = 0
                 }) {
-                    Image(systemName: "sun.min.fill")
+                    Image(systemName: "leaf.fill")
                         .foregroundColor(self.seleccionIlumina == 0 ? Color("primario") : .gray)
-                        .padding(10)
-                        .background(self.seleccionIlumina == 0 ? Color("primario").opacity(0.4) : Color.gray.opacity(0.4))
+                        .padding(5)
+                        .background(self.seleccionIlumina == 0 ? Color.gray.opacity(0.5) : Color.gray.opacity(0.3))
                         .clipShape(Capsule())
-                        .overlay(Capsule().stroke(self.seleccionIlumina == 0 ? Color("primario") : Color.gray, lineWidth: 3))
+                        .overlay(Capsule().stroke(self.seleccionIlumina == 0 ? Color.gray.opacity(0.5) : Color.gray.opacity(0.3)))
                         
                 }
                 
-                Spacer(minLength: 5)
+                //Spacer(minLength: 5)
                 
                 Button(action: {
                     self.seleccionIlumina = 1
                 }) {
-                    Image(systemName: "cloud.fill")
+                    Image(systemName: "sun.min.fill")
                         .foregroundColor(self.seleccionIlumina == 1 ? Color("primario") : .gray)
-                        .padding(10)
-                        .background(self.seleccionIlumina == 0 ? Color("primario").opacity(0.4) : Color.gray.opacity(0.4))
+                        .padding(5)
+                        .background(self.seleccionIlumina == 1 ? Color.gray.opacity(0.5) : Color.gray.opacity(0.3))
                         .clipShape(Capsule())
-                        .overlay(Capsule().stroke(self.seleccionIlumina == 0 ? Color("primario") : Color.gray, lineWidth: 3))
+                        .overlay(Capsule().stroke(self.seleccionIlumina == 1 ? Color.gray.opacity(0.5) : Color.gray.opacity(0.3)))
+                        
                 }
                 
-                Spacer(minLength: 5)
+                //Spacer(minLength: 5)
                 
                 Button(action: {
                     self.seleccionIlumina = 2
                 }) {
-                    Image(systemName: "cloud.sun.fill")
+                    Image(systemName: "cloud.fill")
                         .foregroundColor(self.seleccionIlumina == 2 ? Color("primario") : .gray)
-                        .padding(10)
-                        .background(self.seleccionIlumina == 0 ? Color("primario").opacity(0.4) : Color.gray.opacity(0.4))
+                        .padding(5)
+                        .background(self.seleccionIlumina == 2 ? Color.gray.opacity(0.5) : Color.gray.opacity(0.3))
                         .clipShape(Capsule())
-                        .overlay(Capsule().stroke(self.seleccionIlumina == 0 ? Color("primario") : Color.gray, lineWidth: 3))
+                        .overlay(Capsule().stroke(self.seleccionIlumina == 2 ? Color.gray.opacity(0.5) : Color.gray.opacity(0.3)))
                 }
                 
-                Spacer()
+                //Spacer(minLength: 5)
+                
+                Button(action: {
+                    self.seleccionIlumina = 3
+                }) {
+                    Image(systemName: "cloud.sun.fill")
+                        .foregroundColor(self.seleccionIlumina == 3 ? Color("primario") : .gray)
+                        .padding(5)
+                        .background(self.seleccionIlumina == 3 ? Color.gray.opacity(0.5) : Color.gray.opacity(0.3))
+                        .clipShape(Capsule())
+                        .overlay(Capsule().stroke(self.seleccionIlumina == 3 ? Color.gray.opacity(0.5) : Color.gray.opacity(0.3)))
+                }
+                
                 
                 
             }.padding()

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SaludoNavBar: View {
+struct NavBarHome: View {
     var body: some View {
         VStack{
             HStack {
@@ -37,7 +37,7 @@ struct SaludoNavBar: View {
                 Spacer()
             }
             
-        }.padding(.top, 40)
+        }.padding(.top, 50)
     }
 }
 
