@@ -24,9 +24,9 @@ struct CeldaPlantasView: View {
                 }
                 Text(nombreHabitacion).foregroundColor(.black)
             }
-        }.padding(.all, 20)
+        }.padding(.all, 25)
             .frame(height: 120)
-            .background(Color.white.opacity(0.8))
+            .background(Color.white.opacity(0.9))
             .cornerRadius(8)
             .shadow(radius: 4)
         

@@ -33,9 +33,9 @@ struct CeldaHabitaciones: View {
             Image(systemName: iluminacion == "sol" ? "sun.min.fill" : iluminacion == "sombra" ? "cloud.fill" : "cloud.sun.fill")
                 .font(.title)
                 .foregroundColor(Color("primario"))
-        }.padding(.all, 20)
+        }.padding(.all, 25)
             .frame(height: 100)
-            .background(Color.white.opacity(0.8))
+            .background(Color.white.opacity(0.9))
             .cornerRadius(8)
             .shadow(radius: 4)
     }

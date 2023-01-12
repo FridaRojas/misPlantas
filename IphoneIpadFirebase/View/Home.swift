@@ -26,14 +26,24 @@ struct Home: View {
                 
                     ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
                         VStack (spacing: 15){
-                            NavigationLink(destination: Habitacion(nombreHabitacion: "Recamara 1", numeroPlantas: "3")){
+                            NavigationLink(destination: Habitacion(nombreHabitacion: "Recamara1", numeroPlantas: "3", tipoHabitacion: "Recamara")){
                                 CeldaPlantasView(nombreHabitacion: "Recamara 1", imagen: "fondoHabitacion1")
                             }
-                            CeldaPlantasView(nombreHabitacion: "Recamara 2", imagen: "fondoHabitacion1")
-                            CeldaPlantasView(nombreHabitacion: "Recamara 3", imagen: "fondoHabitacion1")
-                            CeldaPlantasView(nombreHabitacion: "Recamara 4", imagen: "fondoHabitacion1")
-                            CeldaPlantasView(nombreHabitacion: "Recamara 5", imagen: "fondoHabitacion1")
-                            CeldaPlantasView(nombreHabitacion: "Recamara 6", imagen: "fondoHabitacion1")
+                            NavigationLink(destination: Habitacion(nombreHabitacion: "Sala", numeroPlantas: "3", tipoHabitacion: "Sala")){
+                                CeldaPlantasView(nombreHabitacion: "Sala", imagen: "fondoHabitacion1")
+                            }
+                            NavigationLink(destination: Habitacion(nombreHabitacion: "Cocina", numeroPlantas: "3", tipoHabitacion: "Cocina")){
+                                CeldaPlantasView(nombreHabitacion: "Cocina", imagen: "fondoHabitacion1")
+                            }
+                            NavigationLink(destination: Habitacion(nombreHabitacion: "Comedor", numeroPlantas: "3", tipoHabitacion: "Comedor")){
+                                CeldaPlantasView(nombreHabitacion: "Comedor", imagen: "fondoHabitacion1")
+                            }
+                            NavigationLink(destination: Habitacion(nombreHabitacion: "Jardin", numeroPlantas: "3", tipoHabitacion: "Jardin")){
+                                CeldaPlantasView(nombreHabitacion: "Jardin", imagen: "fondoHabitacion1")
+                            }
+                            NavigationLink(destination: Habitacion(nombreHabitacion: "Balcon", numeroPlantas: "3", tipoHabitacion: "Balcon")){
+                                CeldaPlantasView(nombreHabitacion: "Balcon", imagen: "fondoHabitacion1")
+                            }
                         }.padding()
                         
                     }

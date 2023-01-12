@@ -13,8 +13,3 @@ struct BuscaView: View {
     }
 }
 
-struct BuscaView_Previews: PreviewProvider {
-    static var previews: some View {
-        BuscaView()
-    }
-}

@@ -10,15 +10,25 @@ import SwiftUI
 struct Habitacion: View {
     var nombreHabitacion : String
     var numeroPlantas : String
+    var tipoHabitacion : String
     
     var body: some View {
-        VStack{
-            NavBarHabitaciones(nombreHabitacion: nombreHabitacion, numeroPlantas: numeroPlantas)
-            FiltroHabitaciones()
+        ZStack {
+            VStack{
+                NavBarHabitaciones(nombreHabitacion: nombreHabitacion, numeroPlantas: numeroPlantas, imagenRecamara: tipoHabitacion == "Recamara" ? "tipoRecamara" : tipoHabitacion == "Sala" ? "tipoSala" : tipoHabitacion == "Cocina" ? "tipoCocina" : tipoHabitacion == "Comedor" ? "tipoComedor" : tipoHabitacion == "Jardin" ? "tipoJardin" : "tipoBalcon")
+                Spacer()
+            }
+            VStack (){
+                Spacer(minLength: 250)
+                HStack{
+                    Spacer()
+                    FiltroHabitaciones()
+                }
+            }
             
         }.background(Image("fondo1").resizable())
             .edgesIgnoringSafeArea(.all)
-            .navigationBarTitle("")
+        .navigationBarTitle("")
     }
 }
 
