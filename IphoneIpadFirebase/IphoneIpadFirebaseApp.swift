@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct IphoneIpadFirebaseApp: App {
-    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
+        let login = FirebaseViewModel()
         WindowGroup {
-            TabViewMain()
+            
+            ContentView().environmentObject(login)
             //Home()
         }
     }

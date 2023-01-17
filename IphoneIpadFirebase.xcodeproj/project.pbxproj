@@ -3,24 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D1873892975CD3400C2FA25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1873882975CD3400C2FA25 /* AppDelegate.swift */; };
+		2D18738B2975D71E00C2FA25 /* FirebaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D18738A2975D71E00C2FA25 /* FirebaseViewModel.swift */; };
+		2D18738E2975D97C00C2FA25 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D18738D2975D97C00C2FA25 /* Login.swift */; };
 		2D618BB7296CDDD300E8FF7F /* DetallePlanta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D618BB6296CDDD300E8FF7F /* DetallePlanta.swift */; };
 		2D618BB9296CE6E500E8FF7F /* CardInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D618BB8296CE6E500E8FF7F /* CardInfoView.swift */; };
 		2D89FBFC2968BFDA00AE5258 /* CeldaHabitaciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89FBFB2968BFDA00AE5258 /* CeldaHabitaciones.swift */; };
 		2D89FBFE2968C40500AE5258 /* NavBarHabitaciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89FBFD2968C40500AE5258 /* NavBarHabitaciones.swift */; };
 		2D89FC002968C4F800AE5258 /* FiltroHabitaciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89FBFF2968C4F800AE5258 /* FiltroHabitaciones.swift */; };
 		2D89FC022968C99600AE5258 /* Habitacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89FC012968C99600AE5258 /* Habitacion.swift */; };
+		2D8AA1912971E29000A311D5 /* CalendarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8AA1902971E29000A311D5 /* CalendarioView.swift */; };
 		2D8ADF8A2967A5F300CAD46C /* NavBarHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF892967A5F300CAD46C /* NavBarHome.swift */; };
 		2D8ADF8C2967ADFD00CAD46C /* TabViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF8B2967ADFD00CAD46C /* TabViewMain.swift */; };
-		2D8ADF8E2967AE4E00CAD46C /* RecordatoriosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF8D2967AE4E00CAD46C /* RecordatoriosView.swift */; };
+		2D8ADF8E2967AE4E00CAD46C /* Recordatorios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF8D2967AE4E00CAD46C /* Recordatorios.swift */; };
 		2D8ADF902967AF2A00CAD46C /* ConfiguracionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF8F2967AF2A00CAD46C /* ConfiguracionView.swift */; };
 		2D8ADF922967BBA200CAD46C /* AgregarPlantaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF912967BBA200CAD46C /* AgregarPlantaView.swift */; };
 		2D8ADF942967BC4400CAD46C /* BuscaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF932967BC4400CAD46C /* BuscaView.swift */; };
 		2D8E5577296E187800C065CB /* AgregarHabitacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */; };
 		2D8E5579296E227200C065CB /* AgregarPlantaFotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E5578296E227200C065CB /* AgregarPlantaFotoView.swift */; };
+		2D981AB22975C39000C07350 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D981AB12975C39000C07350 /* GoogleService-Info.plist */; };
+		2DA82B662971F66D0089DB25 /* FechaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA82B652971F66D0089DB25 /* FechaModel.swift */; };
+		2DA82B68297217D50089DB25 /* Tareas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA82B67297217D50089DB25 /* Tareas.swift */; };
+		7DD9BCECE52ED4D5ADA26805 /* Pods_IphoneIpadFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77EDC5F8A037DE426CB5C47D /* Pods_IphoneIpadFirebase.framework */; };
 		CFE73A3F25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A3E25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift */; };
 		CFE73A4125B75D9D002DB2A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A4025B75D9D002DB2A6 /* ContentView.swift */; };
 		CFE73A4325B75D9F002DB2A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFE73A4225B75D9F002DB2A6 /* Assets.xcassets */; };
@@ -31,20 +39,30 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D1873882975CD3400C2FA25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2D18738A2975D71E00C2FA25 /* FirebaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseViewModel.swift; sourceTree = "<group>"; };
+		2D18738D2975D97C00C2FA25 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		2D618BB6296CDDD300E8FF7F /* DetallePlanta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetallePlanta.swift; sourceTree = "<group>"; };
 		2D618BB8296CE6E500E8FF7F /* CardInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoView.swift; sourceTree = "<group>"; };
 		2D89FBFB2968BFDA00AE5258 /* CeldaHabitaciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeldaHabitaciones.swift; sourceTree = "<group>"; };
 		2D89FBFD2968C40500AE5258 /* NavBarHabitaciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarHabitaciones.swift; sourceTree = "<group>"; };
 		2D89FBFF2968C4F800AE5258 /* FiltroHabitaciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltroHabitaciones.swift; sourceTree = "<group>"; };
 		2D89FC012968C99600AE5258 /* Habitacion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitacion.swift; sourceTree = "<group>"; };
+		2D8AA1902971E29000A311D5 /* CalendarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarioView.swift; sourceTree = "<group>"; };
 		2D8ADF892967A5F300CAD46C /* NavBarHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarHome.swift; sourceTree = "<group>"; };
 		2D8ADF8B2967ADFD00CAD46C /* TabViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewMain.swift; sourceTree = "<group>"; };
-		2D8ADF8D2967AE4E00CAD46C /* RecordatoriosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordatoriosView.swift; sourceTree = "<group>"; };
+		2D8ADF8D2967AE4E00CAD46C /* Recordatorios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recordatorios.swift; sourceTree = "<group>"; };
 		2D8ADF8F2967AF2A00CAD46C /* ConfiguracionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguracionView.swift; sourceTree = "<group>"; };
 		2D8ADF912967BBA200CAD46C /* AgregarPlantaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarPlantaView.swift; sourceTree = "<group>"; };
 		2D8ADF932967BC4400CAD46C /* BuscaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscaView.swift; sourceTree = "<group>"; };
 		2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarHabitacionView.swift; sourceTree = "<group>"; };
 		2D8E5578296E227200C065CB /* AgregarPlantaFotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarPlantaFotoView.swift; sourceTree = "<group>"; };
+		2D981AB12975C39000C07350 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2DA82B652971F66D0089DB25 /* FechaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FechaModel.swift; sourceTree = "<group>"; };
+		2DA82B67297217D50089DB25 /* Tareas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tareas.swift; sourceTree = "<group>"; };
+		77EDC5F8A037DE426CB5C47D /* Pods_IphoneIpadFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IphoneIpadFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9118BFDC627E96DCE065E7C3 /* Pods-IphoneIpadFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IphoneIpadFirebase.release.xcconfig"; path = "Target Support Files/Pods-IphoneIpadFirebase/Pods-IphoneIpadFirebase.release.xcconfig"; sourceTree = "<group>"; };
+		C6B198A7A3793ADA58D1AA71 /* Pods-IphoneIpadFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IphoneIpadFirebase.debug.xcconfig"; path = "Target Support Files/Pods-IphoneIpadFirebase/Pods-IphoneIpadFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 		CFE73A3B25B75D9D002DB2A6 /* IphoneIpadFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IphoneIpadFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE73A3E25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IphoneIpadFirebaseApp.swift; sourceTree = "<group>"; };
 		CFE73A4025B75D9D002DB2A6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,17 +79,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DD9BCECE52ED4D5ADA26805 /* Pods_IphoneIpadFirebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D18738C2975D72C00C2FA25 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2D18738A2975D71E00C2FA25 /* FirebaseViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2D89FC032968F27800AE5258 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2DA82B652971F66D0089DB25 /* FechaModel.swift */,
+				2DA82B67297217D50089DB25 /* Tareas.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B96FC0EEBE7391A477F85844 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77EDC5F8A037DE426CB5C47D /* Pods_IphoneIpadFirebase.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CFE73A3225B75D9D002DB2A6 = {
@@ -79,6 +116,8 @@
 			children = (
 				CFE73A3D25B75D9D002DB2A6 /* IphoneIpadFirebase */,
 				CFE73A3C25B75D9D002DB2A6 /* Products */,
+				E35F71A0B73157CC6FE5EE1F /* Pods */,
+				B96FC0EEBE7391A477F85844 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,13 +132,16 @@
 		CFE73A3D25B75D9D002DB2A6 /* IphoneIpadFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				2D18738C2975D72C00C2FA25 /* ViewModel */,
 				2D89FC032968F27800AE5258 /* Model */,
 				CFE73A4E25B764F1002DB2A6 /* View */,
 				CFE73A3E25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift */,
 				CFE73A4025B75D9D002DB2A6 /* ContentView.swift */,
+				2D981AB12975C39000C07350 /* GoogleService-Info.plist */,
 				CFE73A4225B75D9F002DB2A6 /* Assets.xcassets */,
 				CFE73A4725B75D9F002DB2A6 /* Info.plist */,
 				CFE73A4425B75D9F002DB2A6 /* Preview Content */,
+				2D1873882975CD3400C2FA25 /* AppDelegate.swift */,
 			);
 			path = IphoneIpadFirebase;
 			sourceTree = "<group>";
@@ -124,8 +166,9 @@
 				2D8E5578296E227200C065CB /* AgregarPlantaFotoView.swift */,
 				2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */,
 				2D8ADF932967BC4400CAD46C /* BuscaView.swift */,
-				2D8ADF8D2967AE4E00CAD46C /* RecordatoriosView.swift */,
+				2D8ADF8D2967AE4E00CAD46C /* Recordatorios.swift */,
 				2D8ADF8F2967AF2A00CAD46C /* ConfiguracionView.swift */,
+				2D18738D2975D97C00C2FA25 /* Login.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -140,8 +183,18 @@
 				2D89FBFB2968BFDA00AE5258 /* CeldaHabitaciones.swift */,
 				2D89FBFF2968C4F800AE5258 /* FiltroHabitaciones.swift */,
 				2D618BB8296CE6E500E8FF7F /* CardInfoView.swift */,
+				2D8AA1902971E29000A311D5 /* CalendarioView.swift */,
 			);
 			path = Elementos;
+			sourceTree = "<group>";
+		};
+		E35F71A0B73157CC6FE5EE1F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C6B198A7A3793ADA58D1AA71 /* Pods-IphoneIpadFirebase.debug.xcconfig */,
+				9118BFDC627E96DCE065E7C3 /* Pods-IphoneIpadFirebase.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,9 +204,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFE73A4A25B75D9F002DB2A6 /* Build configuration list for PBXNativeTarget "IphoneIpadFirebase" */;
 			buildPhases = (
+				5A768BA997FFE2A43EC1C287 /* [CP] Check Pods Manifest.lock */,
 				CFE73A3725B75D9D002DB2A6 /* Sources */,
 				CFE73A3825B75D9D002DB2A6 /* Frameworks */,
 				CFE73A3925B75D9D002DB2A6 /* Resources */,
+				48169B1DC9A3124E59905568 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -203,33 +258,82 @@
 			files = (
 				CFE73A4625B75D9F002DB2A6 /* Preview Assets.xcassets in Resources */,
 				CFE73A4325B75D9F002DB2A6 /* Assets.xcassets in Resources */,
+				2D981AB22975C39000C07350 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		48169B1DC9A3124E59905568 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IphoneIpadFirebase/Pods-IphoneIpadFirebase-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IphoneIpadFirebase/Pods-IphoneIpadFirebase-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IphoneIpadFirebase/Pods-IphoneIpadFirebase-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A768BA997FFE2A43EC1C287 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IphoneIpadFirebase-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CFE73A3725B75D9D002DB2A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D1873892975CD3400C2FA25 /* AppDelegate.swift in Sources */,
 				2D8ADF922967BBA200CAD46C /* AgregarPlantaView.swift in Sources */,
 				2D89FC002968C4F800AE5258 /* FiltroHabitaciones.swift in Sources */,
 				2D89FBFE2968C40500AE5258 /* NavBarHabitaciones.swift in Sources */,
 				2D89FBFC2968BFDA00AE5258 /* CeldaHabitaciones.swift in Sources */,
 				2D89FC022968C99600AE5258 /* Habitacion.swift in Sources */,
+				2DA82B662971F66D0089DB25 /* FechaModel.swift in Sources */,
+				2DA82B68297217D50089DB25 /* Tareas.swift in Sources */,
 				2D8ADF942967BC4400CAD46C /* BuscaView.swift in Sources */,
 				CFE73A4125B75D9D002DB2A6 /* ContentView.swift in Sources */,
 				CFE73A5425B7653E002DB2A6 /* NavBarDetallePlanta.swift in Sources */,
 				2D8E5577296E187800C065CB /* AgregarHabitacionView.swift in Sources */,
 				2D618BB9296CE6E500E8FF7F /* CardInfoView.swift in Sources */,
+				2D18738B2975D71E00C2FA25 /* FirebaseViewModel.swift in Sources */,
+				2D18738E2975D97C00C2FA25 /* Login.swift in Sources */,
 				2D8E5579296E227200C065CB /* AgregarPlantaFotoView.swift in Sources */,
 				CFE73A5125B76522002DB2A6 /* Home.swift in Sources */,
 				2D618BB7296CDDD300E8FF7F /* DetallePlanta.swift in Sources */,
 				CFE73A3F25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift in Sources */,
 				CFE73A5725B7654B002DB2A6 /* CeldaPlantasView.swift in Sources */,
-				2D8ADF8E2967AE4E00CAD46C /* RecordatoriosView.swift in Sources */,
+				2D8ADF8E2967AE4E00CAD46C /* Recordatorios.swift in Sources */,
 				2D8ADF8A2967A5F300CAD46C /* NavBarHome.swift in Sources */,
+				2D8AA1912971E29000A311D5 /* CalendarioView.swift in Sources */,
 				2D8ADF902967AF2A00CAD46C /* ConfiguracionView.swift in Sources */,
 				2D8ADF8C2967ADFD00CAD46C /* TabViewMain.swift in Sources */,
 			);
@@ -356,6 +460,7 @@
 		};
 		CFE73A4B25B75D9F002DB2A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6B198A7A3793ADA58D1AA71 /* Pods-IphoneIpadFirebase.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -378,6 +483,7 @@
 		};
 		CFE73A4C25B75D9F002DB2A6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9118BFDC627E96DCE065E7C3 /* Pods-IphoneIpadFirebase.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

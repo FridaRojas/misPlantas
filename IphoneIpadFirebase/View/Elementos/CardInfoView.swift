@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+//------------------- cambiar : Recibir icono, titulo y texto 
 struct CardInfoView: View {
     var seleccion : Int
     var body: some View {

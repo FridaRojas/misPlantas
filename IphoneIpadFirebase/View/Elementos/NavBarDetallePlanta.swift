@@ -26,24 +26,6 @@ struct NavBarDetallePlanta: View {
                     
             }.padding()
             
-            /*HStack( spacing: 20){
-                Spacer()
-                
-                Button(action:{
-                    
-                }){
-                    Image(systemName: "plus")
-                        .padding(10)
-                        .foregroundColor(.green.opacity(0.8))
-                        .background(Color.white)
-                        .font(.largeTitle)
-                        .cornerRadius(15)
-                        .shadow(radius: 8)
-                        
-                }
-                
-            }.padding()*/
-            
         }.padding(.top, 300)
             .background(Image(foto).resizable().frame(width: 400, height: 400))
             .cornerRadius(30)

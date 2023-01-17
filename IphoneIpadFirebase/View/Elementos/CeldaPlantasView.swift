@@ -30,39 +30,6 @@ struct CeldaPlantasView: View {
             .cornerRadius(8)
             .shadow(radius: 4)
         
-        /*
-        VStack{
-            VStack(spacing: 10){
-                HStack{
-                    Image("cactus")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .cornerRadius(4)
-                    Image("cactus2")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .cornerRadius(4)
-                }
-                HStack{
-                    Image("poto")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .cornerRadius(4)
-                    Image("hoja")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .cornerRadius(4)
-                }
-                
-            }.padding()
-                .background(Color.white.opacity(0.8))
-                .cornerRadius(8)
-                .shadow(radius: 4)
-        
-            Text("Recamara")
-                .font(.custom("Noteworthy", size: 15))
-                .foregroundColor(.black)
-        }*/
     }
 }
 

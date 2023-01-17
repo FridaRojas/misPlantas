@@ -21,13 +21,13 @@ struct TabViewMain: View {
                     Home()
                 }
                 else if self.selected == 1{
-                    BuscaView()
+                    //BuscaView()
                 }
                 else if self.selected == 2{
                     AgregarPlantaFotoView()
                 }
                 else if self.selected == 3{
-                    RecordatoriosView()
+                    Recordatorios()
                 }
                 else if self.selected == 4{
                     ConfiguracionView()

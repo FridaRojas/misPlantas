@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ConfiguracionView: View {
+    @EnvironmentObject var loginShow : FirebaseViewModel
     var nombreUsuario = "Frida Rojas Alarcon"
+    
     @State var recordatorios = true
     
     var body: some View {
@@ -96,13 +99,20 @@ struct ConfiguracionView: View {
                     
                     VStack{
                         //List{
-                        HStack{
-                            Image(systemName: "rectangle.portrait.and.arrow.right")
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(Color("primario"))
-                            Text("Cerrar sesion").foregroundColor(.black)
-                            Spacer()
-                        }.background(Color.white)
+                        Button(action:{
+                            try! Auth.auth().signOut()
+                            UserDefaults.standard.removeObject(forKey: "sesion")
+                            loginShow.show = false
+                        }){
+                            HStack{
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(Color("primario"))
+                                Text("Cerrar sesion").foregroundColor(.black)
+                                Spacer()
+                            }.background(Color.white)
+                        }
+                        
                         HStack{
                             Image(systemName: "trash")
                                 .frame(width: 50, height: 50)

@@ -19,6 +19,7 @@ struct AgregarHabitacionView: View {
             ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
                 Spacer(minLength: 10)
                 VStack{
+                    //nombre
                     VStack{
                         Text("Nombre:").font(.custom("Noteworthy", size: 15)).foregroundColor(.black)
                         TextField("", text: $nombreHabitacion).frame(width: 300, height: 40)
@@ -29,6 +30,7 @@ struct AgregarHabitacionView: View {
                         .shadow(radius: 4)
                     
                     Spacer(minLength: 20)
+                    //tipo
                     VStack{
                         Text("¿De que tipo es?").font(.custom("Noteworthy", size: 15)).foregroundColor(.black)
                             ScrollView(.horizontal){

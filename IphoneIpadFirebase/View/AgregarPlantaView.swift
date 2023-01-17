@@ -11,11 +11,15 @@ struct AgregarPlantaView: View {
     
     @State var nombrePlanta : String = ""
     @State var riego : String = ""
-    @State private var iluminacion = true
+    @State private var seleccionIluminacion = "Sol"
     @State private var seleccionRiego: String = "Dias"
     @State private var seleccionAbono: String = "Semanas"
+    @State private var seleccionHabitacion: String = "Recamara"
     @State var abono : String = ""
-    let items = ["Dias", "Semanas", "Meses"]
+    let itemIluminacion = ["Sol", "Sombra", "Ambos"]
+    let itemRiego = ["Dias", "Semanas", "Meses"]
+    let itemAbono = ["Semanas", "Meses"]
+    let itemHabitacion = ["Recamara", "Sala de estar", "Comedor", "Cocina", "Jardin", "Balcon"]
     
     var body: some View {
         
@@ -26,6 +30,7 @@ struct AgregarPlantaView: View {
                 //Spacer(minLength: 20)
                 VStack(alignment: .leading){
                     VStack{
+                        //añade fotos
                         VStack{
                             Text("Añade fotos").font(.custom("Noteworthy", size: 15)).foregroundColor(.black)
                             HStack{
@@ -41,7 +46,7 @@ struct AgregarPlantaView: View {
                         .shadow(radius: 4)
                         
                         Spacer(minLength: 20)
-                        
+                        //nombre
                         VStack{
                             Text("Nombre o apodo:").font(.custom("Noteworthy", size: 15)).foregroundColor(.black)
                             TextField("", text: $nombrePlanta).frame(width: 300, height: 40)
@@ -51,19 +56,16 @@ struct AgregarPlantaView: View {
                             .cornerRadius(30)
                             .shadow(radius: 4)
                         Spacer(minLength: 20)
-                        
+                        //riego
                         VStack{
                             Text("¿Cada cuanto se debe regar?").font(.custom("Noteworthy", size: 15)).foregroundColor(.black)
                             HStack{
-                                Spacer()
-                                TextField("", text: $riego).frame(width: 50, height: 40).background(Color.white).foregroundColor(.black).cornerRadius(10).shadow(radius: 2)
+                                TextField("", text: $riego).keyboardType(.numberPad).frame(width: 50, height: 40).background(Color.white).foregroundColor(.black).cornerRadius(10).shadow(radius: 2)
                                 Picker("Select one option", selection: $seleccionRiego) {
-                                    ForEach(items, id: \.self) {
-                                        Text("\($0)")
-                                            .foregroundColor(Color("primario"))
+                                    ForEach(itemRiego, id: \.self) {item in
+                                        Text(item)
                                     }
-                                }
-                                Spacer()
+                                }.background(Color("primario")).cornerRadius(10).pickerStyle(SegmentedPickerStyle())
                             }
                         }.padding()
                             .background(Color.white)
@@ -73,34 +75,52 @@ struct AgregarPlantaView: View {
                         Spacer(minLength: 20)
                     }
                     VStack{
+                        //sol
                         VStack{
-                            Spacer()
-                            Toggle("Es de sol?", isOn: $iluminacion).frame(width: 300).font(.custom("Noteworthy", size: 15)).foregroundColor(.black)
-                            Spacer()
+                                Text("Iluminacion adecuada").font(.custom("Noteworthy", size: 15)).foregroundColor(.black)
+                                Picker("Select one option", selection: $seleccionIluminacion) {
+                                    ForEach(itemIluminacion, id: \.self) {item in
+                                        Text(item)
+                                    }
+                                }.background(Color("primario")).cornerRadius(10).pickerStyle(SegmentedPickerStyle())
                         }.padding()
                             .background(Color.white)
                             .cornerRadius(30)
                             .shadow(radius: 4)
                         Spacer(minLength: 20)
+                        
+                        //abono
                         VStack{
                             Text("¿Cada cuanto necesita Abono?").font(.custom("Noteworthy", size: 15)).foregroundColor(.black)
                             HStack{
-                                Spacer()
-                                TextField("", text: $abono).frame(width: 50, height: 40).background(Color.white).foregroundColor(.black).cornerRadius(10).shadow(radius: 2)
+                                TextField("", text: $abono).keyboardType(.numberPad).frame(width: 50, height: 40).background(Color.white).foregroundColor(.black).cornerRadius(10).shadow(radius: 2)
                                 Picker("Select one option", selection: $seleccionAbono) {
-                                    ForEach(items, id: \.self) {
-                                        Text("\($0)")
-                                            .foregroundColor(Color("primario"))
+                                    ForEach(itemAbono, id: \.self) { item in
+                                        Text(item)
                                     }
-                                }
-                                Spacer()
+                                }.background(Color("primario")).cornerRadius(10).pickerStyle(SegmentedPickerStyle())
                             }
+                        }.padding()
+                            .background(Color.white)
+                            .cornerRadius(30)
+                            .shadow(radius: 4)
+                        Spacer(minLength: 20)
+                        
+                        //habitacion
+                        VStack{
+                                Text("¿En que habitacion se encuentra?").font(.custom("Noteworthy", size: 15)).foregroundColor(.black)
+                                Picker("Select one option", selection: $seleccionHabitacion) {
+                                    ForEach(itemHabitacion, id: \.self) {item in
+                                        Text(item).foregroundColor(Color("primario"))
+                                    }
+                                }.pickerStyle(.wheel)
                         }.padding()
                             .background(Color.white)
                             .cornerRadius(30)
                             .shadow(radius: 4)
                         
                         Spacer(minLength: 20)
+                        
                         Button(action:{
                             
                         }){
