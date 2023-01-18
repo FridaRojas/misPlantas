@@ -11,6 +11,7 @@ struct AgregarHabitacionView: View {
     @State var nombreHabitacion : String = ""
     @State var tipoHabitacionNombre : String = ""
     @State var tipoHabtacion = 0
+    @StateObject var db = FirebaseViewModel()
     
     var body: some View {
         VStack {
@@ -148,7 +149,14 @@ struct AgregarHabitacionView: View {
                     
                     Spacer(minLength: 20)
                     Button(action:{
-                        
+                        db.AgregarHabitacion(Nombre: nombreHabitacion, Tipo: tipoHabitacionNombre, IdUsuario: "BzFCkjLG3f9MLvJ1GPPC"){ (done) in
+                            if done{
+                                nombreHabitacion = ""
+                                tipoHabitacionNombre = ""
+                                tipoHabtacion = 0
+                            }
+                            
+                        }
                     }){
                         Text("Crear").foregroundColor(.white).bold()
                     }.padding()

@@ -10,6 +10,7 @@ import SwiftUI
 struct Login: View {
     @State private var email = ""
     @State private var pass = ""
+    @State var modal = false
     @StateObject var login = FirebaseViewModel()
     @EnvironmentObject var loginShow : FirebaseViewModel
     var device = UIDevice.current.userInterfaceIdiom
@@ -106,14 +107,11 @@ struct Login: View {
                     HStack{
                         Text("No tienes cuenta?").foregroundColor(.black)
                         Button(action:{
-                            login.crearUsuario(email: email, pass: pass){ (done) in
-                                if done {
-                                    UserDefaults.standard.set(true, forKey: "sesion")
-                                    loginShow.show.toggle()
-                                }
-                            }
+                            modal.toggle()
                         }){
                          Text("Crea una")
+                        }.sheet(isPresented: $modal){
+                            CrearUsuarioView(modal: $modal)
                         }
                     }
                     Spacer()

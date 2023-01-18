@@ -10,6 +10,8 @@
 		2D1873892975CD3400C2FA25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1873882975CD3400C2FA25 /* AppDelegate.swift */; };
 		2D18738B2975D71E00C2FA25 /* FirebaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D18738A2975D71E00C2FA25 /* FirebaseViewModel.swift */; };
 		2D18738E2975D97C00C2FA25 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D18738D2975D97C00C2FA25 /* Login.swift */; };
+		2D1873902977325100C2FA25 /* CrearUsuarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D18738F2977325100C2FA25 /* CrearUsuarioView.swift */; };
+		2D1873922977702800C2FA25 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1873912977702800C2FA25 /* ImagePicker.swift */; };
 		2D618BB7296CDDD300E8FF7F /* DetallePlanta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D618BB6296CDDD300E8FF7F /* DetallePlanta.swift */; };
 		2D618BB9296CE6E500E8FF7F /* CardInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D618BB8296CE6E500E8FF7F /* CardInfoView.swift */; };
 		2D89FBFC2968BFDA00AE5258 /* CeldaHabitaciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89FBFB2968BFDA00AE5258 /* CeldaHabitaciones.swift */; };
@@ -42,6 +44,8 @@
 		2D1873882975CD3400C2FA25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D18738A2975D71E00C2FA25 /* FirebaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseViewModel.swift; sourceTree = "<group>"; };
 		2D18738D2975D97C00C2FA25 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		2D18738F2977325100C2FA25 /* CrearUsuarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrearUsuarioView.swift; sourceTree = "<group>"; };
+		2D1873912977702800C2FA25 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		2D618BB6296CDDD300E8FF7F /* DetallePlanta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetallePlanta.swift; sourceTree = "<group>"; };
 		2D618BB8296CE6E500E8FF7F /* CardInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoView.swift; sourceTree = "<group>"; };
 		2D89FBFB2968BFDA00AE5258 /* CeldaHabitaciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeldaHabitaciones.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				2D8ADF8D2967AE4E00CAD46C /* Recordatorios.swift */,
 				2D8ADF8F2967AF2A00CAD46C /* ConfiguracionView.swift */,
 				2D18738D2975D97C00C2FA25 /* Login.swift */,
+				2D18738F2977325100C2FA25 /* CrearUsuarioView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 				2D89FBFF2968C4F800AE5258 /* FiltroHabitaciones.swift */,
 				2D618BB8296CE6E500E8FF7F /* CardInfoView.swift */,
 				2D8AA1902971E29000A311D5 /* CalendarioView.swift */,
+				2D1873912977702800C2FA25 /* ImagePicker.swift */,
 			);
 			path = Elementos;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 				2D1873892975CD3400C2FA25 /* AppDelegate.swift in Sources */,
 				2D8ADF922967BBA200CAD46C /* AgregarPlantaView.swift in Sources */,
 				2D89FC002968C4F800AE5258 /* FiltroHabitaciones.swift in Sources */,
+				2D1873922977702800C2FA25 /* ImagePicker.swift in Sources */,
 				2D89FBFE2968C40500AE5258 /* NavBarHabitaciones.swift in Sources */,
 				2D89FBFC2968BFDA00AE5258 /* CeldaHabitaciones.swift in Sources */,
 				2D89FC022968C99600AE5258 /* Habitacion.swift in Sources */,
@@ -334,6 +341,7 @@
 				2D8ADF8E2967AE4E00CAD46C /* Recordatorios.swift in Sources */,
 				2D8ADF8A2967A5F300CAD46C /* NavBarHome.swift in Sources */,
 				2D8AA1912971E29000A311D5 /* CalendarioView.swift in Sources */,
+				2D1873902977325100C2FA25 /* CrearUsuarioView.swift in Sources */,
 				2D8ADF902967AF2A00CAD46C /* ConfiguracionView.swift in Sources */,
 				2D8ADF8C2967ADFD00CAD46C /* TabViewMain.swift in Sources */,
 			);
