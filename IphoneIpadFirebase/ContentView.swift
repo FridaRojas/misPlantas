@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ContentView: View {
     @EnvironmentObject var loginShow : FirebaseViewModel
@@ -21,9 +22,8 @@ struct ContentView: View {
         }.onAppear{
             if(UserDefaults.standard.object(forKey: "sesion")) != nil{
                 loginShow.show = true
-            }
-            if(UserDefaults.standard.object(forKey: "idUsuario")) != nil{
-                //
+                guard let id = Auth.auth().currentUser?.uid else {return}
+                loginShow.Usuario.id = id
             }
         }
             

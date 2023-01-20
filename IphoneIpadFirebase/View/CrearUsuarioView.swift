@@ -76,13 +76,14 @@ struct CrearUsuarioView: View {
                                         correo = ""
                                         contras = ""
                                         nombre = ""
-                                    }
-                                    //crea su primera habitacion
-                                    db.AgregarHabitacion(nombre: "Sala de estar", tipo: "Sala", idUsuario: "BzFCkjLG3f9MLvJ1GPPC"){ (done) in
-                                        if done{
-                                            print("ok")
+                                        print("agrego usuario a firebase")
+                                        //crea su primera habitacion
+                                        db.AgregarHabitacion(nombre: "Sala de estar", tipo: "Sala"){ (done) in
+                                            if done{
+                                                print("ok")
+                                            }
+                                            
                                         }
-                                        
                                     }
                                 }
                                

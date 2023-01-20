@@ -31,6 +31,7 @@
 		2D8E5577296E187800C065CB /* AgregarHabitacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */; };
 		2D8E5579296E227200C065CB /* AgregarPlantaFotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E5578296E227200C065CB /* AgregarPlantaFotoView.swift */; };
 		2D981AB22975C39000C07350 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D981AB12975C39000C07350 /* GoogleService-Info.plist */; };
+		2DA040D7297B25650067E86C /* UsuarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA040D6297B25650067E86C /* UsuarioModel.swift */; };
 		2DA09FDA2979CA8E00976BDA /* PlantaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA09FD92979CA8D00976BDA /* PlantaModel.swift */; };
 		2DA82B662971F66D0089DB25 /* FechaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA82B652971F66D0089DB25 /* FechaModel.swift */; };
 		2DA82B68297217D50089DB25 /* Tareas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA82B67297217D50089DB25 /* Tareas.swift */; };
@@ -69,6 +70,7 @@
 		2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarHabitacionView.swift; sourceTree = "<group>"; };
 		2D8E5578296E227200C065CB /* AgregarPlantaFotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarPlantaFotoView.swift; sourceTree = "<group>"; };
 		2D981AB12975C39000C07350 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2DA040D6297B25650067E86C /* UsuarioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioModel.swift; sourceTree = "<group>"; };
 		2DA09FD92979CA8D00976BDA /* PlantaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantaModel.swift; sourceTree = "<group>"; };
 		2DA82B652971F66D0089DB25 /* FechaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FechaModel.swift; sourceTree = "<group>"; };
 		2DA82B67297217D50089DB25 /* Tareas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tareas.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				2DA82B67297217D50089DB25 /* Tareas.swift */,
 				2D1873952978A55500C2FA25 /* HabitacionModel.swift */,
 				2DA09FD92979CA8D00976BDA /* PlantaModel.swift */,
+				2DA040D6297B25650067E86C /* UsuarioModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				2D1873922977702800C2FA25 /* ImagePicker.swift in Sources */,
 				2D89FBFE2968C40500AE5258 /* NavBarHabitaciones.swift in Sources */,
 				2D89FBFC2968BFDA00AE5258 /* CeldaHabitaciones.swift in Sources */,
+				2DA040D7297B25650067E86C /* UsuarioModel.swift in Sources */,
 				2D89FC022968C99600AE5258 /* Habitacion.swift in Sources */,
 				2DA82B662971F66D0089DB25 /* FechaModel.swift in Sources */,
 				2DA82B68297217D50089DB25 /* Tareas.swift in Sources */,

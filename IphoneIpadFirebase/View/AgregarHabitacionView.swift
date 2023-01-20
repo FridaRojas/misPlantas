@@ -151,7 +151,7 @@ struct AgregarHabitacionView: View {
                     
                     Spacer(minLength: 20)
                     Button(action:{
-                        db.AgregarHabitacion(nombre: nombreHabitacion, tipo: tipoHabitacionNombre, idUsuario: "8IerCiimAID44GdvYP4v"){ (done) in
+                        db.AgregarHabitacion(nombre: nombreHabitacion, tipo: tipoHabitacionNombre){ (done) in
                             if done{
                                 nombreHabitacion = ""
                                 tipoHabitacionNombre = ""

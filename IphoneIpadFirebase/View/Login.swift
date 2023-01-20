@@ -57,7 +57,7 @@ struct Login: View {
                             login.login(email: email, pass: pass) { (done) in
                                 if done{
                                     UserDefaults.standard.set(true, forKey: "sesion")
-                                    UserDefaults.standard.set(loginShow.idUsuario, forKey: "idUsuario")
+                                    //UserDefaults.standard.set(loginShow.idUsuario, forKey: "idUsuario")
                                     loginShow.show.toggle()
                                     
                                 }

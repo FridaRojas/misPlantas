@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct NavBarHome: View {
+    var nombre : String
+    var numHabitaciones : Int
+    
     var body: some View {
         VStack{
             HStack {
-                Text("¡Hola Frida!")
+                Text("¡Hola \(nombre)!")
                     .padding()
                     .font(.custom("Noteworthy", size: 40))
                     .foregroundColor(.black)
@@ -29,7 +32,7 @@ struct NavBarHome: View {
                 }
             }
             HStack {
-                Text("Actualmente tienes 21 plantas")
+                Text("Actualmente tienes \(numHabitaciones) habitaciones")
                     .padding(.leading)
                     .font(.custom("Noteworthy", size: 15))
                     .foregroundColor(.black)

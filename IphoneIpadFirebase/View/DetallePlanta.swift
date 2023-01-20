@@ -8,28 +8,27 @@
 import SwiftUI
 
 struct DetallePlanta: View {
-    var foto : String
-    var nombre : String
+    var planta : PlantasModel
     
     var body: some View {
         VStack(alignment: .leading){
-            NavBarDetallePlanta(foto: foto, nombre: nombre)
+            NavBarDetallePlanta(foto: planta.foto, nombre: planta.nombre)
             //Spacer(minLength: 10)
             Text("Cereus Peruvianus Monstruoso")
                 .padding(.leading)
                 .font(.custom("Noteworthy", size: 20 ))
                 .foregroundColor(.gray)
-            Text("Proximo riego el 20/01/2023")
+            Text("Proximo riego: \(planta.proxRecordatorio)")
                 .padding(.leading)
                 .font(.custom("Noteworthy", size: 15 ))
                 .foregroundColor(.gray)
             ScrollView (.horizontal){
                 HStack(spacing: 15){
-                    CardInfoView(seleccion: 0)
-                    CardInfoView(seleccion: 1)
-                    CardInfoView(seleccion: 2)
-                    CardInfoView(seleccion: 3)
-                    CardInfoView(seleccion: 4)
+                    CardInfoView(planta: planta, seleccion: 0)
+                    CardInfoView(planta: planta, seleccion: 1)
+                    CardInfoView(planta: planta, seleccion: 2)
+                    CardInfoView(planta: planta, seleccion: 3)
+                    CardInfoView(planta: planta, seleccion: 4)
                 }
                 
             }.padding()

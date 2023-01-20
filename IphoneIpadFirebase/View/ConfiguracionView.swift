@@ -10,19 +10,18 @@ import FirebaseAuth
 
 struct ConfiguracionView: View {
     @EnvironmentObject var loginShow : FirebaseViewModel
-    var nombreUsuario = "Frida Rojas Alarcon"
     
     @State var recordatorios = true
     
     var body: some View {
         VStack{
             Spacer(minLength: 80)
-            Image("perfil2")
+            ImagenFirebase(imagenUrl: loginShow.Usuario.foto)
                 .frame(width: 200, height: 200)
                 .clipShape(Circle())
                 .shadow(radius: 10)
             
-            Text(nombreUsuario)
+            Text(loginShow.Usuario.nombre)
                 .font(.custom("Noteworthy", size: 40))
                 .foregroundColor(Color.black)
             Button(action:{

@@ -14,7 +14,7 @@ struct AgregarPlantaView: View {
     @State private var seleccionIluminacion = "Sol"
     @State private var seleccionRiego: String = "Dias"
     @State private var seleccionAbono: String = "Semanas"
-    @State private var seleccionHabitacion: String = "Recamara"
+    @State private var seleccionHabitacion: String = "Sala de estar"
     @State private var proxRiego: Date = Date()
     @State private var abono : String = ""
     @State private var imagen1 : Data = .init(capacity: 0)
@@ -162,7 +162,7 @@ struct AgregarPlantaView: View {
                             VStack{
                                     Text("¿En que habitacion se encuentra?").font(.custom("Noteworthy", size: 15)).foregroundColor(.black)
                                     Picker("Select one option", selection: $seleccionHabitacion) {
-                                        ForEach(itemHabitacion, id: \.self) {item in
+                                        ForEach(db.devuelveNombres(), id: \.self) {item in
                                             Text(item).foregroundColor(Color("primario"))
                                         }
                                     }.pickerStyle(.wheel)
@@ -174,7 +174,7 @@ struct AgregarPlantaView: View {
                             Spacer(minLength: 20)
                             
                             Button(action:{
-                                db.AgregarPlantas(idUsuario: "8IerCiimAID44GdvYP4v", idHabitacion: "5F8EDEEA-C387-4C6D-8FE4-584B85227C2F", nombre: nombrePlanta, foto: imagen1, iluminacion: seleccionIluminacion, riegoNum: Int(riego) ?? 0, riegoPeriod: seleccionRiego, abonoNum: Int(abono) ?? 0, abonoPeriod: seleccionRiego, proxRecordatorio: proxRiego){ (done) in
+                                db.AgregarPlantas(idHabitacion: db.devuelveId(nombre: seleccionHabitacion), nombre: nombrePlanta, foto: imagen1, iluminacion: seleccionIluminacion, riegoNum: Int(riego) ?? 0, riegoPeriod: seleccionRiego, abonoNum: Int(abono) ?? 0, abonoPeriod: seleccionRiego, proxRecordatorio: proxRiego){ (done) in
                                     if done{
                                         nombrePlanta = ""
                                         imagen1 = .init(capacity: 0)

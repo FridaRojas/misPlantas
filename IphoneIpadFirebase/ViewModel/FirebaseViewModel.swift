@@ -13,7 +13,7 @@ import FirebaseStorage
 class FirebaseViewModel : ObservableObject{
     
     @Published var show = false
-    @Published var idUsuario = ""
+    @Published var Usuario = UsuarioModel(id: "", nombre: "", foto: "")
     @Published var habitacionesShow = [HabitacionModel]()
     @Published var plantaActual = [PlantasModel]()
     
@@ -23,7 +23,7 @@ class FirebaseViewModel : ObservableObject{
             if user != nil{
                 print("Entro")
                 guard let id = Auth.auth().currentUser?.uid else {return}
-                self.idUsuario = id
+                self.Usuario.id = id
                 completion(true)
             }else{
                 if let error = error?.localizedDescription{
@@ -52,12 +52,14 @@ class FirebaseViewModel : ObservableObject{
     func AgregarUsuario(nombre: String, correo: String, completion: @escaping (_ done : Bool) -> Void){
         let db = Firestore.firestore() //crea conexion
         guard let idUser = Auth.auth().currentUser?.uid else {return} //obtiene id del usuario en la autentificacion
-        idUsuario = idUser //se lo agrega en el id de usuario en la bd
+        Usuario.id = idUser //se lo agrega en el id de usuario en la bd
+        print("entre a agregar, idAuth:\(idUser), idMANDA:\(Usuario.id)")
         
-        let campos : [String:Any] = ["nombre": nombre, "correo": correo]
-        db.collection("Usuarios").document(idUsuario).setData(campos){error in
+        let campos : [String:Any] = ["nombre": nombre, "correo": correo, "foto": "gs://fir-crud-af577.appspot.com/imagenes/perfil-de-usuario.png"]
+        db.collection("Usuarios").document(Usuario.id).setData(campos){error in
             if let error = error?.localizedDescription{
                 print(error)
+                print("fueeeee")
             }else{
                 print("guardo")
                 completion(true)
@@ -66,12 +68,12 @@ class FirebaseViewModel : ObservableObject{
         
     }
     
-    func AgregarHabitacion(nombre: String, tipo: String, idUsuario: String, completion: @escaping (_ done : Bool) -> Void){
+    func AgregarHabitacion(nombre: String, tipo: String, completion: @escaping (_ done : Bool) -> Void){
         let db = Firestore.firestore() //crea conexion
         let id = UUID().uuidString
         let campos : [String:Any] = ["nombre": nombre, "tipo": tipo]
         
-        db.collection("Usuarios").document(idUsuario).collection("Habitacion").document(id).setData(campos){error in
+        db.collection("Usuarios").document(self.Usuario.id).collection("Habitacion").document(id).setData(campos){error in
             if let error = error?.localizedDescription{
                 print(error)
             }else{
@@ -82,7 +84,7 @@ class FirebaseViewModel : ObservableObject{
         
     }
     
-    func AgregarPlantas(idUsuario: String, idHabitacion:String, nombre: String, foto: Data, iluminacion: String, riegoNum: Int, riegoPeriod: String, abonoNum: Int, abonoPeriod: String, proxRecordatorio: Date, completion: @escaping (_ done : Bool) -> Void){
+    func AgregarPlantas(idHabitacion:String, nombre: String, foto: Data, iluminacion: String, riegoNum: Int, riegoPeriod: String, abonoNum: Int, abonoPeriod: String, proxRecordatorio: Date, completion: @escaping (_ done : Bool) -> Void){
         
         let storage = Storage.storage().reference()
         let nombreImagen = UUID()
@@ -97,7 +99,7 @@ class FirebaseViewModel : ObservableObject{
                 let id = UUID().uuidString
                 let campos : [String:Any] = ["nombre": nombre, "foto": String(describing: directorio), "iluminacion": iluminacion, "riegoNum": riegoNum, "riegoPeriod": riegoPeriod, "abonoNum": abonoNum, "abonoPeriod": abonoPeriod, "proxRecordatorio": proxRecordatorio]
                 
-                db.collection("Usuarios").document(idUsuario).collection("Habitacion").document(idHabitacion).collection("Plantas").document(id).setData(campos){error in
+                db.collection("Usuarios").document(self.Usuario.id).collection("Habitacion").document(idHabitacion).collection("Plantas").document(id).setData(campos){error in
                     if let error = error?.localizedDescription{
                         print(error)
                     }else{
@@ -121,11 +123,11 @@ class FirebaseViewModel : ObservableObject{
     }
     
     //LEE DE BASE DE DATOS
-    func obtieneHabitaciones(iUsuario : String){
+    func obtieneHabitaciones(){
         //var plantas = [PlantasModel]()
         let  db = Firestore.firestore()
         
-        db.collection("Usuarios").document(iUsuario).collection("Habitacion").getDocuments{(QuerySnapshot, error) in
+        db.collection("Usuarios").document(self.Usuario.id).collection("Habitacion").getDocuments{(QuerySnapshot, error) in
             if let error = error?.localizedDescription{
                 print("error al mostrar datos", error)
             }else{
@@ -145,11 +147,11 @@ class FirebaseViewModel : ObservableObject{
         }
     }
     
-    func obtienePlantas(iUsuario : String, idHabitacion : String){
+    func obtienePlantas(idHabitacion : String){
         plantaActual = [PlantasModel]()
         let  db = Firestore.firestore()
         
-        db.collection("Usuarios").document(iUsuario).collection("Habitacion").document(idHabitacion).collection("Plantas").getDocuments(){(QuerySnapshot, error) in
+        db.collection("Usuarios").document(self.Usuario.id).collection("Habitacion").document(idHabitacion).collection("Plantas").getDocuments(){(QuerySnapshot, error) in
             if let error = error?.localizedDescription{
                 print("error al mostrar datos", error)
             }else{
@@ -173,6 +175,40 @@ class FirebaseViewModel : ObservableObject{
                 }
             }
         }
+    }
+    
+    func obtieneUsuario(){
+        //var plantas = [PlantasModel]()
+        let  db = Firestore.firestore()
+        
+        db.collection("Usuarios").document(self.Usuario.id).getDocument{(document, error) in
+            if let error = error?.localizedDescription{
+                print("error al mostrar datos", error)
+            }else{
+                let valor = document!.data()
+                self.Usuario.nombre = valor?["nombre"] as? String ?? "Sin nombre"
+                self.Usuario.foto = valor?["tipo"] as? String ?? "Recamara"
+            }
+        }
+    }
+    
+    //FUNCIONALIDADES
+    
+    func devuelveNombres() -> [String] {
+        var nombres = [String]()
+        for habitacion in self.habitacionesShow {
+            nombres.append(habitacion.nombre)
+        }
+        return nombres
+    }
+    func devuelveId(nombre : String) -> String{
+        var id = ""
+        for habitacion in self.habitacionesShow {
+            if habitacion.nombre == nombre{
+                id = habitacion.id
+            }
+        }
+        return id
     }
     
 }

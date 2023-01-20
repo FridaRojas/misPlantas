@@ -21,7 +21,7 @@ struct Home: View {
             NavigationView(){
                 VStack{
                 //NavBar()
-                    NavBarHome()
+                    NavBarHome(nombre: db.Usuario.nombre, numHabitaciones: db.habitacionesShow.count)
                     
                     
                     ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
@@ -33,7 +33,8 @@ struct Home: View {
                                 }
                             }.padding()
                     }.onAppear{
-                        db.obtieneHabitaciones(iUsuario: "8IerCiimAID44GdvYP4v")
+                        db.obtieneUsuario()
+                        db.obtieneHabitaciones()
                     }
                 }.background(Image("fondo1").resizable())
                     .edgesIgnoringSafeArea(.all)

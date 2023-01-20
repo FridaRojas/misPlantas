@@ -35,7 +35,7 @@ struct Habitacion: View {
             .edgesIgnoringSafeArea(.all)
             .navigationBarTitle("").onAppear{
                 print("entro a la habitacion")
-                db.obtienePlantas(iUsuario: "8IerCiimAID44GdvYP4v", idHabitacion: habitacion.id)
+                db.obtienePlantas(idHabitacion: habitacion.id)
             }
     }
 }
