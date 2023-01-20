@@ -11,15 +11,14 @@ struct CeldaHabitaciones: View {
     
     var foto : String
     var nombre : String
-    var fechaRiego : String
+    var fechaRiego : Date
     var iluminacion : String
     
     var body: some View {
         HStack{
-            Image(foto)
-                .resizable()
-                .frame(width: 50,height: 50)
-                .clipShape(Circle())
+                Image(foto)
+                    .frame(width: 50,height: 50)
+                    .clipShape(Circle())
             VStack(alignment: .leading){
                 Text(nombre)
                     .font(.custom("Noteworthy", size: 20))

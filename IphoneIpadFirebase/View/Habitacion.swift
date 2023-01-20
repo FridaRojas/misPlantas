@@ -8,27 +8,35 @@
 import SwiftUI
 
 struct Habitacion: View {
-    var nombreHabitacion : String
-    var numeroPlantas : String
-    var tipoHabitacion : String
+    @StateObject var db = FirebaseViewModel()
+    var habitacion : HabitacionModel
+    //var plantas : [PlantasModel]
     
     var body: some View {
         ZStack {
-            VStack{
-                NavBarHabitaciones(nombreHabitacion: nombreHabitacion, numeroPlantas: numeroPlantas, imagenRecamara: tipoHabitacion == "Recamara" ? "tipoRecamara" : tipoHabitacion == "Sala" ? "tipoSala" : tipoHabitacion == "Cocina" ? "tipoCocina" : tipoHabitacion == "Comedor" ? "tipoComedor" : tipoHabitacion == "Jardin" ? "tipoJardin" : "tipoBalcon")
-                Spacer()
-            }
-            VStack (){
-                Spacer(minLength: 250)
-                HStack{
+            
+                VStack{
+                    NavBarHabitaciones(nombreHabitacion: habitacion.nombre, numeroPlantas: String(db.plantaActual.count), imagenRecamara: habitacion.tipo == "Recamara" ? "tipoRecamara" : habitacion.tipo == "Sala" ? "tipoSala" : habitacion.tipo == "Cocina" ? "tipoCocina" : habitacion.tipo == "Comedor" ? "tipoComedor" : habitacion.tipo == "Jardin" ? "tipoJardin" : "tipoBalcon")
                     Spacer()
-                    FiltroHabitaciones()
                 }
-            }
+            if db.plantaActual.count != 0 {
+                    VStack{
+                        Spacer(minLength: 250)
+                        FiltroHabitaciones(plantas: db.plantaActual)
+                        
+                    }
+                }else {
+                    VStack{
+                        Text("No se encontraron plantas")
+                    }
+                }
             
         }.background(Image("fondo1").resizable())
             .edgesIgnoringSafeArea(.all)
-        .navigationBarTitle("")
+            .navigationBarTitle("").onAppear{
+                print("entro a la habitacion")
+                db.obtienePlantas(iUsuario: "8IerCiimAID44GdvYP4v", idHabitacion: habitacion.id)
+            }
     }
 }
 

@@ -174,7 +174,7 @@ struct AgregarPlantaView: View {
                             Spacer(minLength: 20)
                             
                             Button(action:{
-                                db.AgregarPlantas(IdUsuario: "BzFCkjLG3f9MLvJ1GPPC", IdHabitacion: "C87F06B0-6677-4642-8B33-E0F2DEEED924", Nombre: nombrePlanta, Foto: imagen1, Iluminacion: seleccionIluminacion, RiegoNum: Int(riego) ?? 0, RiegoPeriod: seleccionRiego, AbonoNum: Int(abono) ?? 0, AbonoPeriod: seleccionRiego, ProxRecordatorio: proxRiego){ (done) in
+                                db.AgregarPlantas(idUsuario: "8IerCiimAID44GdvYP4v", idHabitacion: "5F8EDEEA-C387-4C6D-8FE4-584B85227C2F", nombre: nombrePlanta, foto: imagen1, iluminacion: seleccionIluminacion, riegoNum: Int(riego) ?? 0, riegoPeriod: seleccionRiego, abonoNum: Int(abono) ?? 0, abonoPeriod: seleccionRiego, proxRecordatorio: proxRiego){ (done) in
                                     if done{
                                         nombrePlanta = ""
                                         imagen1 = .init(capacity: 0)

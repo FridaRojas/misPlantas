@@ -12,6 +12,9 @@
 		2D18738E2975D97C00C2FA25 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D18738D2975D97C00C2FA25 /* Login.swift */; };
 		2D1873902977325100C2FA25 /* CrearUsuarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D18738F2977325100C2FA25 /* CrearUsuarioView.swift */; };
 		2D1873922977702800C2FA25 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1873912977702800C2FA25 /* ImagePicker.swift */; };
+		2D1873962978A55500C2FA25 /* HabitacionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1873952978A55500C2FA25 /* HabitacionModel.swift */; };
+		2D1873982978CDC100C2FA25 /* ImagenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1873972978CDC100C2FA25 /* ImagenViewModel.swift */; };
+		2D18739A2978D1D300C2FA25 /* ImagenFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1873992978D1D300C2FA25 /* ImagenFirebase.swift */; };
 		2D618BB7296CDDD300E8FF7F /* DetallePlanta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D618BB6296CDDD300E8FF7F /* DetallePlanta.swift */; };
 		2D618BB9296CE6E500E8FF7F /* CardInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D618BB8296CE6E500E8FF7F /* CardInfoView.swift */; };
 		2D89FBFC2968BFDA00AE5258 /* CeldaHabitaciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89FBFB2968BFDA00AE5258 /* CeldaHabitaciones.swift */; };
@@ -28,6 +31,7 @@
 		2D8E5577296E187800C065CB /* AgregarHabitacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */; };
 		2D8E5579296E227200C065CB /* AgregarPlantaFotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E5578296E227200C065CB /* AgregarPlantaFotoView.swift */; };
 		2D981AB22975C39000C07350 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D981AB12975C39000C07350 /* GoogleService-Info.plist */; };
+		2DA09FDA2979CA8E00976BDA /* PlantaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA09FD92979CA8D00976BDA /* PlantaModel.swift */; };
 		2DA82B662971F66D0089DB25 /* FechaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA82B652971F66D0089DB25 /* FechaModel.swift */; };
 		2DA82B68297217D50089DB25 /* Tareas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA82B67297217D50089DB25 /* Tareas.swift */; };
 		7DD9BCECE52ED4D5ADA26805 /* Pods_IphoneIpadFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77EDC5F8A037DE426CB5C47D /* Pods_IphoneIpadFirebase.framework */; };
@@ -46,6 +50,9 @@
 		2D18738D2975D97C00C2FA25 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		2D18738F2977325100C2FA25 /* CrearUsuarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrearUsuarioView.swift; sourceTree = "<group>"; };
 		2D1873912977702800C2FA25 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		2D1873952978A55500C2FA25 /* HabitacionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitacionModel.swift; sourceTree = "<group>"; };
+		2D1873972978CDC100C2FA25 /* ImagenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagenViewModel.swift; sourceTree = "<group>"; };
+		2D1873992978D1D300C2FA25 /* ImagenFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagenFirebase.swift; sourceTree = "<group>"; };
 		2D618BB6296CDDD300E8FF7F /* DetallePlanta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetallePlanta.swift; sourceTree = "<group>"; };
 		2D618BB8296CE6E500E8FF7F /* CardInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoView.swift; sourceTree = "<group>"; };
 		2D89FBFB2968BFDA00AE5258 /* CeldaHabitaciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeldaHabitaciones.swift; sourceTree = "<group>"; };
@@ -62,6 +69,7 @@
 		2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarHabitacionView.swift; sourceTree = "<group>"; };
 		2D8E5578296E227200C065CB /* AgregarPlantaFotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarPlantaFotoView.swift; sourceTree = "<group>"; };
 		2D981AB12975C39000C07350 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2DA09FD92979CA8D00976BDA /* PlantaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantaModel.swift; sourceTree = "<group>"; };
 		2DA82B652971F66D0089DB25 /* FechaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FechaModel.swift; sourceTree = "<group>"; };
 		2DA82B67297217D50089DB25 /* Tareas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tareas.swift; sourceTree = "<group>"; };
 		77EDC5F8A037DE426CB5C47D /* Pods_IphoneIpadFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IphoneIpadFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				2D18738A2975D71E00C2FA25 /* FirebaseViewModel.swift */,
+				2D1873972978CDC100C2FA25 /* ImagenViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -103,6 +112,8 @@
 			children = (
 				2DA82B652971F66D0089DB25 /* FechaModel.swift */,
 				2DA82B67297217D50089DB25 /* Tareas.swift */,
+				2D1873952978A55500C2FA25 /* HabitacionModel.swift */,
+				2DA09FD92979CA8D00976BDA /* PlantaModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,6 +201,7 @@
 				2D618BB8296CE6E500E8FF7F /* CardInfoView.swift */,
 				2D8AA1902971E29000A311D5 /* CalendarioView.swift */,
 				2D1873912977702800C2FA25 /* ImagePicker.swift */,
+				2D1873992978D1D300C2FA25 /* ImagenFirebase.swift */,
 			);
 			path = Elementos;
 			sourceTree = "<group>";
@@ -330,8 +342,11 @@
 				CFE73A4125B75D9D002DB2A6 /* ContentView.swift in Sources */,
 				CFE73A5425B7653E002DB2A6 /* NavBarDetallePlanta.swift in Sources */,
 				2D8E5577296E187800C065CB /* AgregarHabitacionView.swift in Sources */,
+				2D18739A2978D1D300C2FA25 /* ImagenFirebase.swift in Sources */,
 				2D618BB9296CE6E500E8FF7F /* CardInfoView.swift in Sources */,
+				2D1873962978A55500C2FA25 /* HabitacionModel.swift in Sources */,
 				2D18738B2975D71E00C2FA25 /* FirebaseViewModel.swift in Sources */,
+				2DA09FDA2979CA8E00976BDA /* PlantaModel.swift in Sources */,
 				2D18738E2975D97C00C2FA25 /* Login.swift in Sources */,
 				2D8E5579296E227200C065CB /* AgregarPlantaFotoView.swift in Sources */,
 				CFE73A5125B76522002DB2A6 /* Home.swift in Sources */,
@@ -339,6 +354,7 @@
 				CFE73A3F25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift in Sources */,
 				CFE73A5725B7654B002DB2A6 /* CeldaPlantasView.swift in Sources */,
 				2D8ADF8E2967AE4E00CAD46C /* Recordatorios.swift in Sources */,
+				2D1873982978CDC100C2FA25 /* ImagenViewModel.swift in Sources */,
 				2D8ADF8A2967A5F300CAD46C /* NavBarHome.swift in Sources */,
 				2D8AA1912971E29000A311D5 /* CalendarioView.swift in Sources */,
 				2D1873902977325100C2FA25 /* CrearUsuarioView.swift in Sources */,

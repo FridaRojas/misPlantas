@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FiltroHabitaciones: View {
+    var plantas : [PlantasModel]
     @State var seleccionIlumina = 0
     
     
@@ -23,16 +24,12 @@ struct FiltroHabitaciones: View {
             if self.seleccionIlumina == 0{
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
                     VStack(spacing: 15){
-                        NavigationLink(destination: DetallePlanta(foto: "cactusmounstro", nombre: "Cactus Mounstro")){
-                            CeldaHabitaciones(foto: "cactusmounstro", nombre: "Cactus Mounstro", fechaRiego: "10/01/2023", iluminacion: "sol")
+                        ForEach (plantas){item in
+                            NavigationLink(destination: DetallePlanta(foto: item.foto, nombre: item.nombre)){
+                                CeldaHabitaciones(foto: "cactusmountro", nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
+                                
+                            }
                         }
-                        CeldaHabitaciones(foto: "cactusmounstro", nombre: "Cactus Mounstro", fechaRiego: "10/01/2023", iluminacion: "sol")
-                        CeldaHabitaciones(foto: "Cactussorgano", nombre: "Cactus Organo", fechaRiego: "10/01/2023", iluminacion: "sol")
-                        CeldaHabitaciones(foto: "manitososo", nombre: "Manitas de Oso", fechaRiego: "10/01/2023", iluminacion: "sol")
-                        CeldaHabitaciones(foto: "monstera", nombre: "Monstera Deliciosa", fechaRiego: "10/01/2023", iluminacion: "sombra")
-                        CeldaHabitaciones(foto: "helecho", nombre: "Helecho", fechaRiego: "10/01/2023", iluminacion: "sombra")
-                        CeldaHabitaciones(foto: "croton", nombre: "Croton", fechaRiego: "10/01/2023", iluminacion: "ambos")
-                        CeldaHabitaciones(foto: "potos", nombre: "Potos", fechaRiego: "10/01/2023", iluminacion: "ambos")
                     }.padding()
                     
                 }
@@ -40,30 +37,32 @@ struct FiltroHabitaciones: View {
             else if self.seleccionIlumina == 1{
                 //plantas de sol
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
-                    CeldaHabitaciones(foto: "cactusmounstro", nombre: "Cactus Mounstro", fechaRiego: "10/01/2023", iluminacion: "sol")
-                    CeldaHabitaciones(foto: "Cactussorgano", nombre: "Cactus Organo", fechaRiego: "10/01/2023", iluminacion: "sol")
-                    CeldaHabitaciones(foto: "manitososo", nombre: "Manitas de Oso", fechaRiego: "10/01/2023", iluminacion: "sol")
+                    CeldaHabitaciones(foto: "cactusmounstro", nombre: "Cactus Mounstro", fechaRiego: Date(), iluminacion: "sol")
+                    CeldaHabitaciones(foto: "Cactussorgano", nombre: "Cactus Organo", fechaRiego: Date(), iluminacion: "sol")
+                    CeldaHabitaciones(foto: "manitososo", nombre: "Manitas de Oso", fechaRiego: Date(), iluminacion: "sol")
                 }
             }
             else if self.seleccionIlumina == 2{
                 //plantas de sombra
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
-                    CeldaHabitaciones(foto: "monstera", nombre: "Monstera Deliciosa", fechaRiego: "10/01/2023", iluminacion: "sombra")
-                    CeldaHabitaciones(foto: "helecho", nombre: "Helecho", fechaRiego: "10/01/2023", iluminacion: "sombra")
+                    CeldaHabitaciones(foto: "monstera", nombre: "Monstera Deliciosa", fechaRiego: Date(), iluminacion: "sombra")
+                    CeldaHabitaciones(foto: "helecho", nombre: "Helecho", fechaRiego: Date(), iluminacion: "sombra")
                 }
                 
             }
             else{
                 //ambas
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
-                    CeldaHabitaciones(foto: "croton", nombre: "Croton", fechaRiego: "10/01/2023", iluminacion: "ambos")
-                    CeldaHabitaciones(foto: "potos", nombre: "Potos", fechaRiego: "10/01/2023", iluminacion: "ambos")
+                    CeldaHabitaciones(foto: "croton", nombre: "Croton", fechaRiego: Date(), iluminacion: "ambos")
+                    CeldaHabitaciones(foto: "potos", nombre: "Potos", fechaRiego: Date(), iluminacion: "ambos")
                 }
                 
             }
             Spacer()
             
-        }.edgesIgnoringSafeArea(.all)
+        }.edgesIgnoringSafeArea(.all).onAppear{
+            print("entro a filtro")
+        }
         
         
     }

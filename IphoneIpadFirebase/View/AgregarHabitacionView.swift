@@ -12,6 +12,7 @@ struct AgregarHabitacionView: View {
     @State var tipoHabitacionNombre : String = ""
     @State var tipoHabtacion = 0
     @StateObject var db = FirebaseViewModel()
+    @EnvironmentObject var loginShow : FirebaseViewModel
     
     var body: some View {
         VStack {
@@ -124,6 +125,7 @@ struct AgregarHabitacionView: View {
                                     Button(action:{
                                         tipoHabitacionNombre = "Balcon"
                                         tipoHabtacion = 5
+                                        
                                     }){
                                         VStack{
                                             Image(systemName: "door.french.open")
@@ -149,7 +151,7 @@ struct AgregarHabitacionView: View {
                     
                     Spacer(minLength: 20)
                     Button(action:{
-                        db.AgregarHabitacion(Nombre: nombreHabitacion, Tipo: tipoHabitacionNombre, IdUsuario: "BzFCkjLG3f9MLvJ1GPPC"){ (done) in
+                        db.AgregarHabitacion(nombre: nombreHabitacion, tipo: tipoHabitacionNombre, idUsuario: "8IerCiimAID44GdvYP4v"){ (done) in
                             if done{
                                 nombreHabitacion = ""
                                 tipoHabitacionNombre = ""
@@ -157,6 +159,7 @@ struct AgregarHabitacionView: View {
                             }
                             
                         }
+                        
                     }){
                         Text("Crear").foregroundColor(.white).bold()
                     }.padding()

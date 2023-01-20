@@ -34,7 +34,7 @@ struct CrearUsuarioView: View {
                 }
                 Spacer()
                 VStack(alignment: .center, spacing: 20){
-                    SecureField("Nombre", text: $nombre )
+                    TextField("Nombre", text: $nombre )
                         .autocorrectionDisabled(true)
                         .autocapitalization(.none)
                         .foregroundColor(.gray)
@@ -64,30 +64,33 @@ struct CrearUsuarioView: View {
                     
                     
                     Button(action:{
-                        //crea usuario en db
-                        db.AgregarUsuario(Nombre: nombre, Correo: correo){ (done) in
-                            if done{
-                                correo = ""
-                                contras = ""
-                                nombre = ""
-                            }
-                            
-                        }
-                        //crea su primera habitacion
-                        db.AgregarHabitacion(Nombre: "Sala de estar", Tipo: "Sala", IdUsuario: "BzFCkjLG3f9MLvJ1GPPC"){ (done) in
-                            if done{
-                                print("ok")
-                            }
-                            
-                        }
-                        
                         //inicia sesion
                         db.crearUsuario(email: correo, pass: contras) { (done) in
                             if done{
                                 UserDefaults.standard.set(true, forKey: "sesion")
                                 loginShow.show.toggle()
+                                print("se logueo")
+                                //crea usuario en db
+                                db.AgregarUsuario(nombre: nombre, correo: correo){ (done) in
+                                    if done{
+                                        correo = ""
+                                        contras = ""
+                                        nombre = ""
+                                    }
+                                    //crea su primera habitacion
+                                    db.AgregarHabitacion(nombre: "Sala de estar", tipo: "Sala", idUsuario: "BzFCkjLG3f9MLvJ1GPPC"){ (done) in
+                                        if done{
+                                            print("ok")
+                                        }
+                                        
+                                    }
+                                }
+                               
                             }
                         }
+                        
+                        
+                        
                         modal.toggle()
                     }){
                         Text("Entrar").font(.title)
