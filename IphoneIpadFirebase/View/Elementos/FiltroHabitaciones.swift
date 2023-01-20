@@ -26,7 +26,7 @@ struct FiltroHabitaciones: View {
                     VStack(spacing: 15){
                         ForEach (plantas){item in
                             NavigationLink(destination: DetallePlanta(foto: item.foto, nombre: item.nombre)){
-                                CeldaHabitaciones(foto: "cactusmountro", nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
+                                CeldaHabitaciones(foto: item.foto, nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
                                 
                             }
                         }

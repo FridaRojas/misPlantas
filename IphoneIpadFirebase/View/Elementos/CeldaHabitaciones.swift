@@ -16,7 +16,7 @@ struct CeldaHabitaciones: View {
     
     var body: some View {
         HStack{
-                Image(foto)
+                ImagenFirebase(imagenUrl: foto)
                     .frame(width: 50,height: 50)
                     .clipShape(Circle())
             VStack(alignment: .leading){
