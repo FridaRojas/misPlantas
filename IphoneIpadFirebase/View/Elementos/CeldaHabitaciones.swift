@@ -29,7 +29,7 @@ struct CeldaHabitaciones: View {
                     .foregroundColor(.black)
             }
             Spacer()
-            Image(systemName: iluminacion == "sol" ? "sun.min.fill" : iluminacion == "sombra" ? "cloud.fill" : "cloud.sun.fill")
+            Image(systemName: iluminacion == "Sol" ? "sun.min.fill" : iluminacion == "Sombra" ? "cloud.fill" : "cloud.sun.fill")
                 .font(.title)
                 .foregroundColor(Color("primario"))
         }.padding(.all, 25)

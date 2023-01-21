@@ -17,12 +17,8 @@ struct CeldaPlantasView: View {
             VStack(alignment: .leading){
                 Spacer()
                 HStack{
-                    Spacer()
-                    //Image("cactus").resizable().frame(width: 50, height: 50).clipShape(Circle())
-                    //Image("cactus2").resizable().frame(width: 50, height: 50).clipShape(Circle())
-                    //Image("poto").resizable().frame(width: 50, height: 50).clipShape(Circle())
-                }
-                Text(nombreHabitacion).foregroundColor(.black)
+                    Spacer()                }
+                Text(nombreHabitacion).font(.custom("Noteworthy", size: 20)).foregroundColor(.black).bold()
             }
         }.padding(.all, 25)
             .frame(height: 120)

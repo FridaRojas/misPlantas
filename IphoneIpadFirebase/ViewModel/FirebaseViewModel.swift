@@ -182,15 +182,15 @@ class FirebaseViewModel : ObservableObject{
         let  db = Firestore.firestore()
         guard let id = Auth.auth().currentUser?.uid else {return}
         self.Usuario.id = id
-        print("estoy en obtieneUsuario y el id es : \(self.Usuario.id)")
         db.collection("Usuarios").document(self.Usuario.id).getDocument{(document, error) in
             if let error = error?.localizedDescription{
                 print("error al mostrar datos", error)
             }else{
                 let valor = document!.data()
                 self.Usuario.nombre = valor?["nombre"] as? String ?? "Sin nombre"
-                self.Usuario.foto = valor?["tipo"] as? String ?? "Recamara"
+                self.Usuario.foto = valor?["foto"] as? String ?? "Recamara"
                 self.Usuario.correo = valor?["correo"] as? String ?? "nadie.com"
+                
                 //guard let idUser = Auth.auth().currentUser?.uid else {return} //obtiene id del usuario en la autentificacion
                 //self.Usuario.id = idUser
             }

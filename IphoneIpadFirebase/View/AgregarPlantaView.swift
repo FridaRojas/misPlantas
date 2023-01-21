@@ -203,6 +203,9 @@ struct AgregarPlantaView: View {
                 }.padding()
             }.background(Image("fondo1").resizable())
                 .edgesIgnoringSafeArea(.all)
+                .onAppear{
+                    loginShow.obtieneHabitaciones()
+                }
         }.navigationViewStyle(StackNavigationViewStyle())
         
     }

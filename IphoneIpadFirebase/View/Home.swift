@@ -32,6 +32,7 @@ struct Home: View {
                                     }
                                 }
                             }.padding()
+                        Spacer(minLength: 40)
                     }.onAppear{
                         loginShow.obtieneUsuario()
                         loginShow.obtieneHabitaciones()

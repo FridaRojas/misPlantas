@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AgregarHabitacionView: View {
     @State var nombreHabitacion : String = ""
-    @State var tipoHabitacionNombre : String = ""
+    @State var tipoHabitacionNombre : String = "Recamara"
     @State var tipoHabtacion = 0
     @EnvironmentObject var loginShow : FirebaseViewModel
     
@@ -171,6 +171,9 @@ struct AgregarHabitacionView: View {
             }.padding()
         }.background(Image("fondo1").resizable())
             .edgesIgnoringSafeArea(.all)
+            .onAppear{
+                loginShow.obtieneHabitaciones()
+            }
     }
 }
 

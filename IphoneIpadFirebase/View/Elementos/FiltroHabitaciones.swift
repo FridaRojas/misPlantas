@@ -37,24 +37,56 @@ struct FiltroHabitaciones: View {
             else if self.seleccionIlumina == 1{
                 //plantas de sol
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
-                    CeldaHabitaciones(foto: "cactusmounstro", nombre: "Cactus Mounstro", fechaRiego: Date(), iluminacion: "sol")
-                    CeldaHabitaciones(foto: "Cactussorgano", nombre: "Cactus Organo", fechaRiego: Date(), iluminacion: "sol")
-                    CeldaHabitaciones(foto: "manitososo", nombre: "Manitas de Oso", fechaRiego: Date(), iluminacion: "sol")
+                    VStack(spacing: 15){
+                        ForEach (plantas){item in
+                            VStack{
+                                if item.iluminacion == "Sol"{
+                                    NavigationLink(destination: DetallePlanta(planta: item)){
+                                        CeldaHabitaciones(foto: item.foto, nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
+                                        
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }.padding()
                 }
             }
             else if self.seleccionIlumina == 2{
                 //plantas de sombra
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
-                    CeldaHabitaciones(foto: "monstera", nombre: "Monstera Deliciosa", fechaRiego: Date(), iluminacion: "sombra")
-                    CeldaHabitaciones(foto: "helecho", nombre: "Helecho", fechaRiego: Date(), iluminacion: "sombra")
+                    VStack(spacing: 15){
+                        ForEach (plantas){item in
+                            VStack{
+                                if item.iluminacion == "Sombra"{
+                                    NavigationLink(destination: DetallePlanta(planta: item)){
+                                        CeldaHabitaciones(foto: item.foto, nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
+                                        
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }.padding()
                 }
                 
             }
             else{
                 //ambas
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
-                    CeldaHabitaciones(foto: "croton", nombre: "Croton", fechaRiego: Date(), iluminacion: "ambos")
-                    CeldaHabitaciones(foto: "potos", nombre: "Potos", fechaRiego: Date(), iluminacion: "ambos")
+                    VStack(spacing: 15){
+                        ForEach (plantas){item in
+                            VStack{
+                                if item.iluminacion == "Ambos"{
+                                    NavigationLink(destination: DetallePlanta(planta: item)){
+                                        CeldaHabitaciones(foto: item.foto, nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
+                                        
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }.padding()
                 }
                 
             }
