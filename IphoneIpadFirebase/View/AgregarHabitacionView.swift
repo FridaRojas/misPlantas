@@ -11,7 +11,6 @@ struct AgregarHabitacionView: View {
     @State var nombreHabitacion : String = ""
     @State var tipoHabitacionNombre : String = ""
     @State var tipoHabtacion = 0
-    @StateObject var db = FirebaseViewModel()
     @EnvironmentObject var loginShow : FirebaseViewModel
     
     var body: some View {
@@ -151,7 +150,7 @@ struct AgregarHabitacionView: View {
                     
                     Spacer(minLength: 20)
                     Button(action:{
-                        db.AgregarHabitacion(nombre: nombreHabitacion, tipo: tipoHabitacionNombre){ (done) in
+                        loginShow.AgregarHabitacion(nombre: nombreHabitacion, tipo: tipoHabitacionNombre){ (done) in
                             if done{
                                 nombreHabitacion = ""
                                 tipoHabitacionNombre = ""

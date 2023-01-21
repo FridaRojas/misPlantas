@@ -11,7 +11,6 @@ struct Login: View {
     @State private var email = ""
     @State private var pass = ""
     @State var modal = false
-    @StateObject var login = FirebaseViewModel()
     @EnvironmentObject var loginShow : FirebaseViewModel
     var device = UIDevice.current.userInterfaceIdiom
     
@@ -54,11 +53,12 @@ struct Login: View {
                             .foregroundColor(.black)
                             .shadow(radius: 5)
                         Button(action:{
-                            login.login(email: email, pass: pass) { (done) in
+                            loginShow.login(email: email, pass: pass) { (done) in
                                 if done{
                                     UserDefaults.standard.set(true, forKey: "sesion")
                                     //UserDefaults.standard.set(loginShow.idUsuario, forKey: "idUsuario")
                                     loginShow.show.toggle()
+                                    loginShow.obtieneUsuario()
                                     
                                 }
                             }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Habitacion: View {
-    @StateObject var db = FirebaseViewModel()
+    @EnvironmentObject var loginShow : FirebaseViewModel
     var habitacion : HabitacionModel
     //var plantas : [PlantasModel]
     
@@ -16,13 +16,13 @@ struct Habitacion: View {
         ZStack {
             
                 VStack{
-                    NavBarHabitaciones(nombreHabitacion: habitacion.nombre, numeroPlantas: String(db.plantaActual.count), imagenRecamara: habitacion.tipo == "Recamara" ? "tipoRecamara" : habitacion.tipo == "Sala" ? "tipoSala" : habitacion.tipo == "Cocina" ? "tipoCocina" : habitacion.tipo == "Comedor" ? "tipoComedor" : habitacion.tipo == "Jardin" ? "tipoJardin" : "tipoBalcon")
+                    NavBarHabitaciones(nombreHabitacion: habitacion.nombre, numeroPlantas: String(loginShow.plantaActual.count), imagenRecamara: habitacion.tipo == "Recamara" ? "tipoRecamara" : habitacion.tipo == "Sala" ? "tipoSala" : habitacion.tipo == "Cocina" ? "tipoCocina" : habitacion.tipo == "Comedor" ? "tipoComedor" : habitacion.tipo == "Jardin" ? "tipoJardin" : "tipoBalcon")
                     Spacer()
                 }
-            if db.plantaActual.count != 0 {
+            if loginShow.plantaActual.count != 0 {
                     VStack{
                         Spacer(minLength: 250)
-                        FiltroHabitaciones(plantas: db.plantaActual)
+                        FiltroHabitaciones(plantas: loginShow.plantaActual)
                         
                     }
                 }else {
@@ -35,7 +35,7 @@ struct Habitacion: View {
             .edgesIgnoringSafeArea(.all)
             .navigationBarTitle("").onAppear{
                 print("entro a la habitacion")
-                db.obtienePlantas(idHabitacion: habitacion.id)
+                loginShow.obtienePlantas(idHabitacion: habitacion.id)
             }
     }
 }

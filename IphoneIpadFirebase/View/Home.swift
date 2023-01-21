@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Home: View {
     
-    @StateObject var db = FirebaseViewModel()
+    @EnvironmentObject var loginShow : FirebaseViewModel
     @State private var widthMenu = UIScreen.main.bounds.width
     var device = UIDevice.current.userInterfaceIdiom
     @Environment(\.horizontalSizeClass) var width
@@ -21,20 +21,20 @@ struct Home: View {
             NavigationView(){
                 VStack{
                 //NavBar()
-                    NavBarHome(nombre: db.Usuario.nombre, numHabitaciones: db.habitacionesShow.count)
+                    NavBarHome(nombre: loginShow.Usuario.nombre, numHabitaciones: loginShow.habitacionesShow.count)
                     
                     
                     ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
                             VStack (spacing: 15){
-                                ForEach (db.habitacionesShow){item in
+                                ForEach (loginShow.habitacionesShow){item in
                                     NavigationLink(destination: Habitacion(habitacion: item)){
                                             CeldaPlantasView(nombreHabitacion: item.nombre, foto: "tipo\(item.tipo)")
                                     }
                                 }
                             }.padding()
                     }.onAppear{
-                        db.obtieneUsuario()
-                        db.obtieneHabitaciones()
+                        loginShow.obtieneUsuario()
+                        loginShow.obtieneHabitaciones()
                     }
                 }.background(Image("fondo1").resizable())
                     .edgesIgnoringSafeArea(.all)

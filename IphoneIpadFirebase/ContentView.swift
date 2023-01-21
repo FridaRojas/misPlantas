@@ -22,8 +22,6 @@ struct ContentView: View {
         }.onAppear{
             if(UserDefaults.standard.object(forKey: "sesion")) != nil{
                 loginShow.show = true
-                guard let id = Auth.auth().currentUser?.uid else {return}
-                loginShow.Usuario.id = id
             }
         }
             

@@ -10,6 +10,7 @@ import Foundation
 struct UsuarioModel : Identifiable{
     var id : String
     var nombre : String
+    var correo : String
     var foto : String
 }
 

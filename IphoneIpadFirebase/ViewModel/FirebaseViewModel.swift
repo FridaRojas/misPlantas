@@ -13,7 +13,7 @@ import FirebaseStorage
 class FirebaseViewModel : ObservableObject{
     
     @Published var show = false
-    @Published var Usuario = UsuarioModel(id: "", nombre: "", foto: "")
+    @Published var Usuario = UsuarioModel(id: "111", nombre: "111", correo: "111", foto: "111")
     @Published var habitacionesShow = [HabitacionModel]()
     @Published var plantaActual = [PlantasModel]()
     
@@ -34,9 +34,10 @@ class FirebaseViewModel : ObservableObject{
             }
         }
     }
-    func crearUsuario(email: String, pass: String, completion: @escaping(_ done: Bool) -> Void){
-        Auth.auth().createUser(withEmail: email, password: pass){ (user,error) in
+    func crearUsuario(correo: String, pass: String, completion: @escaping(_ done: Bool) -> Void){
+        Auth.auth().createUser(withEmail: correo, password: pass){ (user,error) in
             if user != nil{
+                print("cree usuario en auth")
                 completion(true)
             }else{
                 if let error = error?.localizedDescription{
@@ -51,17 +52,16 @@ class FirebaseViewModel : ObservableObject{
     //GUARDA EN BASE DE DATOS
     func AgregarUsuario(nombre: String, correo: String, completion: @escaping (_ done : Bool) -> Void){
         let db = Firestore.firestore() //crea conexion
-        guard let idUser = Auth.auth().currentUser?.uid else {return} //obtiene id del usuario en la autentificacion
-        Usuario.id = idUser //se lo agrega en el id de usuario en la bd
-        print("entre a agregar, idAuth:\(idUser), idMANDA:\(Usuario.id)")
+        print("entre a agregar fire, idMANDA:\(self.Usuario.id)")
         
         let campos : [String:Any] = ["nombre": nombre, "correo": correo, "foto": "gs://fir-crud-af577.appspot.com/imagenes/perfil-de-usuario.png"]
-        db.collection("Usuarios").document(Usuario.id).setData(campos){error in
+        print("nombre: \(nombre) , correo: \(correo)")
+        db.collection("Usuarios").document(self.Usuario.id).setData(campos){error in
             if let error = error?.localizedDescription{
                 print(error)
                 print("fueeeee")
             }else{
-                print("guardo")
+                print("guardo en fire")
                 completion(true)
             }
         }
@@ -180,7 +180,9 @@ class FirebaseViewModel : ObservableObject{
     func obtieneUsuario(){
         //var plantas = [PlantasModel]()
         let  db = Firestore.firestore()
-        
+        guard let id = Auth.auth().currentUser?.uid else {return}
+        self.Usuario.id = id
+        print("estoy en obtieneUsuario y el id es : \(self.Usuario.id)")
         db.collection("Usuarios").document(self.Usuario.id).getDocument{(document, error) in
             if let error = error?.localizedDescription{
                 print("error al mostrar datos", error)
@@ -188,6 +190,9 @@ class FirebaseViewModel : ObservableObject{
                 let valor = document!.data()
                 self.Usuario.nombre = valor?["nombre"] as? String ?? "Sin nombre"
                 self.Usuario.foto = valor?["tipo"] as? String ?? "Recamara"
+                self.Usuario.correo = valor?["correo"] as? String ?? "nadie.com"
+                //guard let idUser = Auth.auth().currentUser?.uid else {return} //obtiene id del usuario en la autentificacion
+                //self.Usuario.id = idUser
             }
         }
     }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct CrearUsuarioView: View {
     
@@ -13,7 +14,6 @@ struct CrearUsuarioView: View {
     @State var correo : String = ""
     @State var contras : String = ""
     @State var nombre : String = ""
-    @StateObject var db = FirebaseViewModel()
     @EnvironmentObject var loginShow : FirebaseViewModel
     var device = UIDevice.current.userInterfaceIdiom
     
@@ -65,22 +65,25 @@ struct CrearUsuarioView: View {
                     
                     Button(action:{
                         //inicia sesion
-                        db.crearUsuario(email: correo, pass: contras) { (done) in
+                        loginShow.crearUsuario(correo: correo, pass: contras) { (done) in
                             if done{
                                 UserDefaults.standard.set(true, forKey: "sesion")
                                 loginShow.show.toggle()
                                 print("se logueo")
+                                guard let id = Auth.auth().currentUser?.uid else {return}
+                                loginShow.Usuario.id =  id
                                 //crea usuario en db
-                                db.AgregarUsuario(nombre: nombre, correo: correo){ (done) in
+                                loginShow.AgregarUsuario(nombre: nombre, correo: correo){ (done) in
                                     if done{
                                         correo = ""
                                         contras = ""
                                         nombre = ""
                                         print("agrego usuario a firebase")
+                                        loginShow.obtieneUsuario()
                                         //crea su primera habitacion
-                                        db.AgregarHabitacion(nombre: "Sala de estar", tipo: "Sala"){ (done) in
+                                        loginShow.AgregarHabitacion(nombre: "Sala de estar", tipo: "Sala"){ (done) in
                                             if done{
-                                                print("ok")
+                                                print("agregue habitacion")
                                             }
                                             
                                         }
