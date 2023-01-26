@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D02562529807B8F00713BC4 /* GoogleSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D02562429807B8F00713BC4 /* GoogleSignInViewModel.swift */; };
+		2D02562A2981D2CD00713BC4 /* EditaUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0256292981D2CD00713BC4 /* EditaUsuario.swift */; };
+		2D02562C2981F75000713BC4 /* EditaHabitacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D02562B2981F75000713BC4 /* EditaHabitacion.swift */; };
+		2D02562E2982036800713BC4 /* EditaPlantaFoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D02562D2982036800713BC4 /* EditaPlantaFoto.swift */; };
 		2D1873892975CD3400C2FA25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1873882975CD3400C2FA25 /* AppDelegate.swift */; };
 		2D18738B2975D71E00C2FA25 /* FirebaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D18738A2975D71E00C2FA25 /* FirebaseViewModel.swift */; };
 		2D18738E2975D97C00C2FA25 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D18738D2975D97C00C2FA25 /* Login.swift */; };
@@ -46,6 +50,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D02562429807B8F00713BC4 /* GoogleSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewModel.swift; sourceTree = "<group>"; };
+		2D0256292981D2CD00713BC4 /* EditaUsuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditaUsuario.swift; sourceTree = "<group>"; };
+		2D02562B2981F75000713BC4 /* EditaHabitacion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditaHabitacion.swift; sourceTree = "<group>"; };
+		2D02562D2982036800713BC4 /* EditaPlantaFoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditaPlantaFoto.swift; sourceTree = "<group>"; };
 		2D1873882975CD3400C2FA25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D18738A2975D71E00C2FA25 /* FirebaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseViewModel.swift; sourceTree = "<group>"; };
 		2D18738D2975D97C00C2FA25 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -100,11 +108,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D0256262981D22800713BC4 /* Agregar */ = {
+			isa = PBXGroup;
+			children = (
+				2D8ADF912967BBA200CAD46C /* AgregarPlantaView.swift */,
+				2D8E5578296E227200C065CB /* AgregarPlantaFotoView.swift */,
+				2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */,
+			);
+			path = Agregar;
+			sourceTree = "<group>";
+		};
+		2D0256272981D25A00713BC4 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				2D18738D2975D97C00C2FA25 /* Login.swift */,
+				2D18738F2977325100C2FA25 /* CrearUsuarioView.swift */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
+		2D0256282981D28C00713BC4 /* Edita */ = {
+			isa = PBXGroup;
+			children = (
+				2D0256292981D2CD00713BC4 /* EditaUsuario.swift */,
+				2D02562B2981F75000713BC4 /* EditaHabitacion.swift */,
+				2D02562D2982036800713BC4 /* EditaPlantaFoto.swift */,
+			);
+			path = Edita;
+			sourceTree = "<group>";
+		};
 		2D18738C2975D72C00C2FA25 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				2D18738A2975D71E00C2FA25 /* FirebaseViewModel.swift */,
 				2D1873972978CDC100C2FA25 /* ImagenViewModel.swift */,
+				2D02562429807B8F00713BC4 /* GoogleSignInViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -175,19 +213,17 @@
 		CFE73A4E25B764F1002DB2A6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2D0256282981D28C00713BC4 /* Edita */,
+				2D0256272981D25A00713BC4 /* LogIn */,
+				2D0256262981D22800713BC4 /* Agregar */,
 				CFE73A4F25B764F9002DB2A6 /* Elementos */,
 				2D8ADF8B2967ADFD00CAD46C /* TabViewMain.swift */,
 				CFE73A5025B76521002DB2A6 /* Home.swift */,
-				2D89FC012968C99600AE5258 /* Habitacion.swift */,
-				2D618BB6296CDDD300E8FF7F /* DetallePlanta.swift */,
-				2D8ADF912967BBA200CAD46C /* AgregarPlantaView.swift */,
-				2D8E5578296E227200C065CB /* AgregarPlantaFotoView.swift */,
-				2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */,
-				2D8ADF932967BC4400CAD46C /* BuscaView.swift */,
 				2D8ADF8D2967AE4E00CAD46C /* Recordatorios.swift */,
 				2D8ADF8F2967AF2A00CAD46C /* ConfiguracionView.swift */,
-				2D18738D2975D97C00C2FA25 /* Login.swift */,
-				2D18738F2977325100C2FA25 /* CrearUsuarioView.swift */,
+				2D8ADF932967BC4400CAD46C /* BuscaView.swift */,
+				2D89FC012968C99600AE5258 /* Habitacion.swift */,
+				2D618BB6296CDDD300E8FF7F /* DetallePlanta.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -334,6 +370,7 @@
 			files = (
 				2D1873892975CD3400C2FA25 /* AppDelegate.swift in Sources */,
 				2D8ADF922967BBA200CAD46C /* AgregarPlantaView.swift in Sources */,
+				2D02562A2981D2CD00713BC4 /* EditaUsuario.swift in Sources */,
 				2D89FC002968C4F800AE5258 /* FiltroHabitaciones.swift in Sources */,
 				2D1873922977702800C2FA25 /* ImagePicker.swift in Sources */,
 				2D89FBFE2968C40500AE5258 /* NavBarHabitaciones.swift in Sources */,
@@ -346,6 +383,7 @@
 				CFE73A4125B75D9D002DB2A6 /* ContentView.swift in Sources */,
 				CFE73A5425B7653E002DB2A6 /* NavBarDetallePlanta.swift in Sources */,
 				2D8E5577296E187800C065CB /* AgregarHabitacionView.swift in Sources */,
+				2D02562C2981F75000713BC4 /* EditaHabitacion.swift in Sources */,
 				2D18739A2978D1D300C2FA25 /* ImagenFirebase.swift in Sources */,
 				2D618BB9296CE6E500E8FF7F /* CardInfoView.swift in Sources */,
 				2D1873962978A55500C2FA25 /* HabitacionModel.swift in Sources */,
@@ -360,6 +398,8 @@
 				2D8ADF8E2967AE4E00CAD46C /* Recordatorios.swift in Sources */,
 				2D1873982978CDC100C2FA25 /* ImagenViewModel.swift in Sources */,
 				2D8ADF8A2967A5F300CAD46C /* NavBarHome.swift in Sources */,
+				2D02562529807B8F00713BC4 /* GoogleSignInViewModel.swift in Sources */,
+				2D02562E2982036800713BC4 /* EditaPlantaFoto.swift in Sources */,
 				2D8AA1912971E29000A311D5 /* CalendarioView.swift in Sources */,
 				2D1873902977325100C2FA25 /* CrearUsuarioView.swift in Sources */,
 				2D8ADF902967AF2A00CAD46C /* ConfiguracionView.swift in Sources */,
@@ -497,7 +537,7 @@
 				DEVELOPMENT_TEAM = 7U8Z4PHGBC;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = IphoneIpadFirebase/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -520,7 +560,7 @@
 				DEVELOPMENT_TEAM = 7U8Z4PHGBC;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = IphoneIpadFirebase/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

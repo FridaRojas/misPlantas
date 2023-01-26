@@ -10,7 +10,7 @@ import FirebaseAuth
 
 struct ConfiguracionView: View {
     @EnvironmentObject var loginShow : FirebaseViewModel
-    
+    @State var modal = false
     @State var recordatorios = true
     
     var body: some View {
@@ -25,7 +25,7 @@ struct ConfiguracionView: View {
                 .font(.custom("Noteworthy", size: 40))
                 .foregroundColor(Color.black)
             Button(action:{
-                
+                modal.toggle()
             }){
                 HStack(alignment: .center){
                     Text("Editar perfil")
@@ -33,6 +33,8 @@ struct ConfiguracionView: View {
                     Image(systemName: "square.and.pencil")
                         .foregroundColor(.gray)
                 }
+            }.sheet(isPresented: $modal){
+                EditaUsuario(modal: $modal).presentationDetents([.medium])
             }
             Spacer(minLength: 10)
             ScrollView{

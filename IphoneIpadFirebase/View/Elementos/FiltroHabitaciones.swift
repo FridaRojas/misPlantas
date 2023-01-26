@@ -9,29 +9,26 @@ import SwiftUI
 
 struct FiltroHabitaciones: View {
     var plantas : [PlantasModel]
+    var idHabitacion : HabitacionModel
     @State var seleccionIlumina = 0
     
     
     var body: some View {
         VStack(alignment: .center){
-            //Spacer()
-            
             HStack {
                 BotonSeleccion(seleccionIlumina: self.$seleccionIlumina)
-                //Spacer()
-            }
+            }.padding(.horizontal)
             
             if self.seleccionIlumina == 0{
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
                     VStack(spacing: 15){
                         ForEach (plantas){item in
-                            NavigationLink(destination: DetallePlanta(planta: item)){
+                            NavigationLink(destination: DetallePlanta(planta: item, idHabitacion: idHabitacion)){
                                 CeldaHabitaciones(foto: item.foto, nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
                                 
                             }
                         }
                     }.padding()
-                    
                 }
             }
             else if self.seleccionIlumina == 1{
@@ -41,7 +38,7 @@ struct FiltroHabitaciones: View {
                         ForEach (plantas){item in
                             VStack{
                                 if item.iluminacion == "Sol"{
-                                    NavigationLink(destination: DetallePlanta(planta: item)){
+                                    NavigationLink(destination: DetallePlanta(planta: item, idHabitacion: idHabitacion)){
                                         CeldaHabitaciones(foto: item.foto, nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
                                         
                                     }
@@ -59,7 +56,7 @@ struct FiltroHabitaciones: View {
                         ForEach (plantas){item in
                             VStack{
                                 if item.iluminacion == "Sombra"{
-                                    NavigationLink(destination: DetallePlanta(planta: item)){
+                                    NavigationLink(destination: DetallePlanta(planta: item, idHabitacion: idHabitacion)){
                                         CeldaHabitaciones(foto: item.foto, nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
                                         
                                     }
@@ -78,10 +75,11 @@ struct FiltroHabitaciones: View {
                         ForEach (plantas){item in
                             VStack{
                                 if item.iluminacion == "Ambos"{
-                                    NavigationLink(destination: DetallePlanta(planta: item)){
+                                    NavigationLink(destination: DetallePlanta(planta: item, idHabitacion: idHabitacion)){
                                         CeldaHabitaciones(foto: item.foto, nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
                                         
                                     }
+                                    
                                 }
                             }
                             

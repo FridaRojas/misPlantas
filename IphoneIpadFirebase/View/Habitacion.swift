@@ -13,23 +13,24 @@ struct Habitacion: View {
     //var plantas : [PlantasModel]
     
     var body: some View {
-        ZStack {
-            
-                VStack{
-                    NavBarHabitaciones(nombreHabitacion: habitacion.nombre, numeroPlantas: String(loginShow.plantaActual.count), imagenRecamara: habitacion.tipo == "Recamara" ? "tipoRecamara" : habitacion.tipo == "Sala" ? "tipoSala" : habitacion.tipo == "Cocina" ? "tipoCocina" : habitacion.tipo == "Comedor" ? "tipoComedor" : habitacion.tipo == "Jardin" ? "tipoJardin" : "tipoBalcon")
-                    Spacer()
-                }
-            if loginShow.plantaActual.count != 0 {
-                    VStack{
-                        Spacer(minLength: 250)
-                        FiltroHabitaciones(plantas: loginShow.plantaActual)
-                        
-                    }
+        VStack {
+            VStack{
+                
+                NavBarHabitaciones(habitacion: habitacion, numeroPlantas: String(loginShow.plantaActual.count))
+                //Spacer()
+            }
+            VStack{
+                if loginShow.plantaActual.count != 0 {
+                    //Spacer(minLength: 250)
+                    FiltroHabitaciones(plantas: loginShow.plantaActual, idHabitacion: habitacion)
                 }else {
-                    VStack{
-                        Text("No se encontraron plantas")
-                    }
+                    Spacer()
+                    Text("No se encontraron plantas").foregroundColor(.gray)
+                    Spacer(minLength: 150)
                 }
+            }
+           
+            Spacer(minLength: 50)
             
         }.background(Image("fondo1").resizable())
             .edgesIgnoringSafeArea(.all)

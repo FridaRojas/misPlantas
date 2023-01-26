@@ -25,7 +25,7 @@ struct AgregarPlantaView: View {
     let itemIluminacion = ["Sol", "Sombra", "Ambos"]
     let itemRiego = ["Dias", "Semanas", "Meses"]
     let itemAbono = ["Semanas", "Meses"]
-    let itemHabitacion = ["Recamara", "Sala", "Comedor", "Cocina", "Jardin", "Balcon"]
+    //let itemHabitacion = ["Recamara", "Sala", "Comedor", "Cocina", "Jardin", "Balcon"]
     @EnvironmentObject var loginShow : FirebaseViewModel
     
     var body: some View {

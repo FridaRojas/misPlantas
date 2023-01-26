@@ -9,15 +9,11 @@ import SwiftUI
 
 struct DetallePlanta: View {
     var planta : PlantasModel
+    var idHabitacion : HabitacionModel
     
     var body: some View {
         VStack(alignment: .leading){
-            NavBarDetallePlanta(foto: planta.foto, nombre: planta.nombre)
-            //Spacer(minLength: 10)
-            Text("Cereus Peruvianus Monstruoso")
-                .padding(.leading)
-                .font(.custom("Noteworthy", size: 20 ))
-                .foregroundColor(.gray)
+            NavBarDetallePlanta(planta: planta, idHabitacion: idHabitacion)
             Text("Proximo riego: \(planta.proxRecordatorio)")
                 .padding(.leading)
                 .font(.custom("Noteworthy", size: 15 ))
@@ -32,7 +28,7 @@ struct DetallePlanta: View {
                 }
                 
             }.padding()
-            Spacer()
+            Spacer(minLength: 120)
         }.background(Image("fondo1").resizable())
             .edgesIgnoringSafeArea(.all)
             .navigationBarTitle("")
