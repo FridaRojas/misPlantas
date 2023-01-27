@@ -14,9 +14,15 @@ struct EditaHabitacion: View {
     @State private var seleccionHabitacion: String = "Sala"
     let itemHabitacion = ["Recamara", "Sala", "Comedor", "Cocina", "Jardin", "Balcon"]
     @EnvironmentObject var loginShow : FirebaseViewModel
+    @State private var atras = false
     
     var body: some View {
+        NavigationStack{
             VStack{
+                /*NavigationLink(destination: Home(), isActive: self.$atras){
+                 EmptyView()
+                 }.navigationBarHidden(true)*/
+                
                 
                 Text("Edita la habitacion")
                     .padding(.horizontal)
@@ -31,20 +37,20 @@ struct EditaHabitacion: View {
                 
                 //tipo
                 VStack{
-                        Text("¿Que tipo de habitacion es?").font(.custom("Noteworthy", size: 15)).foregroundColor(.black)
-                        Picker("Select one option", selection: $seleccionHabitacion) {
-                            ForEach(itemHabitacion, id: \.self) {item in
-                                Text(item).foregroundColor(Color("primario"))
-                            }
-                        }.pickerStyle(.wheel)
+                    Text("¿Que tipo de habitacion es?").font(.custom("Noteworthy", size: 15)).foregroundColor(.black)
+                    Picker("Select one option", selection: $seleccionHabitacion) {
+                        ForEach(itemHabitacion, id: \.self) {item in
+                            Text(item).foregroundColor(Color("primario"))
+                        }
+                    }.pickerStyle(.wheel)
                 }.padding().onAppear{ seleccionHabitacion = habitacion.tipo}
                 
                 //Boton
                 Button(action:{
                     loginShow.editarHabitacion(nombre: nombreNuevo, tipo: seleccionHabitacion, idHabitacion: habitacion.id){(done) in
                         if done{
+                            atras.toggle()
                             modal.toggle()
-                            loginShow.obtieneHabitaciones()
                         }
                     }
                 }){
@@ -54,6 +60,11 @@ struct EditaHabitacion: View {
                     .cornerRadius(8)
                     .shadow(radius: 4)
                 Spacer(minLength: 20)
-            }.background(Image("hojitas").opacity(0.8)).ignoresSafeArea(.all).navigationTitle("")
+            }.background(LinearGradient(gradient: Gradient(colors: [Color("primario"), .white]), startPoint: .top, endPoint: .bottom)).ignoresSafeArea(.all)
+                .navigationDestination(isPresented: $atras){
+                    Home()
+                }
+        }
+        
     }
 }

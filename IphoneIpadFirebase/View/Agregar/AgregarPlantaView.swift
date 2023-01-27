@@ -21,7 +21,7 @@ struct AgregarPlantaView: View {
     @State private var mostrarMenu = false
     @State private var imagePicker = false
     @State private var source : UIImagePickerController.SourceType = .camera
-    
+    @State var atras = false
     let itemIluminacion = ["Sol", "Sombra", "Ambos"]
     let itemRiego = ["Dias", "Semanas", "Meses"]
     let itemAbono = ["Semanas", "Meses"]
@@ -35,7 +35,9 @@ struct AgregarPlantaView: View {
                 NavigationLink(destination: ImagePicker(show: $imagePicker, image: $imagen1, source: source), isActive: $imagePicker){
                     EmptyView()
                 }.navigationBarHidden(true)
-                
+                NavigationLink(destination: Home(), isActive: $atras){
+                    EmptyView()
+                }.navigationBarHidden(true)
                 Spacer(minLength: 50)
                 Text("Datos de tu planta:").font(.custom("Noteworthy", size: 40)).foregroundColor(.gray)
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
@@ -184,6 +186,7 @@ struct AgregarPlantaView: View {
                                         seleccionHabitacion = "Recamara"
                                         proxRiego = Date()
                                         abono = ""
+                                        atras.toggle()
                                     }
                                     
 
