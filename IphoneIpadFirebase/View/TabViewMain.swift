@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TabViewMain: View {
-    @State var selected = 0
+    
+    @EnvironmentObject var loginShow : FirebaseViewModel
     
     var body: some View {
         
@@ -17,19 +18,19 @@ struct TabViewMain: View {
             
             VStack(alignment: .center){
                 Spacer()
-                if self.selected == 0{
+                if loginShow.selectedTab == 0{
                     Home()
                 }
-                else if self.selected == 1{
+                else if loginShow.selectedTab == 1{
                     //BuscaView()
                 }
-                else if self.selected == 2{
+                else if loginShow.selectedTab == 2{
                     AgregarPlantaView()
                 }
-                else if self.selected == 3{
+                else if loginShow.selectedTab == 3{
                     Recordatorios()
                 }
-                else if self.selected == 4{
+                else if loginShow.selectedTab == 4{
                     ConfiguracionView()
                 }
                 else{
@@ -38,7 +39,7 @@ struct TabViewMain: View {
                 
             }.edgesIgnoringSafeArea(.all)
             
-            FloatingTabbar(selected: self.$selected)
+            FloatingTabbar()
         }
     }
 }
@@ -46,71 +47,74 @@ struct TabViewMain: View {
 //estructura tab
 struct FloatingTabbar : View {
     
-    @Binding var selected : Int
+    @EnvironmentObject var loginShow : FirebaseViewModel
     @State var agrega = false
     @State private var modalAgregarShow = false
     
     var body : some View{
+        if loginShow.tab {
+            VStack{
+                
+                Spacer(minLength: 0)
+                
+                HStack{
+                    
+                    Button(action: {
+                        loginShow.selectedTab = 0
+                    }) {
+                        Image(systemName: "house").foregroundColor(loginShow.selectedTab == 0 ? .gray : .white).padding(.horizontal)
+                    }
+                    
+                    Spacer(minLength: 5)
+                    
+                    Button(action: {
+                        loginShow.selectedTab = 1
+                    }) {
+                        Image(systemName: "magnifyingglass").foregroundColor(loginShow.selectedTab == 1 ? .gray : .white).padding(.horizontal)
+                    }
+                    
+                    Spacer(minLength: 5)
+                    
+                    Button(action: {
+                        agrega.toggle()
+                    }) {
+                        Image(systemName: "plus").foregroundColor(loginShow.selectedTab == 2 ? .gray : loginShow.selectedTab == 5 ? .gray : .white).padding(.horizontal)
+                    }.confirmationDialog("¿Que necesitas agregar?", isPresented: $agrega){
+                        Button(action:{
+                            loginShow.selectedTab = 2
+                        }){
+                            Text("Planta")
+                        }
+                        Button(action:{
+                            loginShow.selectedTab = 5
+                        }){
+                            Text("Habitacion")
+                        }
+                    }
+                    
+                    Spacer(minLength: 5)
+                    
+                    Button(action: {
+                        loginShow.selectedTab = 3
+                    }) {
+                        Image(systemName: "drop").foregroundColor(loginShow.selectedTab == 3 ? .gray : .white).padding(.horizontal)
+                    }
+                    
+                    Spacer(minLength: 5)
+                    
+                    Button(action: {
+                        loginShow.selectedTab = 4
+                    }) {
+                        Image(systemName: "person").foregroundColor(loginShow.selectedTab == 4 ? .gray : .white).padding(.horizontal)
+                    }
+                    
+                }.padding()
+                    .background(Color("primario"))
+                    .clipShape(Capsule()).padding(22)
+                    .shadow(radius: 5)
+                    
+            }.edgesIgnoringSafeArea(.bottom)
+        }
         
-        VStack{
-            
-            Spacer(minLength: 0)
-            
-            HStack{
-                
-                Button(action: {
-                    self.selected = 0
-                }) {
-                    Image(systemName: "house").foregroundColor(self.selected == 0 ? .gray : .white).padding(.horizontal)
-                }
-                
-                Spacer(minLength: 5)
-                
-                Button(action: {
-                    self.selected = 1
-                }) {
-                    Image(systemName: "magnifyingglass").foregroundColor(self.selected == 1 ? .gray : .white).padding(.horizontal)
-                }
-                
-                Spacer(minLength: 5)
-                
-                Button(action: {
-                    agrega.toggle()
-                }) {
-                    Image(systemName: "plus").foregroundColor(self.selected == 2 ? .gray : self.selected == 5 ? .gray : .white).padding(.horizontal)
-                }.confirmationDialog("¿Que necesitas agregar?", isPresented: $agrega){
-                    Button(action:{
-                        self.selected = 2
-                    },label:{
-                        Label("Planta manual", systemImage: "camera.macro")
-                    })
-                    Button(action:{
-                        self.selected = 5
-                    },label:{
-                        Label("Habitacion", systemImage: "window.awning.closed")
-                    })
-                }
-                
-                Spacer(minLength: 5)
-                
-                Button(action: {
-                    self.selected = 3
-                }) {
-                    Image(systemName: "drop").foregroundColor(self.selected == 3 ? .gray : .white).padding(.horizontal)
-                }
-                
-                Spacer(minLength: 5)
-                
-                Button(action: {
-                    self.selected = 4
-                }) {
-                    Image(systemName: "person").foregroundColor(self.selected == 4 ? .gray : .white).padding(.horizontal)
-                }
-                
-            }.padding()
-                .background(Color("primario"))
-                .clipShape(Capsule()).padding(22)
-                .shadow(radius: 5)
-        }.edgesIgnoringSafeArea(.bottom)
     }
 }

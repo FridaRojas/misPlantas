@@ -28,9 +28,6 @@ struct EditaPlantaFoto: View {
     var body: some View {
             NavigationStack{
                 VStack{
-                    NavigationLink(destination: ImagePicker(show: $imagePicker, image: $fotoNueva, source: source), isActive: $imagePicker){
-                        EmptyView()
-                    }.navigationBarHidden(true)
                     Text("Edita a \(planta.nombre) ")
                         .padding(.horizontal)
                         .font(.custom("Noteworthy", size: 35))
@@ -111,6 +108,10 @@ struct EditaPlantaFoto: View {
                             if fotoNueva.isEmpty{
                                 loginShow.editarPlantaFotoNombre(idHabitacion: habitacion.id, Planta: planta, nombreNuevo: nombreNuevo, fotoNuevo: nil, riegoNum: Int(riego) ?? 0, riegoPeriod: seleccionRiego, siguienteRiego: proxRiego){(done) in
                                     if done{
+                                        loginShow.plantaActual.nombre = nombreNuevo
+                                        loginShow.plantaActual.riegoNum = Int(riego) ?? 0
+                                        loginShow.plantaActual.riegoPeriod = seleccionRiego
+                                        loginShow.plantaActual.proxRecordatorio = proxRiego
                                         atras.toggle()
                                         modal.toggle()
                                     }
@@ -118,6 +119,11 @@ struct EditaPlantaFoto: View {
                             }else{
                                 loginShow.editarPlantaFotoNombre(idHabitacion: habitacion.id, Planta: planta, nombreNuevo: nombreNuevo, fotoNuevo: fotoNueva, riegoNum: Int(riego) ?? 0, riegoPeriod: seleccionRiego, siguienteRiego: proxRiego){(done) in
                                     if done{
+                                        loginShow.plantaActual.nombre = nombreNuevo
+                                        loginShow.plantaActual.riegoNum = Int(riego) ?? 0
+                                        loginShow.plantaActual.riegoPeriod = seleccionRiego
+                                        loginShow.plantaActual.proxRecordatorio = proxRiego
+                                        //falta modificar foto
                                         atras.toggle()
                                         modal.toggle()
                                         
@@ -134,8 +140,11 @@ struct EditaPlantaFoto: View {
                     }.padding()
                     
                 }.padding().background(LinearGradient(gradient: Gradient(colors: [Color("primario"), .white]), startPoint: .top, endPoint: .bottom)).ignoresSafeArea(.all)
-                    .navigationDestination(isPresented: $atras){
-                        Home()
+                    .onAppear{
+                        loginShow.obtienePlantas(idHabitacion: habitacion.id)
+                    }
+                    .navigationDestination(isPresented: $imagePicker){
+                        ImagePicker(show: $imagePicker, image: $fotoNueva, source: source)
                     }
             }.ignoresSafeArea(.all)
     }

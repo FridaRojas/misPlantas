@@ -12,9 +12,7 @@ struct NavBarDetallePlanta: View {
     var idHabitacion : HabitacionModel
     var device = UIDevice.current.userInterfaceIdiom
     @State var modalEditaFoto = false
-    @State var modalEdita = false
     @State var alertaElimina = false
-    @State var atras = false
     @EnvironmentObject var loginShow : FirebaseViewModel
     
     var body: some View {
@@ -32,15 +30,13 @@ struct NavBarDetallePlanta: View {
                         .cornerRadius(15)
                 }.alert(isPresented: $alertaElimina, content: {
                     Alert(title: Text("Eliminar"),
-                          message: Text("¿Estas seguro de eiminar a \(planta.nombre)?"),
+                          message: Text("¿Estas seguro de eliminar a \(planta.nombre)?"),
                           primaryButton: Alert.Button.destructive(Text("Aceptar"), action: {
                         loginShow.eliminarPlanta(item: planta, idHabitacion: idHabitacion.id)
-                        atras = true
+                        loginShow.NavegacionHabitacion = false
                     }),
                           secondaryButton: .default(Text("Cancelar")))
                 })
-                
-                NavigationLink(destination: Habitacion(habitacion: idHabitacion), isActive: $atras, label: {EmptyView()})
                 
                 Button(action:{
                     modalEditaFoto = true
@@ -51,7 +47,7 @@ struct NavBarDetallePlanta: View {
                             .background(Color.white)
                             .cornerRadius(15)
                 }.sheet(isPresented: $modalEditaFoto){
-                        EditaPlantaFoto(planta: planta, habitacion: idHabitacion,modal: $modalEditaFoto)//.presentationDetents([.l])
+                        EditaPlantaFoto(planta: planta, habitacion: idHabitacion,modal: $modalEditaFoto)
                     }
             }
             Spacer(minLength: 150)

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct NavBarHabitaciones: View {
     var habitacion : HabitacionModel
-    var numeroPlantas : String
+    //var numeroPlantas : String
+    //@Binding var navegacion : Bool
     @State var modal = false
     @State var alerta = false
     @State var atras = false
@@ -32,12 +33,11 @@ struct NavBarHabitaciones: View {
                           message: Text("¿Estas seguro de eiminar la habitacion \(habitacion.nombre) junto con sus plantas?"),
                           primaryButton: Alert.Button.destructive(Text("Aceptar"), action: {
                         loginShow.eliminarHabitacion(item: habitacion)
-                        atras = true
+                        loginShow.habitacionActual = HabitacionModel(id: "  ", nombre: "  ", tipo: "  ")
+                        loginShow.NavegacionHabitacion = false
                     }),
                           secondaryButton: .default(Text("Cancelar")))
                 })
-                
-                NavigationLink(destination: Home(), isActive: $atras, label: {EmptyView()})
                 
                 Button(action:{
                     modal.toggle()
@@ -61,7 +61,7 @@ struct NavBarHabitaciones: View {
                 Spacer()
             }
             HStack {
-                Text("Aqui tienes \(numeroPlantas) plantas")
+                Text("Aqui tienes \(loginShow.plantasActuales.count) plantas")
                     .padding(.leading, 35)
                     .font(.custom("Noteworthy", size: 15))
                     .foregroundColor(.black).shadow(color: .white, radius: 5)
@@ -71,6 +71,9 @@ struct NavBarHabitaciones: View {
             .cornerRadius(50)
             .shadow(radius: 10)
             .ignoresSafeArea(.all)
+            .navigationDestination(isPresented: $atras){
+                Home()
+            }
     }
 }
 

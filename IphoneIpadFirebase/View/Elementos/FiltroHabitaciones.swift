@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct FiltroHabitaciones: View {
-    var plantas : [PlantasModel]
-    var idHabitacion : HabitacionModel
+    @EnvironmentObject var loginShow : FirebaseViewModel
     @State var seleccionIlumina = 0
+    var plantas : [PlantasModel]
     
     
     var body: some View {
@@ -22,10 +22,13 @@ struct FiltroHabitaciones: View {
             if self.seleccionIlumina == 0{
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
                     VStack(spacing: 15){
-                        ForEach (plantas){item in
-                            NavigationLink(destination: DetallePlanta(planta: item, idHabitacion: idHabitacion)){
+                        ForEach (loginShow.plantasActuales){item in
+                            Button(action:{
+                                loginShow.mandaItemPlanta(planta: item)
+                            }){
                                 CeldaHabitaciones(foto: item.foto, nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
-                                
+                            }.navigationDestination(isPresented: $loginShow.NavegacionPlanta){
+                                DetallePlanta()
                             }
                         }
                     }.padding()
@@ -35,12 +38,16 @@ struct FiltroHabitaciones: View {
                 //plantas de sol
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
                     VStack(spacing: 15){
-                        ForEach (plantas){item in
+                        ForEach (loginShow.plantasActuales){item in
                             VStack{
                                 if item.iluminacion == "Sol"{
-                                    NavigationLink(destination: DetallePlanta(planta: item, idHabitacion: idHabitacion)){
+                                    Button(action:{
+                                        //navegacion = true
+                                        loginShow.mandaItemPlanta(planta: item)
+                                    }){
                                         CeldaHabitaciones(foto: item.foto, nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
-                                        
+                                    }.navigationDestination(isPresented: $loginShow.NavegacionPlanta){
+                                        DetallePlanta()
                                     }
                                 }
                             }
@@ -53,12 +60,16 @@ struct FiltroHabitaciones: View {
                 //plantas de sombra
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
                     VStack(spacing: 15){
-                        ForEach (plantas){item in
+                        ForEach (loginShow.plantasActuales){item in
                             VStack{
                                 if item.iluminacion == "Sombra"{
-                                    NavigationLink(destination: DetallePlanta(planta: item, idHabitacion: idHabitacion)){
+                                    Button(action:{
+                                        //navegacion = true
+                                        loginShow.mandaItemPlanta(planta: item)
+                                    }){
                                         CeldaHabitaciones(foto: item.foto, nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
-                                        
+                                    }.navigationDestination(isPresented: $loginShow.NavegacionPlanta){
+                                        DetallePlanta()
                                     }
                                 }
                             }
@@ -72,14 +83,17 @@ struct FiltroHabitaciones: View {
                 //ambas
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
                     VStack(spacing: 15){
-                        ForEach (plantas){item in
+                        ForEach (loginShow.plantasActuales){item in
                             VStack{
                                 if item.iluminacion == "Ambos"{
-                                    NavigationLink(destination: DetallePlanta(planta: item, idHabitacion: idHabitacion)){
+                                    Button(action:{
+                                        //navegacion = true
+                                        loginShow.mandaItemPlanta(planta: item)
+                                    }){
                                         CeldaHabitaciones(foto: item.foto, nombre: item.nombre, fechaRiego: item.proxRecordatorio, iluminacion: item.iluminacion)
-                                        
+                                    }.navigationDestination(isPresented: $loginShow.NavegacionPlanta){
+                                        DetallePlanta()
                                     }
-                                    
                                 }
                             }
                             
@@ -92,6 +106,8 @@ struct FiltroHabitaciones: View {
             
         }.edgesIgnoringSafeArea(.all).onAppear{
             print("entro a filtro")
+            //loginShow.obtienePlantas(idHabitacion: loginShow.habitacionActual.id)
+            print("num en filtro: \(loginShow.plantasActuales.count)")
         }
         
         

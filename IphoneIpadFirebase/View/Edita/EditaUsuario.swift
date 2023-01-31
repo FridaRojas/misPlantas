@@ -12,7 +12,6 @@ struct EditaUsuario: View {
     @Binding var modal : Bool
     @State var fotoNueva : Data = .init(capacity: 0)
     @State var nombreNuevo = ""
-    @State var atras = false
     @State private var mostrarMenu = false
     @State private var imagePicker = false
     @State private var source : UIImagePickerController.SourceType = .camera
@@ -21,9 +20,9 @@ struct EditaUsuario: View {
     var body: some View {
             NavigationStack{
                 VStack{
-                    NavigationLink(destination: ImagePicker(show: $imagePicker, image: $fotoNueva, source: source), isActive: $imagePicker){
+                    /*NavigationLink(destination: ImagePicker(show: $imagePicker, image: $fotoNueva, source: source), isActive: $imagePicker){
                         EmptyView()
-                    }.navigationBarHidden(true)
+                    }.navigationBarHidden(true)*/
                     Text("Edita tu perfil")
                         .padding(.horizontal)
                         .font(.custom("Noteworthy", size: 35))
@@ -74,15 +73,18 @@ struct EditaUsuario: View {
                         if fotoNueva.isEmpty{
                             loginShow.editarUsuario(nombreNuevo: nombreNuevo, fotoNuevo: nil){(done) in
                                 if done{
-                                    atras.toggle()
+                                    
                                     modal.toggle()
+                                    loginShow.obtieneUsuario()
+                                    loginShow.selectedTab = 4
                                 }
                             }
                         }else{
                             loginShow.editarUsuario(nombreNuevo: nombreNuevo, fotoNuevo: fotoNueva){(done) in
                                 if done{
-                                    atras.toggle()
                                     modal.toggle()
+                                    loginShow.obtieneUsuario()
+                                    loginShow.selectedTab = 4
                                 }
                             }
                         }
@@ -95,9 +97,9 @@ struct EditaUsuario: View {
                     Spacer(minLength: 20)
                     
                 }.padding().background(LinearGradient(gradient: Gradient(colors: [Color("primario"), .white]), startPoint: .top, endPoint: .bottom)).ignoresSafeArea(.all)
-                    .navigationDestination(isPresented: $atras){
-                        Home()
-                    }
+                    .navigationDestination(isPresented: $imagePicker){
+                    ImagePicker(show: $imagePicker, image: $fotoNueva, source: source)
+                }
             }.ignoresSafeArea(.all)
     }
 }

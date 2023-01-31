@@ -20,16 +20,6 @@ struct NavBarHome: View {
                     .foregroundColor(.black)
                 
                 Spacer()
-                Button(action:{
-                    
-                }){
-                 Image(systemName: "bell.fill")
-                        .padding()
-                        .font(.title)
-                        .foregroundColor(Color("primario"))
-                        
-                        //.shadow(radius: 4)
-                }
             }
             HStack {
                 Text("Actualmente tienes \(numHabitaciones) habitaciones")

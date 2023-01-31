@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CeldaHabitaciones: View {
-    
     var foto : String
     var nombre : String
     var fechaRiego : Date

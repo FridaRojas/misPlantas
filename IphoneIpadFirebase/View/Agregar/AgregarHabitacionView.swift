@@ -11,15 +11,12 @@ struct AgregarHabitacionView: View {
     @State var nombreHabitacion : String = ""
     @State var tipoHabitacionNombre : String = "Recamara"
     @State var tipoHabtacion = 0
-    @State var atras = false
+    @State var progress = false
     @EnvironmentObject var loginShow : FirebaseViewModel
     
     var body: some View {
-        NavigationStack{
+        ZStack{
             VStack {
-                NavigationLink(destination: Home(), isActive: $atras){
-                    EmptyView()
-                }.navigationBarHidden(true)
                 Spacer(minLength: 100)
                 Text("Datos de tu Habitacion:").font(.custom("Noteworthy", size: 40)).foregroundColor(.gray)
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
@@ -155,12 +152,13 @@ struct AgregarHabitacionView: View {
                         
                         Spacer(minLength: 20)
                         Button(action:{
+                            progress.toggle()
                             loginShow.AgregarHabitacion(nombre: nombreHabitacion, tipo: tipoHabitacionNombre){ (done) in
                                 if done{
                                     nombreHabitacion = ""
                                     tipoHabitacionNombre = ""
                                     tipoHabtacion = 0
-                                    atras.toggle()
+                                    loginShow.selectedTab = 0
                                 }
                                 
                             }
@@ -180,6 +178,22 @@ struct AgregarHabitacionView: View {
                 .onAppear{
                     loginShow.obtieneHabitaciones()
                 }
+            if progress {
+                HStack{
+                    Spacer()
+                    VStack{
+                        Spacer()
+                        Image("carga")
+                            .resizable()
+                            .frame(width: 150, height: 150)
+                            .background(Color.white)
+                            .cornerRadius(15)
+                        Spacer()
+                }
+                    Spacer()
+                }.background(Color.white.opacity(0.3)).ignoresSafeArea(.all)
+            }
+            
         }
     }
 }

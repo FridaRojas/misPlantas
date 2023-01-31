@@ -9,35 +9,54 @@ import SwiftUI
 
 struct Habitacion: View {
     @EnvironmentObject var loginShow : FirebaseViewModel
-    var habitacion : HabitacionModel
-    //var plantas : [PlantasModel]
     
     var body: some View {
-        VStack {
-            VStack{
+        ZStack{
+            
+            VStack {
+                NavBarHabitaciones(habitacion: loginShow.habitacionActual)
                 
-                NavBarHabitaciones(habitacion: habitacion, numeroPlantas: String(loginShow.plantaActual.count))
-                //Spacer()
-            }
-            VStack{
-                if loginShow.plantaActual.count != 0 {
-                    //Spacer(minLength: 250)
-                    FiltroHabitaciones(plantas: loginShow.plantaActual, idHabitacion: habitacion)
-                }else {
-                    Spacer()
-                    Text("No se encontraron plantas").foregroundColor(.gray)
-                    Spacer(minLength: 150)
+                    if loginShow.plantasActuales.count != 0 {
+                        FiltroHabitaciones(plantas: loginShow.plantasActuales)
+                    }else {
+                        VStack{
+                            Spacer()
+                            Text("No se encontraron plantas").foregroundColor(.gray)
+                            Spacer(minLength: 150)
+                        }
+                    }
+                
+                Spacer(minLength: 50)
+                
+            }.background(Image("fondo1").resizable())
+                .edgesIgnoringSafeArea(.all)
+                .navigationBarTitle("")
+                
+            
+            //cargando...
+            if loginShow.plantasActuales.isEmpty {
+                if loginShow.plantasActuales.count != 0  {
+                    HStack{
+                        Spacer()
+                        VStack{
+                            Spacer()
+                            Image("carga")
+                                .resizable()
+                                .frame(width: 150, height: 150)
+                                .background(Color.white)
+                                .cornerRadius(15)
+                            Spacer()
+                            
+                        }
+                        Spacer()
+                    }.background(Color.white.opacity(0.5)).ignoresSafeArea(.all)
                 }
             }
-           
-            Spacer(minLength: 50)
             
-        }.background(Image("fondo1").resizable())
-            .edgesIgnoringSafeArea(.all)
-            .navigationBarTitle("").onAppear{
-                print("entro a la habitacion")
-                loginShow.obtienePlantas(idHabitacion: habitacion.id)
-            }
+        }.onAppear{
+            loginShow.obtienePlantas(idHabitacion: loginShow.habitacionActual.id)
+            print("numero de plantas en habitacion \(loginShow.plantasActuales.count)")
+        }
     }
 }
 

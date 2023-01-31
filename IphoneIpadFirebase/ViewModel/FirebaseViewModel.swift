@@ -16,9 +16,15 @@ import GoogleUtilities
 class FirebaseViewModel : ObservableObject{
     
     @Published var show = false
-    @Published var Usuario = UsuarioModel(id: "111", nombre: "111", correo: "111", foto: "111")
+    @Published var tab = true
+    @Published var NavegacionHabitacion = false
+    @Published var NavegacionPlanta = false
+    @Published var selectedTab = 0
     @Published var habitacionesShow = [HabitacionModel]()
-    @Published var plantaActual = [PlantasModel]()
+    @Published var plantasActuales = [PlantasModel]()
+    @Published var Usuario = UsuarioModel(id: "  ", nombre: "   ", correo: "   ", foto: "   ")
+    @Published var habitacionActual = HabitacionModel(id: "   ", nombre: "   ", tipo: "   ")
+    @Published var plantaActual = PlantasModel(id: "", nombre: "", foto: "", iluminacion: "", abonoNum: 0, abonoPeriod: "", proxRecordatorio: Date(), riegoNum: 0, riegoPeriod: "")
     
     //AUTENTICACION POR CORREO
     func login(email: String, pass: String, completion: @escaping(_ done: Bool) -> Void){
@@ -151,7 +157,7 @@ class FirebaseViewModel : ObservableObject{
     }
     
     func obtienePlantas(idHabitacion : String){
-        plantaActual = [PlantasModel]()
+        plantasActuales = [PlantasModel]()
         let  db = Firestore.firestore()
         
         db.collection("Usuarios").document(self.Usuario.id).collection("Habitacion").document(idHabitacion).collection("Plantas").getDocuments(){(QuerySnapshot, error) in
@@ -173,7 +179,7 @@ class FirebaseViewModel : ObservableObject{
                         let registros = PlantasModel(id: id, nombre: nombre, foto: foto, iluminacion: iluminacion, abonoNum: abonoNum, abonoPeriod: abonoPeriod, proxRecordatorio: proxRecordatorio, riegoNum: riegoNum, riegoPeriod: riegoPeriod)
                         print("registrosNombre\(registros.nombre)")
                         print("registrosfoto",registros.foto)
-                        self.plantaActual.append(registros)
+                        self.plantasActuales.append(registros)
                     //}
                 }
             }
@@ -403,5 +409,13 @@ class FirebaseViewModel : ObservableObject{
             }
         }
         return planta
+    }
+    func mandaItem(habitacion : HabitacionModel){
+        habitacionActual = habitacion
+        NavegacionHabitacion.toggle()
+    }
+    func mandaItemPlanta(planta : PlantasModel){
+        plantaActual = planta
+        NavegacionPlanta.toggle()
     }
 }

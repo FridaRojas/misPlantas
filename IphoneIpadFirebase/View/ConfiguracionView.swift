@@ -34,7 +34,7 @@ struct ConfiguracionView: View {
                         .foregroundColor(.gray)
                 }
             }.sheet(isPresented: $modal){
-                EditaUsuario(modal: $modal).presentationDetents([.medium])
+                EditaUsuario(modal: $modal).presentationDetents([.medium, .large])
             }
             Spacer(minLength: 10)
             ScrollView{

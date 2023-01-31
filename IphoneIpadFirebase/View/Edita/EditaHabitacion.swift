@@ -19,10 +19,6 @@ struct EditaHabitacion: View {
     var body: some View {
         NavigationStack{
             VStack{
-                /*NavigationLink(destination: Home(), isActive: self.$atras){
-                 EmptyView()
-                 }.navigationBarHidden(true)*/
-                
                 
                 Text("Edita la habitacion")
                     .padding(.horizontal)
@@ -49,7 +45,8 @@ struct EditaHabitacion: View {
                 Button(action:{
                     loginShow.editarHabitacion(nombre: nombreNuevo, tipo: seleccionHabitacion, idHabitacion: habitacion.id){(done) in
                         if done{
-                            atras.toggle()
+                            loginShow.habitacionActual.nombre = nombreNuevo
+                            loginShow.habitacionActual.tipo = seleccionHabitacion
                             modal.toggle()
                         }
                     }
@@ -61,9 +58,6 @@ struct EditaHabitacion: View {
                     .shadow(radius: 4)
                 Spacer(minLength: 20)
             }.background(LinearGradient(gradient: Gradient(colors: [Color("primario"), .white]), startPoint: .top, endPoint: .bottom)).ignoresSafeArea(.all)
-                .navigationDestination(isPresented: $atras){
-                    Home()
-                }
         }
         
     }

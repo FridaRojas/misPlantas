@@ -10,36 +10,57 @@ import SwiftUI
 struct Home: View {
     
     @EnvironmentObject var loginShow : FirebaseViewModel
-    @State private var widthMenu = UIScreen.main.bounds.width
-    var device = UIDevice.current.userInterfaceIdiom
-    @Environment(\.horizontalSizeClass) var width
-    //aqui variable environment para las plantas
+    @State var progress = true
     
     
     var body: some View {
         ZStack(alignment: .bottom){
-            NavigationView(){
+            NavigationStack{
                 VStack{
-                //NavBar()
                     NavBarHome(nombre: loginShow.Usuario.nombre, numHabitaciones: loginShow.habitacionesShow.count)
-                    
                     
                     ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false){
                             VStack (spacing: 15){
                                 ForEach (loginShow.habitacionesShow){item in
-                                    NavigationLink(destination: Habitacion(habitacion: item)){
-                                            CeldaPlantasView(nombreHabitacion: item.nombre, foto: "tipo\(item.tipo)")
+                                    Button(action:{
+                                        //navegacion = true
+                                        loginShow.mandaItem(habitacion: item)
+                                    }){
+                                        CeldaPlantasView(nombreHabitacion: item.nombre, foto: "tipo\(item.tipo)")
+                                    }.navigationDestination(isPresented: $loginShow.NavegacionHabitacion){
+                                        Habitacion()
                                     }
+                                    /*NavigationLink(destination: Habitacion(habitacion: item, navegacion: $navegacion)){
+                                            CeldaPlantasView(nombreHabitacion: item.nombre, foto: "tipo\(item.tipo)")
+                                    }*/
                                 }
                             }.padding()
                         Spacer(minLength: 40)
-                    }.onAppear{
-                        loginShow.obtieneUsuario()
-                        loginShow.obtieneHabitaciones()
                     }
                 }.background(Image("fondo1").resizable())
                     .edgesIgnoringSafeArea(.all)
+                    .onAppear{
+                    loginShow.obtieneUsuario()
+                    loginShow.obtieneHabitaciones()
+                }
                 
+            }
+            
+            if loginShow.habitacionesShow.isEmpty {
+                HStack{
+                    Spacer()
+                    VStack{
+                        Spacer()
+                        Image("carga")
+                            .resizable()
+                            .frame(width: 150, height: 150)
+                            .background(Color.white)
+                            .cornerRadius(15)
+                        Spacer()
+                    
+                    }
+                    Spacer()
+                }.background(Color.white.opacity(0.9)).ignoresSafeArea(.all)
             }
         }
     }
