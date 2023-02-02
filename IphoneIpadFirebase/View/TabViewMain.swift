@@ -22,7 +22,7 @@ struct TabViewMain: View {
                     Home()
                 }
                 else if loginShow.selectedTab == 1{
-                    //BuscaView()
+                    BuscaView()
                 }
                 else if loginShow.selectedTab == 2{
                     AgregarPlantaView()

@@ -20,9 +20,6 @@ struct EditaUsuario: View {
     var body: some View {
             NavigationStack{
                 VStack{
-                    /*NavigationLink(destination: ImagePicker(show: $imagePicker, image: $fotoNueva, source: source), isActive: $imagePicker){
-                        EmptyView()
-                    }.navigationBarHidden(true)*/
                     Text("Edita tu perfil")
                         .padding(.horizontal)
                         .font(.custom("Noteworthy", size: 35))
