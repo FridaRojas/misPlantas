@@ -9,8 +9,10 @@ import SwiftUI
 
 struct BuscaView: View {
     @State var resultados = [Result]()
+    @State var numError = 0
     @State var inicio = true
     @State var progress = false
+    @State var errorPlantnet = false
     @State var foto : Data = .init(capacity: 0)
     @State private var mostrarMenu = false
     @State private var imagePicker = false
@@ -21,26 +23,27 @@ struct BuscaView: View {
             
             NavigationStack{
                 VStack{
-                    Spacer(minLength: 50)
-                    Text("Toma una foto e identifica tu planta")
+                    Spacer(minLength: 150)
+                    Text("Identifica tu planta")
                         .padding(.horizontal)
                         .font(.custom("Noteworthy", size: 30))
-                        .foregroundColor(Color.gray)
-                    Spacer(minLength: 25)
+                        .foregroundColor(Color.white)
+                        .shadow(color: .black,radius: 3)
+                    Spacer(minLength: 50)
                     
                     if inicio {
-                        VStack{
                             //Botones
                             HStack(spacing: 50){
+                                Spacer()
                                 //Boton toma foto
                                 Button(action:{
                                     mostrarMenu.toggle()
                                 }){
                                     VStack{
-                                        Text("Tomar foto").foregroundColor(Color("primario"))
-                                        Image(systemName: "camera.fill").padding().font(.largeTitle)
+                                        Text("Tomar foto").foregroundColor(Color("primario")).font(.footnote)
+                                        Image(systemName: "camera.fill").font(.largeTitle)
                                             
-                                    }.frame(width: 100, height: 100)
+                                    }.padding().frame(width: 100, height: 100)
                                         .foregroundColor(Color("primario"))
                                         .background(.white).cornerRadius(20)
                                         .shadow(radius: 4)
@@ -62,109 +65,144 @@ struct BuscaView: View {
                                 Button(action:{
                                     inicio = false
                                     progress=true
-                                    PlantNetViewModel.shared.getPlanta(imagen: "https://fichas.infojardin.com/foto-cactus/cereus-peruvianus-monstruos.jpg") { resultado in
+                                    PlantNetViewModel.shared.obtieneLinkFoto(foto:foto) { resultado in
                                         resultados = resultado
                                         progress=false
                                     } failure: { error in
                                         progress=false
-                                        Text("Error: ")
+                                        errorPlantnet = true
+                                        numError = error.asAFError?.responseCode ?? 500
                                     }
-                                    /*PlantNetViewModel.shared.getPlanta(imagen: "https://www.cactusysuculentas.org/wp-content/uploads/2018/01/cactus-cerebro7.jpg")*/
                                 }){
                                     VStack{
-                                        Text("Buscar")
-                                        Image(systemName: "magnifyingglass").padding().font(.largeTitle)
+                                        Text("Buscar").font(.footnote)
+                                        Image(systemName: "magnifyingglass").font(.largeTitle)
                                             
-                                    }.frame(width: 100, height: 100)
+                                    }.padding().frame(width: 100, height: 100)
                                         .foregroundColor(foto.count != 0 ? Color("primario") : Color.white.opacity(0.7))
                                         .background(foto.count != 0 ? Color.white : Color.gray.opacity(0.7)).cornerRadius(20)
                                         .shadow(radius: 4)
                                 }.disabled(foto.count != 0 ? false : true)
+                                
+                                Spacer()
                             }
                            
-                            Spacer()
+                            Spacer(minLength: 50)
                             
                             //Muestra foto tomada
                             if foto.count != 0 {
                                 VStack{
                                     Text("Imagen cargada:").padding(.horizontal)
                                         .font(.custom("Noteworthy", size: 15))
-                                        .foregroundColor(Color.gray)
+                                        .foregroundColor(Color.white)
                                     Image(uiImage: UIImage(data: foto)!)
                                         .resizable()
-                                        .frame(width: 200, height: 200)
+                                        .frame(width: 300, height: 300)
                                         .cornerRadius(15)
                                 }
                             }else{
                                 VStack{
                                     Text("Imagen cargada:").padding(.horizontal)
                                         .font(.custom("Noteworthy", size: 15))
-                                        .foregroundColor(Color.gray)
+                                        .foregroundColor(Color.white)
                                     Image(systemName: "camera.metering.center.weighted.average")
                                         .resizable()
-                                        .frame(width: 150, height: 150)
+                                        .frame(width: 250, height: 300)
                                         .cornerRadius(15)
                                 }
                             }
                             Spacer()
-                        }
                     }else{
-                        VStack{
-                            Spacer()
-                            Text("Coincidencias:").padding(.horizontal)
-                                .font(.custom("Noteworthy", size: 15))
-                                .foregroundColor(Color.gray)
-                            ScrollView(.horizontal){
-                                VStack{
-                                    ForEach(0..<resultados.count, id: \.self) {item in
-                                        CardIdentifica(foto: resultados[item].images[0].url.o, nombres: resultados[item].species.commonNames)
-                                    }
-                                    /*ForEach(resultados, id: \.self){item in
-                                        CardIdentifica(foto: item.images.urls, nombres: item.species.commonNames)
-                                    }*/
-                                }
+                        if errorPlantnet {
+                            VStack{
                                 
+                                if numError >= 400 && numError < 499{
+                                    VStack{
+                                        ImagenFirebase(imagenUrl: "gs://fir-crud-af577.appspot.com/imagenes/triste.png")
+                                                .frame(width: 250,height: 250)
+                                                .cornerRadius(20)
+                                        Text("No se encontraron coincidencias").padding().foregroundColor(.white).shadow(radius: 3)
+                                    }
+                                }else{
+                                    VStack{
+                                        ImagenFirebase(imagenUrl: "gs://fir-crud-af577.appspot.com/imagenes/triste.png")
+                                                .frame(width: 250,height: 250)
+                                                .cornerRadius(20)
+                                        Text("Hubo un error").padding().foregroundColor(.white).shadow(radius: 3)
+                                    }
+                                }
+                                HStack{
+                                    Spacer()
+                                    
+                                    //Boton de Nuevo
+                                    Button(action:{
+                                        resultados = [Result]()
+                                        foto = .init(capacity: 0)
+                                        mostrarMenu = false
+                                        imagePicker = false
+                                        inicio = true
+                                    }){
+                                        Text("De Nuevo")
+                                    }.padding()
+                                        .frame(width: 120, height: 80)
+                                        .foregroundColor(Color("primario"))
+                                        .background(.white).cornerRadius(20)
+                                    
+                                    Spacer()
+                                }
+                                Spacer(minLength: 100)
                             }
-                            Spacer()
+                        }else{
+                            VStack{
+                                Spacer()
+                                Text("Posibles coincidencias:").padding(.horizontal)
+                                    .font(.custom("Noteworthy", size: 20))
+                                    .foregroundColor(Color.white)
+                                    .shadow(color: .black,radius: 3)
+                                ScrollView(.horizontal){
+                                    HStack(spacing: 20){
+                                        ForEach(0..<resultados.count, id: \.self) {item in
+                                            CardIdentifica(foto: resultados[item].images[0].url.o, nombres: resultados[item].species.commonNames)
+                                        }
+                                    }
+                                    
+                                }
+                                Spacer()
+                            }
+                            //Boton de Nuevo
+                            Button(action:{
+                                resultados = [Result]()
+                                foto = .init(capacity: 0)
+                                mostrarMenu = false
+                                imagePicker = false
+                                inicio = true
+                            }){
+                                Text("De Nuevo")
+                            }.padding()
+                                .frame(width: 120, height: 80)
+                                .foregroundColor(Color("primario"))
+                                .background(.white).cornerRadius(20)
                         }
-                        //Boton de Nuevo
-                        Button(action:{
-                            resultados = [Result]()
-                            foto = .init(capacity: 0)
-                            mostrarMenu = false
-                            imagePicker = false
-                            inicio = true
-                        }){
-                           Text("De Nuevo")
-                        }.padding()
-                            .frame(width: 120, height: 80)
-                            .foregroundColor(Color("primario"))
-                            .background(.white).cornerRadius(20)
-                        
                     }
                     
-                    Spacer(minLength: 100)
-                }.navigationDestination(isPresented: $imagePicker){
-                    ImagePicker(show: $imagePicker, image: $foto, source: source)
-                }
-            }.background(Image("fondo1").resizable()).ignoresSafeArea(.all)
+                    Spacer(minLength: 150)
+                }.background(Image("fondo2").resizable().opacity(0.8)).ignoresSafeArea(.all)
+                    .navigationDestination(isPresented: $imagePicker){
+                        ImagePicker(show: $imagePicker, image: $foto, source: source)
+                    }
+            }
+            
             if progress {
-                HStack{
-                    Spacer()
+                ZStack{
                     VStack{
-                        Spacer()
                         Image("carga")
-                            .resizable()
-                            .frame(width: 150, height: 150)
+                            .resizable().frame(width: 150, height: 150)
                             .background(Color.white)
-                            .cornerRadius(15)
-                        Spacer()
-                    
-                    }
-                    Spacer()
+                        Text("Un momento...").background(Color.white)
+                    }.cornerRadius(15)
                 }.background(Color.white.opacity(0.9)).ignoresSafeArea(.all)
             }
-        }.background(Image("fondo1").resizable()).ignoresSafeArea(.all)
+        }
         
     }
 }

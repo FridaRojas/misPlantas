@@ -17,7 +17,7 @@ struct CardIdentifica: View {
                 image.resizable()
             }placeholder: {
                 Image("carga")
-            }.padding(.horizontal).frame(width: 200, height: 150)
+            }.frame(width: 250, height: 250)
             VStack{
                 Text("Nombre comun")
                     .font(.custom("Noteworthy", size: 10))
@@ -26,8 +26,8 @@ struct CardIdentifica: View {
                     Text(nombre).font(.custom("Noteworthy", size: 15))
                         .foregroundColor(Color.black)
                 }
-            }.padding(.horizontal).frame(width: 200, height: 50).background(Color.white)
-        }.cornerRadius(15)
+            }.frame(width: 250, height: 100).background(Color.white)
+        }.background(Color.white).cornerRadius(15)
     }
 }
 
