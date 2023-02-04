@@ -23,7 +23,7 @@ struct CeldaHabitaciones: View {
                     .font(.custom("Noteworthy", size: 20))
                     .bold()
                     .foregroundColor(.black)
-                Text("Siguiente Riego: \(fechaRiego)")
+                Text("Siguiente Riego: \(fechaRiego.formatted(date: .numeric, time: .omitted))")
                     .font(.custom("Noteworthy", size: 10))
                     .foregroundColor(.black)
             }

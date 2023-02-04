@@ -49,11 +49,14 @@ final class PlantNetViewModel{
                         // si tuvo error, manda el error
                         failure(error!)
                     }else{
-                        //guarda como string el error y lo codifica
+                        //guarda como string la url y la codifica
                         urlFoto[0] = url?.absoluteString ?? fotoError
                         urlFoto[0] = urlFoto[0].addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? fotoError
                         //llama a la funcion que consume el API y manda resultados
                         self.getPlanta(imagen: urlFoto[0]){ resultados in
+                            //elimina la imagen del storage
+                            let borrarImagen = Storage.storage().reference(forURL: urlFoto[1])
+                            borrarImagen.delete(completion: nil)
                             success(resultados)
                         } failure: { error in
                             failure(error)
@@ -61,6 +64,9 @@ final class PlantNetViewModel{
                         }
                     }
                 }
+                //elimina la imagen del storage
+                //let borrarImagen = Storage.storage().reference(forURL: urlFoto[1])
+                //borrarImagen.delete(completion: nil)
             }else{
                 if let error = error{
                     print("fallo al subir en storage", error)

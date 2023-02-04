@@ -8,14 +8,14 @@
 import SwiftUI
 
 //para arreglo de tareas
-struct Tarea: Identifiable{
-    var id = UUID().uuidString
+struct RecordatorioModel: Identifiable{
+    var id : String
     var planta : String
     var tipo : String
-    var fecha : Date = Date()
+    var fecha : Date 
 }
 // todas las tareas
-struct TareasMetaData : Identifiable{
+/*struct TareasMetaData : Identifiable{
     var id = UUID().uuidString
     var tareas : [Tarea]
     var fecha : Date
@@ -38,6 +38,6 @@ var tareas : [TareasMetaData] = [
         Tarea(planta: "Croton", tipo: "Riego")], fecha: obtieneFecha(offset: -3)),
     TareasMetaData(tareas: [
         Tarea(planta: "Poto", tipo: "Abono")], fecha: obtieneFecha(offset: -8))
-]
+]*/
 
 

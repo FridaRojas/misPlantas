@@ -22,6 +22,7 @@ class FirebaseViewModel : ObservableObject{
     @Published var selectedTab = 0
     @Published var habitacionesShow = [HabitacionModel]()
     @Published var plantasActuales = [PlantasModel]()
+    //@Published var recordatoriosShow = [RecordatorioModel]()
     @Published var Usuario = UsuarioModel(id: "  ", nombre: "   ", correo: "   ", foto: "   ")
     @Published var habitacionActual = HabitacionModel(id: "   ", nombre: "   ", tipo: "   ")
     @Published var plantaActual = PlantasModel(id: "", nombre: "", foto: "", iluminacion: "", abonoNum: 0, abonoPeriod: "", proxRecordatorio: Date(), riegoNum: 0, riegoPeriod: "")
@@ -76,7 +77,6 @@ class FirebaseViewModel : ObservableObject{
         }
         
     }
-    
     func AgregarHabitacion(nombre: String, tipo: String, completion: @escaping (_ done : Bool) -> Void){
         let db = Firestore.firestore() //crea conexion
         let id = UUID().uuidString
@@ -92,7 +92,6 @@ class FirebaseViewModel : ObservableObject{
         }
         
     }
-    
     func AgregarPlantas(idHabitacion:String, nombre: String, foto: Data, iluminacion: String, riegoNum: Int, riegoPeriod: String, abonoNum: Int, abonoPeriod: String, proxRecordatorio: Date, completion: @escaping (_ done : Bool) -> Void){
         
         let storage = Storage.storage().reference()
@@ -155,7 +154,6 @@ class FirebaseViewModel : ObservableObject{
             //print("obtuve habitaciones")
         }
     }
-    
     func obtienePlantas(idHabitacion : String){
         plantasActuales = [PlantasModel]()
         let  db = Firestore.firestore()
@@ -172,20 +170,20 @@ class FirebaseViewModel : ObservableObject{
                     let iluminacion = valor["iluminacion"] as? String ?? "Sol"
                     let abonoNum = valor["abonoNum"] as? Int ?? 0
                     let abonoPeriod = valor["abonoPeriod"] as? String ?? "mes"
-                    let proxRecordatorio = valor["proxRecordatorio"] as? Date ?? Date()
+                    guard let time = valor["proxRecordatorio"] as? Timestamp else {
+                        return
+                    }
+                    let proxRecordatorio = time.dateValue()
                     let riegoNum = valor["riegoNum"] as? Int ?? 0
                     let riegoPeriod = valor["riegoPeriod"] as? String ?? "dia"
                     //DispatchQueue.main.async {
                         let registros = PlantasModel(id: id, nombre: nombre, foto: foto, iluminacion: iluminacion, abonoNum: abonoNum, abonoPeriod: abonoPeriod, proxRecordatorio: proxRecordatorio, riegoNum: riegoNum, riegoPeriod: riegoPeriod)
-                        print("registrosNombre\(registros.nombre)")
-                        print("registrosfoto",registros.foto)
                         self.plantasActuales.append(registros)
                     //}
                 }
             }
         }
     }
-    
     func obtieneUsuario(){
         //var plantas = [PlantasModel]()
         let  db = Firestore.firestore()
@@ -205,6 +203,37 @@ class FirebaseViewModel : ObservableObject{
             }
         }
     }
+    func obtieneRecordatorios(success : @escaping(_ resultado: [RecordatorioModel]) ->(), failure: @escaping (_ error: Error) -> ()){
+        let  db = Firestore.firestore()
+        var recordatoriosShow = [RecordatorioModel]()
+        
+        //para cada habitacion obtiene sus recordatorios
+        for habitacion in self.habitacionesShow{
+            
+            db.collection("Usuarios").document(self.Usuario.id).collection("Habitacion").document(habitacion.id).collection("Plantas").getDocuments(){(QuerySnapshot, error) in
+                if let error = error{
+                    print("error al mostrar datos", error)
+                    failure(error)
+                }else{
+                    for document in QuerySnapshot!.documents{
+                        let valor = document.data()
+                        let id = document.documentID
+                        let nombre = valor["nombre"] as? String ?? "Sin nombre"
+                        guard let time = valor["proxRecordatorio"] as? Timestamp else {
+                            return 
+                        }
+                        let proxRecordatorio = time.dateValue()
+                        let tipo = "Riego"
+                        let registros = RecordatorioModel(id: id, planta: nombre, tipo: tipo, fecha: proxRecordatorio)
+                        recordatoriosShow.append(registros)
+                    }
+                    success(recordatoriosShow)
+                }
+            }
+            
+
+        }
+    }
     
     // Eliminar
     func eliminarPlanta(item : PlantasModel, idHabitacion: String){
@@ -217,7 +246,6 @@ class FirebaseViewModel : ObservableObject{
         let borrarImagen = Storage.storage().reference(forURL: imagen)
         borrarImagen.delete(completion: nil)
     }
-    
     func eliminarHabitacion(item : HabitacionModel){
         //eliminar firestore
         let id = item.id
@@ -238,7 +266,6 @@ class FirebaseViewModel : ObservableObject{
             }
         }
     }
-    
     func editarPlantaFotoNombre(idHabitacion :String, Planta: PlantasModel, nombreNuevo : String, fotoNuevo : Data?, riegoNum: Int, riegoPeriod : String, siguienteRiego : Date, completion: @escaping (_ done : Bool) -> Void){
         if fotoNuevo != nil{
             //eliminar imagen
@@ -285,7 +312,6 @@ class FirebaseViewModel : ObservableObject{
         }
         
     }
-    
     func editarUsuario(nombreNuevo : String, fotoNuevo : Data?, completion: @escaping (_ done : Bool) -> Void){
         
         if fotoNuevo != nil{
@@ -341,29 +367,6 @@ class FirebaseViewModel : ObservableObject{
         
     }
     
-    //AUTENTICACION POR GOOGLE
-    /*func signIn(){
-        
-    }
-    func authUser(user: GIDGoogleUser?, error: Error?){
-        if let error = error{
-            print("Error al iniciar sesion: ", error.localizedDescription)
-            return
-        }
-        
-        guard let idToken = user, let accesToken = user?.accessToken else{ return}
-        //let credencial = GoogleAuthProvider.credential(withIDToken: user?.idToken, accessToken: user?.accesToken)
-    }
-    func signOut(){
-        GIDSignIn.sharedInstance.signOut()
-        do{
-            try Auth.auth().signOut()
-            show = false
-        }catch{
-            print("error: ", error.localizedDescription)
-        }
-    }*/
-    
     //FUNCIONALIDADES
     
     func devuelveNombres() -> [String] {
@@ -417,5 +420,23 @@ class FirebaseViewModel : ObservableObject{
     func mandaItemPlanta(planta : PlantasModel){
         plantaActual = planta
         NavegacionPlanta.toggle()
+    }
+    func devuelveRecordatorio(dia : Date, recordatorios: [RecordatorioModel]) -> [RecordatorioModel]{
+        var recordatoriosDia = [RecordatorioModel]()
+        
+        for recordatorio in recordatorios{
+            if recordatorio.fecha.formatted(date: .numeric, time: .omitted) == dia.formatted(date: .numeric, time: .omitted){
+                recordatoriosDia.append(recordatorio)
+            }
+        }
+        return recordatoriosDia
+    }
+    func existeRecordatorio(dia : Date, recordatorios: [RecordatorioModel]) -> Bool{
+        let recordatorios = devuelveRecordatorio(dia: dia, recordatorios: recordatorios)
+        if recordatorios.isEmpty{
+            return false
+        }else{
+            return true
+        }
     }
 }

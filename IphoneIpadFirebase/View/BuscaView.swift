@@ -162,7 +162,9 @@ struct BuscaView: View {
                                 ScrollView(.horizontal){
                                     HStack(spacing: 20){
                                         ForEach(0..<resultados.count, id: \.self) {item in
-                                            CardIdentifica(foto: resultados[item].images[0].url.o, nombres: resultados[item].species.commonNames)
+                                            //if resultados[item].species.commonNames.count() != 0{
+                                                CardIdentifica(foto: resultados[item].images[0].url.o, nombres: resultados[item].species.commonNames)
+                                            //}
                                         }
                                     }
                                     
@@ -193,13 +195,18 @@ struct BuscaView: View {
             }
             
             if progress {
-                ZStack{
-                    VStack{
-                        Image("carga")
-                            .resizable().frame(width: 150, height: 150)
-                            .background(Color.white)
-                        Text("Un momento...").background(Color.white)
-                    }.cornerRadius(15)
+                VStack{
+                    Spacer()
+                    HStack{
+                        Spacer()
+                        VStack{
+                            Image("carga")
+                                .resizable().frame(width: 150, height: 150)
+                            Text("Identificando tu plata...").background(Color.white)
+                        }.padding().background(Color.white).cornerRadius(15)
+                        Spacer()
+                    }
+                    Spacer()
                 }.background(Color.white.opacity(0.9)).ignoresSafeArea(.all)
             }
         }

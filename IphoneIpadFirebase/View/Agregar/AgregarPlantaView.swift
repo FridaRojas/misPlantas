@@ -205,7 +205,6 @@ struct AgregarPlantaView: View {
                     .edgesIgnoringSafeArea(.all)
                     .onAppear{
                         loginShow.obtieneHabitaciones()
-                        //loginShow.obtienePlantas(idHabitacion: )
                     }
                     .navigationDestination(isPresented: $imagePicker){
                         ImagePicker(show: $imagePicker, image: $imagen1, source: source)

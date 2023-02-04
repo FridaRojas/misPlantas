@@ -18,7 +18,7 @@ struct DetallePlanta: View {
             
             VStack(alignment: .leading){
                 NavBarDetallePlanta(planta: loginShow.plantaActual, idHabitacion: loginShow.habitacionActual)
-                Text("Proximo riego: \(loginShow.plantaActual.proxRecordatorio)")
+                Text("Proximo riego: \(loginShow.plantaActual.proxRecordatorio.formatted(date: .numeric, time: .omitted))")
                     .padding(.leading)
                     .font(.custom("Noteworthy", size: 15 ))
                     .foregroundColor(.gray)

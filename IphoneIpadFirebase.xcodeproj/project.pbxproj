@@ -14,6 +14,9 @@
 		2D0256302989B82400713BC4 /* PlantNetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D02562F2989B82400713BC4 /* PlantNetModel.swift */; };
 		2D0256322989C77A00713BC4 /* PlantNetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0256312989C77A00713BC4 /* PlantNetViewModel.swift */; };
 		2D025634298B169F00713BC4 /* CardIdentifica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D025633298B169E00713BC4 /* CardIdentifica.swift */; };
+		2D025636298D979700713BC4 /* RecordatorioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D025635298D979700713BC4 /* RecordatorioViewModel.swift */; };
+		2D025638298DA25E00713BC4 /* CardDia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D025637298DA25E00713BC4 /* CardDia.swift */; };
+		2D02563A298DA6A300713BC4 /* ListaRecordatoriosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D025639298DA6A300713BC4 /* ListaRecordatoriosView.swift */; };
 		2D1873892975CD3400C2FA25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1873882975CD3400C2FA25 /* AppDelegate.swift */; };
 		2D18738B2975D71E00C2FA25 /* FirebaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D18738A2975D71E00C2FA25 /* FirebaseViewModel.swift */; };
 		2D18738E2975D97C00C2FA25 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D18738D2975D97C00C2FA25 /* Login.swift */; };
@@ -41,7 +44,7 @@
 		2DA040D7297B25650067E86C /* UsuarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA040D6297B25650067E86C /* UsuarioModel.swift */; };
 		2DA09FDA2979CA8E00976BDA /* PlantaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA09FD92979CA8D00976BDA /* PlantaModel.swift */; };
 		2DA82B662971F66D0089DB25 /* FechaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA82B652971F66D0089DB25 /* FechaModel.swift */; };
-		2DA82B68297217D50089DB25 /* Tareas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA82B67297217D50089DB25 /* Tareas.swift */; };
+		2DA82B68297217D50089DB25 /* RecordatorioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA82B67297217D50089DB25 /* RecordatorioModel.swift */; };
 		7DD9BCECE52ED4D5ADA26805 /* Pods_IphoneIpadFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77EDC5F8A037DE426CB5C47D /* Pods_IphoneIpadFirebase.framework */; };
 		CFE73A3F25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A3E25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift */; };
 		CFE73A4125B75D9D002DB2A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A4025B75D9D002DB2A6 /* ContentView.swift */; };
@@ -60,6 +63,9 @@
 		2D02562F2989B82400713BC4 /* PlantNetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantNetModel.swift; sourceTree = "<group>"; };
 		2D0256312989C77A00713BC4 /* PlantNetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantNetViewModel.swift; sourceTree = "<group>"; };
 		2D025633298B169E00713BC4 /* CardIdentifica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardIdentifica.swift; sourceTree = "<group>"; };
+		2D025635298D979700713BC4 /* RecordatorioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordatorioViewModel.swift; sourceTree = "<group>"; };
+		2D025637298DA25E00713BC4 /* CardDia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDia.swift; sourceTree = "<group>"; };
+		2D025639298DA6A300713BC4 /* ListaRecordatoriosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaRecordatoriosView.swift; sourceTree = "<group>"; };
 		2D1873882975CD3400C2FA25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D18738A2975D71E00C2FA25 /* FirebaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseViewModel.swift; sourceTree = "<group>"; };
 		2D18738D2975D97C00C2FA25 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -87,7 +93,7 @@
 		2DA040D6297B25650067E86C /* UsuarioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioModel.swift; sourceTree = "<group>"; };
 		2DA09FD92979CA8D00976BDA /* PlantaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantaModel.swift; sourceTree = "<group>"; };
 		2DA82B652971F66D0089DB25 /* FechaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FechaModel.swift; sourceTree = "<group>"; };
-		2DA82B67297217D50089DB25 /* Tareas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tareas.swift; sourceTree = "<group>"; };
+		2DA82B67297217D50089DB25 /* RecordatorioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordatorioModel.swift; sourceTree = "<group>"; };
 		77EDC5F8A037DE426CB5C47D /* Pods_IphoneIpadFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IphoneIpadFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9118BFDC627E96DCE065E7C3 /* Pods-IphoneIpadFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IphoneIpadFirebase.release.xcconfig"; path = "Target Support Files/Pods-IphoneIpadFirebase/Pods-IphoneIpadFirebase.release.xcconfig"; sourceTree = "<group>"; };
 		C6B198A7A3793ADA58D1AA71 /* Pods-IphoneIpadFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IphoneIpadFirebase.debug.xcconfig"; path = "Target Support Files/Pods-IphoneIpadFirebase/Pods-IphoneIpadFirebase.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +156,7 @@
 				2D1873972978CDC100C2FA25 /* ImagenViewModel.swift */,
 				2D02562429807B8F00713BC4 /* GoogleSignInViewModel.swift */,
 				2D0256312989C77A00713BC4 /* PlantNetViewModel.swift */,
+				2D025635298D979700713BC4 /* RecordatorioViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -158,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				2DA82B652971F66D0089DB25 /* FechaModel.swift */,
-				2DA82B67297217D50089DB25 /* Tareas.swift */,
+				2DA82B67297217D50089DB25 /* RecordatorioModel.swift */,
 				2D1873952978A55500C2FA25 /* HabitacionModel.swift */,
 				2DA09FD92979CA8D00976BDA /* PlantaModel.swift */,
 				2DA040D6297B25650067E86C /* UsuarioModel.swift */,
@@ -244,12 +251,14 @@
 				2D8ADF892967A5F300CAD46C /* NavBarHome.swift */,
 				CFE73A5625B7654B002DB2A6 /* CeldaPlantasView.swift */,
 				2D89FBFB2968BFDA00AE5258 /* CeldaHabitaciones.swift */,
-				2D89FBFF2968C4F800AE5258 /* FiltroHabitaciones.swift */,
 				2D618BB8296CE6E500E8FF7F /* CardInfoView.swift */,
+				2D025633298B169E00713BC4 /* CardIdentifica.swift */,
+				2D89FBFF2968C4F800AE5258 /* FiltroHabitaciones.swift */,
 				2D8AA1902971E29000A311D5 /* CalendarioView.swift */,
 				2D1873912977702800C2FA25 /* ImagePicker.swift */,
 				2D1873992978D1D300C2FA25 /* ImagenFirebase.swift */,
-				2D025633298B169E00713BC4 /* CardIdentifica.swift */,
+				2D025637298DA25E00713BC4 /* CardDia.swift */,
+				2D025639298DA6A300713BC4 /* ListaRecordatoriosView.swift */,
 			);
 			path = Elementos;
 			sourceTree = "<group>";
@@ -384,15 +393,17 @@
 				2D1873922977702800C2FA25 /* ImagePicker.swift in Sources */,
 				2D89FBFE2968C40500AE5258 /* NavBarHabitaciones.swift in Sources */,
 				2D89FBFC2968BFDA00AE5258 /* CeldaHabitaciones.swift in Sources */,
+				2D025636298D979700713BC4 /* RecordatorioViewModel.swift in Sources */,
 				2DA040D7297B25650067E86C /* UsuarioModel.swift in Sources */,
 				2D89FC022968C99600AE5258 /* Habitacion.swift in Sources */,
 				2DA82B662971F66D0089DB25 /* FechaModel.swift in Sources */,
-				2DA82B68297217D50089DB25 /* Tareas.swift in Sources */,
+				2DA82B68297217D50089DB25 /* RecordatorioModel.swift in Sources */,
 				2D025634298B169F00713BC4 /* CardIdentifica.swift in Sources */,
 				2D8ADF942967BC4400CAD46C /* BuscaView.swift in Sources */,
 				CFE73A4125B75D9D002DB2A6 /* ContentView.swift in Sources */,
 				CFE73A5425B7653E002DB2A6 /* NavBarDetallePlanta.swift in Sources */,
 				2D8E5577296E187800C065CB /* AgregarHabitacionView.swift in Sources */,
+				2D025638298DA25E00713BC4 /* CardDia.swift in Sources */,
 				2D02562C2981F75000713BC4 /* EditaHabitacion.swift in Sources */,
 				2D18739A2978D1D300C2FA25 /* ImagenFirebase.swift in Sources */,
 				2D618BB9296CE6E500E8FF7F /* CardInfoView.swift in Sources */,
@@ -408,6 +419,7 @@
 				CFE73A5725B7654B002DB2A6 /* CeldaPlantasView.swift in Sources */,
 				2D8ADF8E2967AE4E00CAD46C /* Recordatorios.swift in Sources */,
 				2D1873982978CDC100C2FA25 /* ImagenViewModel.swift in Sources */,
+				2D02563A298DA6A300713BC4 /* ListaRecordatoriosView.swift in Sources */,
 				2D8ADF8A2967A5F300CAD46C /* NavBarHome.swift in Sources */,
 				2D02562529807B8F00713BC4 /* GoogleSignInViewModel.swift in Sources */,
 				2D02562E2982036800713BC4 /* EditaPlantaFoto.swift in Sources */,
