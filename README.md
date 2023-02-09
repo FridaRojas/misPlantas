@@ -17,36 +17,22 @@ Es un administrador de plantas, crea tu usuario y registra tus habitaciones, en 
 [![Swift](https://img.shields.io/badge/Swift-16.0-blue?longCache=true&style=popout-square)](https://www.apple.com/es/swift)
 [![Xcode](https://img.shields.io/badge/Xcode-14.2-blue.svg?longCache=true&style=popout-square)](https://apps.apple.com/mx/app/xcode)
 
+<h3> Inicia sesion o crea una cuenta nueva y visualiza tus habitaciones  </h3>
 
-* [Jetpack Compose](https://developer.android.com/jetpack/compose)
-* [Retrofit](https://github.com/square/retrofit)
-* [PokéAPI](https://pokeapi.co)
-
-<h2> Inicia sesion o crea una cuenta nueva </h2>
-
-<a href="./Home.jpg"><img src="./Home.jpg" style="height: 50%; width:20%;"/></a>
-
-<h2> Visualiza tus habitaciones y plantas </h2>
-
+<a href="./login.jpg"><img src="./login.jpg" style="height: 50%; width:20%;"/></a>
 <a href="./Home.jpg"><img src="./Home.jpg" style="height: 50%; width:20%;"/></a>
 <a href="./Habitacion.jpg"><img src="./Habitacion.jpg" style="height: 50%; width:20%;"/></a>
 
-<h2> Toma una foto y mira los resultados </h2>
+<h3> Toma una foto y mira los resultados </h3>
 
-<a href="./Home.jpg"><img src="./Home.jpg" style="height: 50%; width:20%;"/></a>
+<a href="./TomaFoto.jpg"><img src="./TomaFoto.jpg" style="height: 50%; width:20%;"/></a>
+<a href="./identifica.jpg"><img src="./identifica.jpg" style="height: 50%; width:20%;"/></a>
 
-<h2> Agrega tu habitacion o planta</h2>
+<h3> Agrega tu habitacion o planta, automaticamente se añade el recordatorio</h3>
 
-<a href="./Home.jpg"><img src="./Home.jpg" style="height: 50%; width:20%;"/></a>
+<a href="./agregar.jpg"><img src="./agregar.jpg" style="height: 50%; width:20%;"/></a>
+<a href="./detalle.jpg"><img src="./detalle.jpg" style="height: 50%; width:20%;"/></a>
+<a href="./Calendario.jpg"><img src="./Calendario.jpg" style="height: 50%; width:20%;"/></a>
 
-<h2> Mira tu calendario y recuerda </h2>
 
-<a href="./Home.jpg"><img src="./Home.jpg" style="height: 50%; width:20%;"/></a>
 
-<h2> Toma una foto y mira los resultados </h2>
-
-<a href="./Home.jpg"><img src="./Home.jpg" style="height: 50%; width:20%;"/></a>
-
-<h2> Ve a Ajustes para mejor experiencia </h2>
-
-<a href="./Home.jpg"><img src="./Home.jpg" style="height: 50%; width:20%;"/></a>
