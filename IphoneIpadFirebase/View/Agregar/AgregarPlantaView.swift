@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AgregarPlantaView: View {
-    
+    @Binding var modal : Bool
     @State var nombrePlanta : String = ""
     @State var riego : String = ""
     @State private var seleccionIluminacion = "Sol"
@@ -25,7 +25,6 @@ struct AgregarPlantaView: View {
     let itemIluminacion = ["Sol", "Sombra", "Ambos"]
     let itemRiego = ["Dias", "Semanas", "Meses"]
     let itemAbono = ["Semanas", "Meses"]
-    //let itemHabitacion = ["Recamara", "Sala", "Comedor", "Cocina", "Jardin", "Balcon"]
     @EnvironmentObject var loginShow : FirebaseViewModel
     
     var body: some View {
@@ -48,7 +47,6 @@ struct AgregarPlantaView: View {
                                             mostrarMenu.toggle()
                                         }){
                                             Text("Cargar Imagen")
-                                            //Image(systemName: "plus.app").resizable().frame(width: 80, height: 80).foregroundColor(Color("primario"))
                                         }.actionSheet(isPresented: $mostrarMenu) {
                                             ActionSheet(title: Text("Seleccione"), buttons: [
                                                 .default(Text("Camara"), action: {
@@ -167,14 +165,15 @@ struct AgregarPlantaView: View {
                                     .background(Color.white)
                                     .cornerRadius(30)
                                     .shadow(radius: 4)
+                                    .onAppear{ seleccionHabitacion = loginShow.habitacionesShow[0].nombre}
                                 
                                 Spacer(minLength: 20)
                                 
                                 Button(action:{
-                                    progress = true
+                                    //progress.toggle()
                                     loginShow.AgregarPlantas(idHabitacion: loginShow.devuelveId(nombre: seleccionHabitacion), nombre: nombrePlanta, foto: imagen1, iluminacion: seleccionIluminacion, riegoNum: Int(riego) ?? 0, riegoPeriod: seleccionRiego, abonoNum: Int(abono) ?? 0, abonoPeriod: seleccionRiego, proxRecordatorio: proxRiego){ (done) in
                                         if done{
-                                            nombrePlanta = ""
+                                            /*nombrePlanta = ""
                                             imagen1 = .init(capacity: 0)
                                             riego = ""
                                             seleccionIluminacion = "Sol"
@@ -183,7 +182,9 @@ struct AgregarPlantaView: View {
                                             seleccionHabitacion = "Recamara"
                                             proxRiego = Date()
                                             abono = ""
-                                            loginShow.selectedTab = 0
+                                            progress.toggle()*/
+                                            modal.toggle()
+                                            //loginShow.selectedTab = 1
                                         }
                                         
                                         
@@ -203,9 +204,6 @@ struct AgregarPlantaView: View {
                     }.padding()
                 }.background(Image("fondo1").resizable())
                     .edgesIgnoringSafeArea(.all)
-                    .onAppear{
-                        loginShow.obtieneHabitaciones()
-                    }
                     .navigationDestination(isPresented: $imagePicker){
                         ImagePicker(show: $imagePicker, image: $imagen1, source: source)
                     }

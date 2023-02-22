@@ -25,15 +25,13 @@ struct ListaRecordatoriosView: View {
                 
                 ForEach(loginShow.devuelveRecordatorio(dia: fechaAct, recordatorios: recordatorios)){ t in
                         VStack(alignment: .leading, spacing: 10){
-                            Text(t.planta)
-                                .font(.title2.bold())
-                                .foregroundColor(.black)
-                            Text(t.tipo)
-                                .font(.title2)
-                                .foregroundColor(.black)
+                            Text("Recuerda el \(t.tipo) de \(t.planta)!")
+                                .padding(.horizontal)
+                                .font(.custom("Noteworthy", size: 20))
+                                .foregroundColor(.white)
                         }.padding(.vertical)
                             .frame( maxWidth: .infinity, alignment: .leading)
-                            .background(Color("primario"))
+                            .background(Color.brown.opacity(0.5))
                             .cornerRadius(10)
                     
                 }

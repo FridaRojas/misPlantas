@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AgregarHabitacionView: View {
+    @Binding var modal : Bool
     @State var nombreHabitacion : String = ""
     @State var tipoHabitacionNombre : String = "Recamara"
     @State var tipoHabtacion = 0
@@ -155,10 +156,12 @@ struct AgregarHabitacionView: View {
                             progress.toggle()
                             loginShow.AgregarHabitacion(nombre: nombreHabitacion, tipo: tipoHabitacionNombre){ (done) in
                                 if done{
-                                    nombreHabitacion = ""
+                                    modal.toggle()
+                                    /*nombreHabitacion = ""
                                     tipoHabitacionNombre = ""
                                     tipoHabtacion = 0
-                                    loginShow.selectedTab = 0
+                                    loginShow.selectedTab = 0*/
+                                    
                                 }
                                 
                             }

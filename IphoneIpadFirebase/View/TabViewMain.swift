@@ -10,6 +10,9 @@ import SwiftUI
 struct TabViewMain: View {
     
     @EnvironmentObject var loginShow : FirebaseViewModel
+    //@State var modalPlanta = false
+    //@State var modalHabitacion = false
+    @State var modal = false
     
     var body: some View {
         
@@ -25,7 +28,7 @@ struct TabViewMain: View {
                     BuscaView()
                 }
                 else if loginShow.selectedTab == 2{
-                    AgregarPlantaView()
+                    //AgregarPlantaView()
                 }
                 else if loginShow.selectedTab == 3{
                     Recordatorios()
@@ -34,12 +37,12 @@ struct TabViewMain: View {
                     ConfiguracionView()
                 }
                 else{
-                    AgregarHabitacionView()
+                    //AgregarHabitacionView()
                 }
                 
             }.edgesIgnoringSafeArea(.all)
             
-            FloatingTabbar()
+            FloatingTabbar(modal: $modal)
         }
     }
 }
@@ -50,6 +53,9 @@ struct FloatingTabbar : View {
     @EnvironmentObject var loginShow : FirebaseViewModel
     @State var agrega = false
     @State private var modalAgregarShow = false
+    //@Binding var modalPlanta : Bool
+    //@Binding var modalHabitacion : Bool
+    @Binding var modal : Bool
     
     var body : some View{
         if loginShow.tab {
@@ -76,21 +82,27 @@ struct FloatingTabbar : View {
                     Spacer(minLength: 5)
                     
                     Button(action: {
-                        agrega.toggle()
+                        modal.toggle()
                     }) {
                         Image(systemName: "plus").foregroundColor(loginShow.selectedTab == 2 ? .gray : loginShow.selectedTab == 5 ? .gray : .white).padding(.horizontal)
-                    }.confirmationDialog("¿Que necesitas agregar?", isPresented: $agrega){
-                        Button(action:{
-                            loginShow.selectedTab = 2
-                        }){
-                            Text("Planta")
-                        }
-                        Button(action:{
-                            loginShow.selectedTab = 5
-                        }){
-                            Text("Habitacion")
-                        }
+                    }.sheet(isPresented: $modal){
+                        EleccionAgregaview(modal: $modal).presentationDetents([.medium])
                     }
+                    
+                    /*Button(action: {
+                        modalPlanta.toggle()
+                    }) {
+                        Image(systemName: "leaf").foregroundColor(loginShow.selectedTab == 2 ? .gray : loginShow.selectedTab == 5 ? .gray : .white).padding(.horizontal)
+                    }.sheet(isPresented: $modalPlanta){
+                        AgregarPlantaView(modal: $modalPlanta).presentationDetents([.large])
+                    }
+                    Button(action: {
+                        modalHabitacion.toggle()
+                    }) {
+                        Image(systemName: "lamp.table").foregroundColor(loginShow.selectedTab == 2 ? .gray : loginShow.selectedTab == 5 ? .gray : .white).padding(.horizontal)
+                    }.sheet(isPresented: $modalHabitacion){
+                        AgregarHabitacionView(modal: $modalHabitacion).presentationDetents([.large])
+                    }*/
                     
                     Spacer(minLength: 5)
                     

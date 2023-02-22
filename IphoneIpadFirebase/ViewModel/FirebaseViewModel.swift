@@ -106,9 +106,11 @@ class FirebaseViewModel : ObservableObject{
                 let db = Firestore.firestore() //crea conexion
                 let id = UUID().uuidString
                 let campos : [String:Any] = ["nombre": nombre, "foto": String(describing: directorio), "iluminacion": iluminacion, "riegoNum": riegoNum, "riegoPeriod": riegoPeriod, "abonoNum": abonoNum, "abonoPeriod": abonoPeriod, "proxRecordatorio": proxRecordatorio]
-                
+                print("estoy agregando los datos: id:\(self.Usuario.id), idHabitacion: \(idHabitacion)")
+                print("lo que guardare es: \(nombre)")
                 db.collection("Usuarios").document(self.Usuario.id).collection("Habitacion").document(idHabitacion).collection("Plantas").document(id).setData(campos){error in
                     if let error = error?.localizedDescription{
+                        print("eeeeerrrrrroooooooooorrrrrr agregar la planta")
                         print(error)
                     }else{
                         print("guardo")
