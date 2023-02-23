@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BuscaView: View {
+    @EnvironmentObject var loginShow : FirebaseViewModel
     @State var resultados = [Result]()
     @State var numError = 0
     @State var inicio = true
@@ -161,7 +162,7 @@ struct BuscaView: View {
                                     .shadow(color: .black,radius: 3)
                                 ScrollView(.horizontal){
                                     HStack(spacing: 20){
-                                        ForEach(0..<resultados.count, id: \.self) {item in
+                                        ForEach(0..<loginShow.limpiaResultados(resultados: resultados).count/*resultados.count*/, id: \.self) {item in
                                             //if resultados[item].species.commonNames.count() != 0{
                                                 CardIdentifica(foto: resultados[item].images[0].url.o, nombres: resultados[item].species.commonNames)
                                             //}

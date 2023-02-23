@@ -237,7 +237,7 @@ class FirebaseViewModel : ObservableObject{
         }
     }
     
-    // Eliminar
+    // Eliminar DE BASE DE DATOS
     func eliminarPlanta(item : PlantasModel, idHabitacion: String){
         //eliminar firestore
         let id = item.id
@@ -256,7 +256,7 @@ class FirebaseViewModel : ObservableObject{
        
     }
     
-    //EDITAR
+    //EDITAR DE BASE DE DATOS
     func editarHabitacion(nombre: String, tipo: String, idHabitacion : String, completion: @escaping (_ done : Bool) -> Void){
         let db = Firestore.firestore()
         let campos : [String:Any] = ["nombre": nombre, "tipo": tipo]
@@ -369,7 +369,7 @@ class FirebaseViewModel : ObservableObject{
         
     }
     
-    //FUNCIONALIDADES
+    //FUNCIONALIDADES SIN BD
     
     func devuelveNombres() -> [String] {
         var nombres = [String]()
@@ -440,5 +440,16 @@ class FirebaseViewModel : ObservableObject{
         }else{
             return true
         }
+    }
+    func limpiaResultados(resultados: [Result]) ->[Result] {
+        var resultadosLimpios = [Result]()
+        
+        for resultado in resultados {
+            if !(resultado.species.commonNames.isEmpty){
+                resultadosLimpios.append(resultado)
+            }
+        }
+        
+        return resultadosLimpios
     }
 }

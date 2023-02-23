@@ -36,10 +36,9 @@ struct CalendarioView: View {
                     }
                 }label: {
                     Image(systemName: "chevron.left")
-                        .font(.title2)
+                        .font(.title2).foregroundColor(mesAct == 0 ? .gray : .green)
                         
-                }/*.foregroundColor(RecordatorioViewModel.shared.obtieneMesActual(mesAct: mesAct) == RecordatorioViewModel.shared.obtieneMesActual(mesAct: 0) ? Color.gray : Color.blue)
-                    .disabled(RecordatorioViewModel.shared.obtieneMesActual(mesAct: mesAct) == RecordatorioViewModel.shared.obtieneMesActual(mesAct: 0) ? true : false)*/
+                }.disabled(mesAct == 0 ? true : false)
                 
                 Button{
                     withAnimation{
@@ -47,7 +46,7 @@ struct CalendarioView: View {
                     }
                 }label: {
                     Image(systemName: "chevron.right")
-                        .font(.title2)
+                        .font(.title2).foregroundColor(.green)
                 }
                 
             }.padding(.horizontal)
