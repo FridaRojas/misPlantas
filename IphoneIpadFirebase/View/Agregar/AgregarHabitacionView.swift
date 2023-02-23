@@ -157,10 +157,6 @@ struct AgregarHabitacionView: View {
                             loginShow.AgregarHabitacion(nombre: nombreHabitacion, tipo: tipoHabitacionNombre){ (done) in
                                 if done{
                                     modal.toggle()
-                                    /*nombreHabitacion = ""
-                                    tipoHabitacionNombre = ""
-                                    tipoHabtacion = 0
-                                    loginShow.selectedTab = 0*/
                                     
                                 }
                                 
@@ -169,9 +165,10 @@ struct AgregarHabitacionView: View {
                         }){
                             Text("Crear").foregroundColor(.white).bold()
                         }.padding()
-                            .background(Color("primario"))
+                            .background(nombreHabitacion != "" && nombreHabitacion != " " ?  Color("primario") : Color.gray)
                             .cornerRadius(8)
                             .shadow(radius: 4)
+                            .disabled(nombreHabitacion != "" && nombreHabitacion != " " ?  false : true )
                         
                         
                     }

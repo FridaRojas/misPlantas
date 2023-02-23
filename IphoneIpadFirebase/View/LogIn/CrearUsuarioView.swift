@@ -104,7 +104,7 @@ struct CrearUsuarioView: View {
                             .cornerRadius(10)
                             .shadow(radius: 5)
                     }
-                }
+                }.disabled(nombre != "" && correo != " " && contras != "" ? false : true)
                 Spacer()
             }.padding().background(Color.white.opacity(0.5))
         }.background(Image("fondo1").resizable())

@@ -192,10 +192,18 @@ struct AgregarPlantaView: View {
                                 }){
                                     Text("Guardar").foregroundColor(.white).bold()
                                 }.padding()
-                                    .background(imagen1.count != 0 ? Color("primario") : Color.gray.opacity(0.7))
+                                    .background(imagen1.count != 0 &&
+                                                nombrePlanta != "" &&
+                                                riego != "" &&
+                                                abono != ""
+                                                ? Color("primario") : Color.gray.opacity(0.7))
                                     .cornerRadius(8)
                                     .shadow(radius: 4)
-                                    .disabled(imagen1.count != 0 ? false : true)
+                                    .disabled(imagen1.count != 0 &&
+                                              nombrePlanta != "" &&
+                                              riego != "" &&
+                                              abono != ""
+                                              ? false : true)
                                 
                                 Spacer(minLength: 100)
                             }

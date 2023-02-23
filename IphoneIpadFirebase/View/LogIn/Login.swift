@@ -66,10 +66,10 @@ struct Login: View {
                             Text("Entrar").font(.title)
                                 .frame(width: 150, height: 50)
                                 .foregroundColor(.white)
-                                .background(Color("primario"))
+                                .background(email != "" && email != " " ? Color("primario") : Color.gray)
                                 .cornerRadius(10)
                                 .shadow(radius: 5)
-                        }
+                        }.disabled(email != "" && email != " " ? false : true)
                     }
                     //o
                     HStack(alignment: .center){
