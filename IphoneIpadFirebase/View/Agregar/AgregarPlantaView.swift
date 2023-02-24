@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AgregarPlantaView: View {
     @Binding var modal : Bool
+    @State var errorFirebase = false
     @State var nombrePlanta : String = ""
     @State var riego : String = ""
     @State private var seleccionIluminacion = "Sol"
@@ -171,23 +172,12 @@ struct AgregarPlantaView: View {
                                 
                                 Button(action:{
                                     //progress.toggle()
-                                    loginShow.AgregarPlantas(idHabitacion: loginShow.devuelveId(nombre: seleccionHabitacion), nombre: nombrePlanta, foto: imagen1, iluminacion: seleccionIluminacion, riegoNum: Int(riego) ?? 0, riegoPeriod: seleccionRiego, abonoNum: Int(abono) ?? 0, abonoPeriod: seleccionRiego, proxRecordatorio: proxRiego){ (done) in
-                                        if done{
-                                            /*nombrePlanta = ""
-                                            imagen1 = .init(capacity: 0)
-                                            riego = ""
-                                            seleccionIluminacion = "Sol"
-                                            seleccionRiego = "Dias"
-                                            seleccionAbono = "Semanas"
-                                            seleccionHabitacion = "Recamara"
-                                            proxRiego = Date()
-                                            abono = ""
-                                            progress.toggle()*/
-                                            modal.toggle()
-                                            //loginShow.selectedTab = 1
-                                        }
-                                        
-                                        
+                                    loginShow.AgregarPlantas(idHabitacion: loginShow.devuelveId(nombre: seleccionHabitacion), nombre: nombrePlanta, foto: imagen1, iluminacion: seleccionIluminacion, riegoNum: Int(riego) ?? 0, riegoPeriod: seleccionRiego, abonoNum: Int(abono) ?? 0, abonoPeriod: seleccionRiego, proxRecordatorio: proxRiego){ done in
+                                        modal.toggle()
+                                    } failure: { error in
+                                        //progress=false
+                                        errorFirebase = true
+                                        //numError = error.asAFError?.responseCode ?? 500
                                     }
                                 }){
                                     Text("Guardar").foregroundColor(.white).bold()
@@ -204,6 +194,14 @@ struct AgregarPlantaView: View {
                                               riego != "" &&
                                               abono != ""
                                               ? false : true)
+                                    .alert(isPresented: $errorFirebase, content: {
+                                        Alert(title: Text("Error"),
+                                              message: Text("Hubo un problema al crear la planta"),
+                                              primaryButton: Alert.Button.destructive(Text("Cancelar"), action: {
+                                            modal.toggle()
+                                        }),
+                                              secondaryButton: .default(Text("Reintentar")))
+                                    })
                                 
                                 Spacer(minLength: 100)
                             }

@@ -89,21 +89,6 @@ struct FloatingTabbar : View {
                         EleccionAgregaview(modal: $modal).presentationDetents([.medium])
                     }
                     
-                    /*Button(action: {
-                        modalPlanta.toggle()
-                    }) {
-                        Image(systemName: "leaf").foregroundColor(loginShow.selectedTab == 2 ? .gray : loginShow.selectedTab == 5 ? .gray : .white).padding(.horizontal)
-                    }.sheet(isPresented: $modalPlanta){
-                        AgregarPlantaView(modal: $modalPlanta).presentationDetents([.large])
-                    }
-                    Button(action: {
-                        modalHabitacion.toggle()
-                    }) {
-                        Image(systemName: "lamp.table").foregroundColor(loginShow.selectedTab == 2 ? .gray : loginShow.selectedTab == 5 ? .gray : .white).padding(.horizontal)
-                    }.sheet(isPresented: $modalHabitacion){
-                        AgregarHabitacionView(modal: $modalHabitacion).presentationDetents([.large])
-                    }*/
-                    
                     Spacer(minLength: 5)
                     
                     Button(action: {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Habitacion: View {
     @EnvironmentObject var loginShow : FirebaseViewModel
+    @State var errorFirebase = false
     
     var body: some View {
         ZStack{
@@ -54,7 +55,10 @@ struct Habitacion: View {
             }
             
         }.onAppear{
-            loginShow.obtienePlantas(idHabitacion: loginShow.habitacionActual.id)
+            loginShow.obtienePlantas(idHabitacion: loginShow.habitacionActual.id){ done in
+            } failure: { error in
+                errorFirebase = true
+            }
             print("numero de plantas en habitacion \(loginShow.plantasActuales.count)")
         }
     }

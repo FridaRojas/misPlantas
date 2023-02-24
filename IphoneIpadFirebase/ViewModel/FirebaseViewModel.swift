@@ -28,14 +28,15 @@ class FirebaseViewModel : ObservableObject{
     @Published var plantaActual = PlantasModel(id: "", nombre: "", foto: "", iluminacion: "", abonoNum: 0, abonoPeriod: "", proxRecordatorio: Date(), riegoNum: 0, riegoPeriod: "")
     
     //AUTENTICACION POR CORREO
-    func login(email: String, pass: String, completion: @escaping(_ done: Bool) -> Void){
+    func login(email: String, pass: String, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
         Auth.auth().signIn(withEmail: email, password: pass){ (user, error) in
             if user != nil{
                 print("Entro")
                 guard let id = Auth.auth().currentUser?.uid else {return}
                 self.Usuario.id = id
-                completion(true)
+                success(true)
             }else{
+                failure(error!)
                 if let error = error?.localizedDescription{
                     print("Error en firebase", error)
                 }else{
@@ -44,12 +45,13 @@ class FirebaseViewModel : ObservableObject{
             }
         }
     }
-    func crearUsuario(correo: String, pass: String, completion: @escaping(_ done: Bool) -> Void){
+    func crearUsuario(correo: String, pass: String, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
         Auth.auth().createUser(withEmail: correo, password: pass){ (user,error) in
             if user != nil{
                 print("cree usuario en auth")
-                completion(true)
+                success(true)
             }else{
+                failure(error!)
                 if let error = error?.localizedDescription{
                     print("Error en firebase", error)
                 }else{
@@ -60,39 +62,40 @@ class FirebaseViewModel : ObservableObject{
     }
     
     //GUARDA EN BASE DE DATOS
-    func AgregarUsuario(nombre: String, correo: String, completion: @escaping (_ done : Bool) -> Void){
+    func AgregarUsuario(nombre: String, correo: String, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
         let db = Firestore.firestore() //crea conexion
         print("entre a agregar fire, idMANDA:\(self.Usuario.id)")
         
         let campos : [String:Any] = ["nombre": nombre, "correo": correo, "foto": "gs://fir-crud-af577.appspot.com/imagenes/perfil-de-usuario.png"]
         print("nombre: \(nombre) , correo: \(correo)")
         db.collection("Usuarios").document(self.Usuario.id).setData(campos){error in
-            if let error = error?.localizedDescription{
-                print(error)
-                print("fueeeee")
+            if let error = error{
+                failure(error)
             }else{
-                print("guardo en fire")
-                completion(true)
+                print("guardo")
+                success(true)
             }
         }
         
     }
-    func AgregarHabitacion(nombre: String, tipo: String, completion: @escaping (_ done : Bool) -> Void){
+    
+    ////////////////////// FALTA PONER LA ALerta
+    func AgregarHabitacion(nombre: String, tipo: String, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
         let db = Firestore.firestore() //crea conexion
         let id = UUID().uuidString
         let campos : [String:Any] = ["nombre": nombre, "tipo": tipo]
         
         db.collection("Usuarios").document(self.Usuario.id).collection("Habitacion").document(id).setData(campos){error in
-            if let error = error?.localizedDescription{
-                print(error)
+            if let error = error{
+                failure(error)
             }else{
                 print("guardo")
-                completion(true)
+                success(true)
             }
         }
         
     }
-    func AgregarPlantas(idHabitacion:String, nombre: String, foto: Data, iluminacion: String, riegoNum: Int, riegoPeriod: String, abonoNum: Int, abonoPeriod: String, proxRecordatorio: Date, completion: @escaping (_ done : Bool) -> Void){
+    func AgregarPlantas(idHabitacion:String, nombre: String, foto: Data, iluminacion: String, riegoNum: Int, riegoPeriod: String, abonoNum: Int, abonoPeriod: String, proxRecordatorio: Date, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
         
         let storage = Storage.storage().reference()
         let nombreImagen = UUID()
@@ -109,15 +112,15 @@ class FirebaseViewModel : ObservableObject{
                 print("estoy agregando los datos: id:\(self.Usuario.id), idHabitacion: \(idHabitacion)")
                 print("lo que guardare es: \(nombre)")
                 db.collection("Usuarios").document(self.Usuario.id).collection("Habitacion").document(idHabitacion).collection("Plantas").document(id).setData(campos){error in
-                    if let error = error?.localizedDescription{
-                        print("eeeeerrrrrroooooooooorrrrrr agregar la planta")
-                        print(error)
+                    if let error = error{
+                        failure(error)
                     }else{
                         print("guardo")
-                        completion(true)
+                        success(true)
                     }
                 }
             }else{
+                failure(error!)
                 if let error = error?.localizedDescription{
                     print("fallo al subir en storage", error)
                 }else{
@@ -128,14 +131,15 @@ class FirebaseViewModel : ObservableObject{
     }
     
     //LEE DE BASE DE DATOS
-    func obtieneHabitaciones(){
+    func obtieneHabitaciones(success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
         //var plantas = [PlantasModel]()
         let  db = Firestore.firestore()
         //print("entre a obtiene habitaciones, id: \(self.Usuario.id)")
         db.collection("Usuarios").document(self.Usuario.id).collection("Habitacion").getDocuments{(QuerySnapshot, error) in
             //print("consulta correcta, traje: \(QuerySnapshot?.count)")
-            if let error = error?.localizedDescription{
+            if let error = error{
                 print("error al mostrar datos", error)
+                failure(error)
             }else{
                 //print("borro habitaciones")
                 self.habitacionesShow.removeAll()
@@ -144,25 +148,22 @@ class FirebaseViewModel : ObservableObject{
                     let id = document.documentID
                     let nombre = valor["nombre"] as? String ?? "Sin nombre"
                     let tipo = valor["tipo"] as? String ?? "Recamara"
-                    //DispatchQueue.main.async {
-                        //plantas = self.obtienePlantas(iUsuario: iUsuario, idHabitacion: id)
                         let registros = HabitacionModel(id: id, nombre: nombre, tipo: tipo)
                         self.habitacionesShow.append(registros)
-                    //print("obtuve a... \(nombre)")
-                    //}
                     
                 }
+                success(true)
             }
-            //print("obtuve habitaciones")
         }
     }
-    func obtienePlantas(idHabitacion : String){
+    func obtienePlantas(idHabitacion : String, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
         plantasActuales = [PlantasModel]()
         let  db = Firestore.firestore()
         
         db.collection("Usuarios").document(self.Usuario.id).collection("Habitacion").document(idHabitacion).collection("Plantas").getDocuments(){(QuerySnapshot, error) in
-            if let error = error?.localizedDescription{
+            if let error = error{
                 print("error al mostrar datos", error)
+                failure(error)
             }else{
                 for document in QuerySnapshot!.documents{
                     let valor = document.data()
@@ -178,21 +179,21 @@ class FirebaseViewModel : ObservableObject{
                     let proxRecordatorio = time.dateValue()
                     let riegoNum = valor["riegoNum"] as? Int ?? 0
                     let riegoPeriod = valor["riegoPeriod"] as? String ?? "dia"
-                    //DispatchQueue.main.async {
                         let registros = PlantasModel(id: id, nombre: nombre, foto: foto, iluminacion: iluminacion, abonoNum: abonoNum, abonoPeriod: abonoPeriod, proxRecordatorio: proxRecordatorio, riegoNum: riegoNum, riegoPeriod: riegoPeriod)
                         self.plantasActuales.append(registros)
-                    //}
                 }
+                success(true)
             }
         }
     }
-    func obtieneUsuario(){
+    func obtieneUsuario(success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
         //var plantas = [PlantasModel]()
         let  db = Firestore.firestore()
         guard let id = Auth.auth().currentUser?.uid else {return}
         self.Usuario.id = id
         db.collection("Usuarios").document(self.Usuario.id).getDocument{(document, error) in
-            if let error = error?.localizedDescription{
+            if let error = error{
+                failure(error)
                 print("error al mostrar datos", error)
             }else{
                 let valor = document!.data()
@@ -200,8 +201,7 @@ class FirebaseViewModel : ObservableObject{
                 self.Usuario.foto = valor?["foto"] as? String ?? "Recamara"
                 self.Usuario.correo = valor?["correo"] as? String ?? "nadie.com"
                 
-                //guard let idUser = Auth.auth().currentUser?.uid else {return} //obtiene id del usuario en la autentificacion
-                //self.Usuario.id = idUser
+                success(true)
             }
         }
     }
@@ -314,7 +314,7 @@ class FirebaseViewModel : ObservableObject{
         }
         
     }
-    func editarUsuario(nombreNuevo : String, fotoNuevo : Data?, completion: @escaping (_ done : Bool) -> Void){
+    func editarUsuario(nombreNuevo : String, fotoNuevo : Data?, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
         
         if fotoNuevo != nil{
             let imagen = self.Usuario.foto
@@ -337,13 +337,15 @@ class FirebaseViewModel : ObservableObject{
                     let db = Firestore.firestore()
                     let campos : [String:Any] = ["nombre": nombreNuevo, "foto": String(describing: directorio)]
                     db.collection("Usuarios").document(self.Usuario.id).updateData(campos){error in
-                        if let error = error?.localizedDescription{
+                        if let error = error{
+                            failure(error)
                             print(error)
                         }else{
-                            completion(true)
+                            success(true)
                         }
                     }
                 }else{
+                    failure(error!)
                     if let error = error?.localizedDescription{
                         print("fallo al subir en storage", error)
                     }else{
@@ -358,7 +360,7 @@ class FirebaseViewModel : ObservableObject{
                 if let error = error?.localizedDescription{
                     print(error)
                 }else{
-                    completion(true)
+                    success(true)
                 }
             }
         }
@@ -370,7 +372,6 @@ class FirebaseViewModel : ObservableObject{
     }
     
     //FUNCIONALIDADES SIN BD
-    
     func devuelveNombres() -> [String] {
         var nombres = [String]()
         for habitacion in self.habitacionesShow {

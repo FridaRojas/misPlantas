@@ -12,6 +12,7 @@ struct EditaUsuario: View {
     @Binding var modal : Bool
     @State var fotoNueva : Data = .init(capacity: 0)
     @State var nombreNuevo = ""
+    @State var errorFirebase = false
     @State private var mostrarMenu = false
     @State private var imagePicker = false
     @State private var source : UIImagePickerController.SourceType = .camera
@@ -68,29 +69,41 @@ struct EditaUsuario: View {
                     //Boton
                     Button(action:{
                         if fotoNueva.isEmpty{
-                            loginShow.editarUsuario(nombreNuevo: nombreNuevo, fotoNuevo: nil){(done) in
-                                if done{
-                                    
-                                    modal.toggle()
-                                    loginShow.obtieneUsuario()
-                                    loginShow.selectedTab = 4
+                            loginShow.editarUsuario(nombreNuevo: nombreNuevo, fotoNuevo: nil){ done in
+                                modal.toggle()
+                                loginShow.obtieneUsuario(){ done in
+                                } failure: { error in
+                                    errorFirebase = true
                                 }
+                                loginShow.selectedTab = 4
+                            } failure: { error in
+                                errorFirebase = true
                             }
                         }else{
-                            loginShow.editarUsuario(nombreNuevo: nombreNuevo, fotoNuevo: fotoNueva){(done) in
-                                if done{
-                                    modal.toggle()
-                                    loginShow.obtieneUsuario()
-                                    loginShow.selectedTab = 4
+                            loginShow.editarUsuario(nombreNuevo: nombreNuevo, fotoNuevo: fotoNueva){ done in
+                                modal.toggle()
+                                loginShow.obtieneUsuario(){ done in
+                                } failure: { error in
+                                    errorFirebase = true
                                 }
-                            }
-                        }
+                                loginShow.selectedTab = 4
+                            } failure: { error in
+                                errorFirebase = true
+                            }                        }
                     }){
                         Text("Guardar").foregroundColor(.white).bold()
                     }.padding()
                         .background(Color("primario"))
                         .cornerRadius(8)
                         .shadow(radius: 4)
+                        .alert(isPresented: $errorFirebase, content: {
+                            Alert(title: Text("Error"),
+                                  message: Text("Hubo un problema al modificar el usuario"),
+                                  primaryButton: Alert.Button.destructive(Text("Cancelar"), action: {
+                                modal.toggle()
+                            }),
+                                  secondaryButton: .default(Text("Reintentar")))
+                        })
                     Spacer(minLength: 20)
                     
                 }.padding().background(LinearGradient(gradient: Gradient(colors: [Color("primario"), .white]), startPoint: .top, endPoint: .bottom)).ignoresSafeArea(.all)

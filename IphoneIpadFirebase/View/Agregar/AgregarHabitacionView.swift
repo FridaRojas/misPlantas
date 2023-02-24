@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AgregarHabitacionView: View {
+    @State var errorFirebase = false
     @Binding var modal : Bool
     @State var nombreHabitacion : String = ""
     @State var tipoHabitacionNombre : String = "Recamara"
@@ -154,12 +155,12 @@ struct AgregarHabitacionView: View {
                         Spacer(minLength: 20)
                         Button(action:{
                             progress.toggle()
-                            loginShow.AgregarHabitacion(nombre: nombreHabitacion, tipo: tipoHabitacionNombre){ (done) in
-                                if done{
-                                    modal.toggle()
-                                    
-                                }
-                                
+                            loginShow.AgregarHabitacion(nombre: nombreHabitacion, tipo: tipoHabitacionNombre){ done in
+                                modal.toggle()
+                            } failure: { error in
+                                //progress=false
+                                errorFirebase = true
+                                //numError = error.asAFError?.responseCode ?? 500
                             }
                             
                         }){
@@ -169,14 +170,24 @@ struct AgregarHabitacionView: View {
                             .cornerRadius(8)
                             .shadow(radius: 4)
                             .disabled(nombreHabitacion != "" && nombreHabitacion != " " ?  false : true )
-                        
+                            .alert(isPresented: $errorFirebase, content: {
+                                Alert(title: Text("Error"),
+                                      message: Text("Hubo un problema al crear la habitacion"),
+                                      primaryButton: Alert.Button.destructive(Text("Cancelar"), action: {
+                                    modal.toggle()
+                                }),
+                                      secondaryButton: .default(Text("Reintentar")))
+                            })
                         
                     }
                 }.padding()
             }.background(Image("fondo1").resizable())
                 .edgesIgnoringSafeArea(.all)
                 .onAppear{
-                    loginShow.obtieneHabitaciones()
+                    loginShow.obtieneHabitaciones(){ done in
+                    } failure: { error in
+                        errorFirebase = true
+                    }
                 }
             if progress {
                 HStack{

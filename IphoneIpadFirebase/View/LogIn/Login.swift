@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Login: View {
+    @State var errorFirebase = false
     @State private var email = ""
     @State private var pass = ""
     @State var modal = false
@@ -53,14 +54,16 @@ struct Login: View {
                             .foregroundColor(.black)
                             .shadow(radius: 5)
                         Button(action:{
-                            loginShow.login(email: email, pass: pass) { (done) in
-                                if done{
-                                    UserDefaults.standard.set(true, forKey: "sesion")
-                                    //UserDefaults.standard.set(loginShow.idUsuario, forKey: "idUsuario")
-                                    loginShow.show.toggle()
-                                    loginShow.obtieneUsuario()
-                                    
+                            loginShow.login(email: email, pass: pass){ resultado in
+                                UserDefaults.standard.set(true, forKey: "sesion")
+                                //UserDefaults.standard.set(loginShow.idUsuario, forKey: "idUsuario")
+                                loginShow.show.toggle()
+                                loginShow.obtieneUsuario(){ done in
+                                } failure: { error in
+                                    errorFirebase = true
                                 }
+                            } failure: { error in
+                                errorFirebase = true
                             }
                         }){
                             Text("Entrar").font(.title)
@@ -70,6 +73,14 @@ struct Login: View {
                                 .cornerRadius(10)
                                 .shadow(radius: 5)
                         }.disabled(email != "" && email != " " ? false : true)
+                            .alert(isPresented: $errorFirebase, content: {
+                                Alert(title: Text("Eliminar"),
+                                      message: Text("Hubo un problema al creae la planta"),
+                                      primaryButton: Alert.Button.destructive(Text("Cancelar"), action: {
+                                    modal.toggle()
+                                }),
+                                      secondaryButton: .default(Text("Reintentar")))
+                            })
                     }
                     //o
                     HStack(alignment: .center){

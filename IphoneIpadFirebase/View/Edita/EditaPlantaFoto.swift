@@ -13,6 +13,7 @@ struct EditaPlantaFoto: View {
     let itemRiego = ["Dias", "Semanas", "Meses"]
     @EnvironmentObject var loginShow : FirebaseViewModel
     @Binding var modal : Bool
+    @State var errorFirebase = false
     @State private var fotoNueva : Data = .init(capacity: 0)
     @State private var nombreNuevo = ""
     @State private var riego : String = ""
@@ -141,7 +142,10 @@ struct EditaPlantaFoto: View {
                     
                 }.padding().background(LinearGradient(gradient: Gradient(colors: [Color("primario"), .white]), startPoint: .top, endPoint: .bottom)).ignoresSafeArea(.all)
                     .onAppear{
-                        loginShow.obtienePlantas(idHabitacion: habitacion.id)
+                        loginShow.obtienePlantas(idHabitacion: habitacion.id){ done in
+                        } failure: { error in
+                            errorFirebase = true
+                        }
                     }
                     .navigationDestination(isPresented: $imagePicker){
                         ImagePicker(show: $imagePicker, image: $fotoNueva, source: source)

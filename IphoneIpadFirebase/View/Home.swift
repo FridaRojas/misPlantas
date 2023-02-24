@@ -10,8 +10,7 @@ import SwiftUI
 struct Home: View {
     
     @EnvironmentObject var loginShow : FirebaseViewModel
-    @State var progress = true
-    
+    @State var errorFirebase = false
     
     var body: some View {
         ZStack(alignment: .bottom){
@@ -30,9 +29,6 @@ struct Home: View {
                                     }.navigationDestination(isPresented: $loginShow.NavegacionHabitacion){
                                         Habitacion()
                                     }
-                                    /*NavigationLink(destination: Habitacion(habitacion: item, navegacion: $navegacion)){
-                                            CeldaPlantasView(nombreHabitacion: item.nombre, foto: "tipo\(item.tipo)")
-                                    }*/
                                 }
                             }.padding()
                         Spacer(minLength: 40)
@@ -40,8 +36,14 @@ struct Home: View {
                 }.background(Image("fondo1").resizable())
                     .edgesIgnoringSafeArea(.all)
                     .onAppear{
-                    loginShow.obtieneUsuario()
-                    loginShow.obtieneHabitaciones()
+                    loginShow.obtieneUsuario(){ done in
+                    } failure: { error in
+                        errorFirebase = true
+                    }
+                    loginShow.obtieneHabitaciones(){ done in
+                    } failure: { error in
+                        errorFirebase = true
+                    }
                 }
                 
             }
