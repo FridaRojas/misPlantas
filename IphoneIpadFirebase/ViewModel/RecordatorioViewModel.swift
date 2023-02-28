@@ -48,6 +48,20 @@ final class RecordatorioViewModel{
         }
         return dias
     }
+    func sumaPeriodo(diaActual : Date, numSuma : Int, periodo: String)->Date{
+        let calendar = Calendar.current
+        switch periodo{
+        case "Dias":
+            return calendar.date(byAdding: .day, value: numSuma, to: diaActual) ?? Date()
+        case "Semanas":
+            let numSuma = numSuma * 7
+            return calendar.date(byAdding: .day, value: numSuma, to: diaActual) ?? Date()
+        case "Meses":
+            return calendar.date(byAdding: .month, value: numSuma, to: diaActual) ?? Date()
+        default:
+            return Date()
+        }
+    }
 }
 
 extension Date{

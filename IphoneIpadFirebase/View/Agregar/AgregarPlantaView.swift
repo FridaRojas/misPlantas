@@ -24,7 +24,7 @@ struct AgregarPlantaView: View {
     @State private var source : UIImagePickerController.SourceType = .camera
     @State var progress = false
     let itemIluminacion = ["Sol", "Sombra", "Ambos"]
-    let itemRiego = ["Dias", "Semanas", "Meses"]
+    let itemRiego = ["Dias", "Semanas"]
     let itemAbono = ["Semanas", "Meses"]
     @EnvironmentObject var loginShow : FirebaseViewModel
     

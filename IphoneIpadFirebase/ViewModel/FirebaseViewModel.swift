@@ -79,7 +79,6 @@ class FirebaseViewModel : ObservableObject{
         
     }
     
-    ////////////////////// FALTA PONER LA ALerta
     func AgregarHabitacion(nombre: String, tipo: String, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
         let db = Firestore.firestore() //crea conexion
         let id = UUID().uuidString
@@ -220,13 +219,16 @@ class FirebaseViewModel : ObservableObject{
                     for document in QuerySnapshot!.documents{
                         let valor = document.data()
                         let id = document.documentID
+                        let idHabitacion = habitacion.id
                         let nombre = valor["nombre"] as? String ?? "Sin nombre"
                         guard let time = valor["proxRecordatorio"] as? Timestamp else {
                             return 
                         }
                         let proxRecordatorio = time.dateValue()
                         let tipo = "Riego"
-                        let registros = RecordatorioModel(id: id, planta: nombre, tipo: tipo, fecha: proxRecordatorio)
+                        let dias = valor["riegoNum"]as? Int ?? 3
+                        let riegoPeriod = valor["riegoPeriod"] as? String ?? "Dias"
+                        let registros = RecordatorioModel(id: id, idHabitacion: idHabitacion, planta: nombre, tipo: tipo, fecha: proxRecordatorio, dias: dias, periodo: riegoPeriod)
                         recordatoriosShow.append(registros)
                     }
                     success(recordatoriosShow)
@@ -368,6 +370,19 @@ class FirebaseViewModel : ObservableObject{
         
         
         
+        
+    }
+    func actualizaRecordatorio(idHabitacion : String, idPlanta : String, fechaNueva: Date, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
+        
+        let db = Firestore.firestore()
+        let campos : [String:Any] = ["proxRecordatorio":fechaNueva]
+        db.collection("Usuarios").document(self.Usuario.id).collection("Habitacion").document(idHabitacion).collection("Plantas").document(idPlanta).updateData(campos){error in
+            if let error = error{
+                failure(error)
+            }else{
+                success(true)
+            }
+        }
         
     }
     
