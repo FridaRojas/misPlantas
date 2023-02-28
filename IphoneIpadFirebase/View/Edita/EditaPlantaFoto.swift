@@ -139,6 +139,10 @@ struct EditaPlantaFoto: View {
                             .shadow(radius: 4)
                         Spacer(minLength: 20)
                     }.padding()
+                        .onTapGesture {
+                            self.hideKeyboard()
+                        }
+                    
                     
                 }.padding().background(LinearGradient(gradient: Gradient(colors: [Color("primario"), .white]), startPoint: .top, endPoint: .bottom)).ignoresSafeArea(.all)
                     .onAppear{

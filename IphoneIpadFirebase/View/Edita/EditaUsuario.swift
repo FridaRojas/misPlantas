@@ -110,6 +110,9 @@ struct EditaUsuario: View {
                     .navigationDestination(isPresented: $imagePicker){
                     ImagePicker(show: $imagePicker, image: $fotoNueva, source: source)
                 }
+                    .onTapGesture {
+                        self.hideKeyboard()
+                    }
             }.ignoresSafeArea(.all)
     }
 }

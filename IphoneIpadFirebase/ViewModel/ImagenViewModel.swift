@@ -12,7 +12,6 @@ class ImagenViewModel : ObservableObject{
     @Published var data : Data? = nil
     
     init(imagenUrl: String) {
-        print("url de imagen: \(imagenUrl)")
         let storageImage = Storage.storage().reference(forURL: imagenUrl)
         storageImage.getData(maxSize: 1*1024*1024){ (data, error) in
             if let error = error?.localizedDescription{
@@ -20,7 +19,6 @@ class ImagenViewModel : ObservableObject{
             }else{
                 DispatchQueue.main.async {
                     self.data = data
-                    print("ImagenViewModel")
                 }
             }
         }

@@ -58,6 +58,9 @@ struct EditaHabitacion: View {
                     .shadow(radius: 4)
                 Spacer(minLength: 20)
             }.background(LinearGradient(gradient: Gradient(colors: [Color("primario"), .white]), startPoint: .top, endPoint: .bottom)).ignoresSafeArea(.all)
+                .onTapGesture {
+                    self.hideKeyboard()
+                }
         }
         
     }

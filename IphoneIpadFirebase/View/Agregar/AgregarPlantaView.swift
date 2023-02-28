@@ -208,11 +208,15 @@ struct AgregarPlantaView: View {
                             
                         }.padding()
                     }.padding()
+                        .onTapGesture {
+                            self.hideKeyboard()
+                        }
                 }.background(Image("fondo1").resizable())
                     .edgesIgnoringSafeArea(.all)
                     .navigationDestination(isPresented: $imagePicker){
                         ImagePicker(show: $imagePicker, image: $imagen1, source: source)
                     }
+                    
             }.navigationViewStyle(StackNavigationViewStyle())
             if progress {
                 HStack{

@@ -181,6 +181,9 @@ struct AgregarHabitacionView: View {
                         
                     }
                 }.padding()
+                    .onTapGesture {
+                        self.hideKeyboard()
+                    }
             }.background(Image("fondo1").resizable())
                 .edgesIgnoringSafeArea(.all)
                 .onAppear{

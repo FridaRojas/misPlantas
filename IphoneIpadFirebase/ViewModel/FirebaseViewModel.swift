@@ -52,11 +52,11 @@ class FirebaseViewModel : ObservableObject{
                 success(true)
             }else{
                 failure(error!)
-                if let error = error?.localizedDescription{
+                /*if let error = error?.localizedDescription{
                     print("Error en firebase", error)
                 }else{
                     print("error en la aplicacion")
-                }
+                }*/
             }
         }
     }

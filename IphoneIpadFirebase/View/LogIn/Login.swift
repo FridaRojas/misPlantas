@@ -75,7 +75,7 @@ struct Login: View {
                         }.disabled(email != "" && email != " " ? false : true)
                             .alert(isPresented: $errorFirebase, content: {
                                 Alert(title: Text("Eliminar"),
-                                      message: Text("Hubo un problema al creae la planta"),
+                                      message: Text("Hubo un problema al iniciar sesion, asegurese que su correo y contraseña sean correctos"),
                                       primaryButton: Alert.Button.destructive(Text("Cancelar"), action: {
                                     modal.toggle()
                                 }),
@@ -133,6 +133,9 @@ struct Login: View {
                     .background(Color.white.opacity(0.5))
                     .cornerRadius(40)
                     .shadow(color: .white,radius: 10)
+                    .onTapGesture {
+                        self.hideKeyboard()
+                    }
             }
         }.background(Image("hojitas").resizable())
             .edgesIgnoringSafeArea(.all)
