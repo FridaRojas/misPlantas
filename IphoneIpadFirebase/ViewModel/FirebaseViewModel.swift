@@ -60,6 +60,16 @@ class FirebaseViewModel : ObservableObject{
             }
         }
     }
+    func restablecerContras(email : String, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
+        Auth.auth().sendPasswordReset(withEmail: email){ (error) in
+            if let error = error{
+                failure(error)
+            }else{
+                print("envio el correo")
+                success(true)
+            }
+        }
+    }
     
     //GUARDA EN BASE DE DATOS
     func AgregarUsuario(nombre: String, correo: String, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){

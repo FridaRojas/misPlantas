@@ -12,6 +12,7 @@ struct Login: View {
     @State private var email = ""
     @State private var pass = ""
     @State var modal = false
+    @State var modalOlvide = false
     @EnvironmentObject var loginShow : FirebaseViewModel
     var device = UIDevice.current.userInterfaceIdiom
     
@@ -81,6 +82,15 @@ struct Login: View {
                                 }),
                                       secondaryButton: .default(Text("Reintentar")))
                             })
+                    }
+                    VStack(alignment: .trailing){
+                        Button(action:{
+                            modalOlvide.toggle()
+                        }){
+                           Text("Olvide mi contraseña")
+                        }.sheet(isPresented: $modalOlvide){
+                            OlvideContrasena(modal: $modalOlvide)
+                        }
                     }
                     //o
                     HStack(alignment: .center){
