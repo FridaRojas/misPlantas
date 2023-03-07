@@ -113,6 +113,7 @@ struct Login: View {
                                     if done{
                                         //ya existe usuario
                                         UserDefaults.standard.set(true, forKey: "sesion")
+                                        loginShow.show = true
                                     }else{
                                         //primera vez, crea usuario en db
                                         loginShow.obtieneDatosGoogle()
@@ -121,6 +122,7 @@ struct Login: View {
                                             loginShow.AgregarHabitacion(nombre: "Sala de estar", tipo: "Sala"){ done in
                                                 print("agregue habitacion")
                                                 UserDefaults.standard.set(true, forKey: "sesion")
+                                                loginShow.show = true
                                             } failure: { error in
                                                 errorFirebase = true
                                             }
