@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import FirebaseAuth
+import GoogleSignIn
 
 struct Login: View {
     @State var errorFirebase = false
@@ -57,7 +60,6 @@ struct Login: View {
                         Button(action:{
                             loginShow.login(email: email, pass: pass){ resultado in
                                 UserDefaults.standard.set(true, forKey: "sesion")
-                                //UserDefaults.standard.set(loginShow.idUsuario, forKey: "idUsuario")
                                 loginShow.show.toggle()
                                 loginShow.obtieneUsuario(){ done in
                                 } failure: { error in
@@ -102,7 +104,39 @@ struct Login: View {
                     //botones facebook google
                     HStack(spacing: 25){
                         Button(action:{
-                            
+                            loginShow.iniciaGoogle(presenting: getRootViewController()){ done in
+                                print("se logueo por Google")
+                                guard let id = Auth.auth().currentUser?.uid else {return}
+                                loginShow.Usuario.id =  id
+                                //existe el usuario?
+                                loginShow.existeId(){ done in
+                                    if done{
+                                        //ya existe usuario
+                                        UserDefaults.standard.set(true, forKey: "sesion")
+                                    }else{
+                                        //primera vez, crea usuario en db
+                                        loginShow.obtieneDatosGoogle()
+                                        loginShow.AgregarUsuario(nombre: loginShow.Usuario.nombre, correo: loginShow.Usuario.correo){ done in
+                                            print("agrego usuario a firestore")
+                                            loginShow.AgregarHabitacion(nombre: "Sala de estar", tipo: "Sala"){ done in
+                                                print("agregue habitacion")
+                                                UserDefaults.standard.set(true, forKey: "sesion")
+                                            } failure: { error in
+                                                errorFirebase = true
+                                            }
+                                            
+                                        } failure: { error in
+                                            errorFirebase = true
+                                        }
+                                    }
+                                    
+                                }failure: { error in
+                                    errorFirebase = true
+                                }
+                                
+                            } failure: { error in
+                                errorFirebase = true
+                            }
                         }){
                                 Image("google")
                                     .resizable().frame(width: 50, height: 50)
@@ -149,5 +183,14 @@ struct Login: View {
             }
         }.background(Image("hojitas").resizable())
             .edgesIgnoringSafeArea(.all)
+    }
+}
+
+extension View{
+    func getRootViewController() -> UIViewController{
+        guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return .init()}
+        guard let root = screen.windows.first?.rootViewController else { return . init()}
+        
+        return root
     }
 }

@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 import GoogleSignIn
-import GoogleSignInSwift
+//import GoogleSignInSwift
 import GoogleUtilities
 
 class FirebaseViewModel : ObservableObject{
@@ -69,6 +70,55 @@ class FirebaseViewModel : ObservableObject{
                 success(true)
             }
         }
+    }
+    
+    //AUTNTICACION POR GOOGLE
+    func iniciaGoogle(presenting : UIViewController, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+                
+        let config = GIDConfiguration(clientID: clientID)
+
+        GIDSignIn.sharedInstance.configuration = config
+                
+        GIDSignIn.sharedInstance.signIn(withPresenting: presenting) { signResult, error in
+                    
+            if let error = error {
+               failure(error)
+               return
+            }
+
+            guard let user = signResult?.user,
+                      let idToken = user.idToken else { return }
+                
+                let accessToken = user.accessToken
+                       
+                let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: accessToken.tokenString)
+
+          // ...
+            Auth.auth().signIn(with: credential){ result, error in
+                guard error == nil else{
+                    return
+                }
+                print("creo sesion desde google en firebase")
+                success(true)
+            }
+        }
+    }
+    func obtieneDatosGoogle(){
+        // Obtener la instancia actual del usuario que ha iniciado sesión con Google
+        guard let usuario = Auth.auth().currentUser else {return}
+
+        // Obtener los datos adicionales del usuario de Google
+        guard let proveedorDeDatos = usuario.providerData.first(where: { $0.providerID == GoogleAuthProviderID }) else {return}
+
+        // Acceder a los datos del usuario de Google
+        let uid = usuario.uid // El ID del usuario en Firebase Auth
+        let nombre = proveedorDeDatos.displayName // El nombre del usuario
+        let email = proveedorDeDatos.email // El correo electrónico del usuario
+        
+        self.Usuario.id = uid
+        self.Usuario.nombre = nombre ?? "Sin nombre"
+        self.Usuario.correo = email ?? "nadie.com"
     }
     
     //GUARDA EN BASE DE DATOS
@@ -246,6 +296,31 @@ class FirebaseViewModel : ObservableObject{
             }
             
 
+        }
+    }
+    func existeId(success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
+        let db = Firestore.firestore() //crea conexion
+        let coleccion = db.collection("Usuarios")
+        coleccion.document(self.Usuario.id).getDocument{(document, error) in
+            if let error = error{
+                failure(error)
+            }else{
+                if let document = document, document.exists {
+                    // El documento existe
+                    // Acceder a los datos del documento con la variable datos
+                    let datos = document.data()
+                    self.Usuario.nombre = datos?["nombre"] as? String ?? "Sin nombre"
+                    self.Usuario.foto = datos?["foto"] as? String ?? "Recamara"
+                    self.Usuario.correo = datos?["correo"] as? String ?? "nadie.com"
+                    success(true)
+                } else {
+                    // El documento no existe
+                    print("El usuario no existe en Usuarios")
+                    success(false)
+                }
+            }
+            
+            
         }
     }
     
