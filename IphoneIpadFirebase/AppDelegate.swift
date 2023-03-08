@@ -10,11 +10,13 @@ import UIKit
 import SwiftUI
 import FirebaseCore
 import GoogleSignIn
+import FacebookLogin
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         FirebaseApp.configure()
         //GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         return true

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,6 +41,7 @@
 		2D8ADF942967BC4400CAD46C /* BuscaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF932967BC4400CAD46C /* BuscaView.swift */; };
 		2D8E5577296E187800C065CB /* AgregarHabitacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */; };
 		2D8F03B829B28A8A0054CEC4 /* OlvideContrasena.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8F03B729B28A8A0054CEC4 /* OlvideContrasena.swift */; };
+		2D8F03BB29B7DAC20054CEC4 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8F03BA29B7DAC20054CEC4 /* FacebookLogin */; };
 		2D981AB22975C39000C07350 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D981AB12975C39000C07350 /* GoogleService-Info.plist */; };
 		2DA040D7297B25650067E86C /* UsuarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA040D6297B25650067E86C /* UsuarioModel.swift */; };
 		2DA09FDA2979CA8E00976BDA /* PlantaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA09FD92979CA8D00976BDA /* PlantaModel.swift */; };
@@ -91,6 +92,7 @@
 		2D8ADF932967BC4400CAD46C /* BuscaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscaView.swift; sourceTree = "<group>"; };
 		2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarHabitacionView.swift; sourceTree = "<group>"; };
 		2D8F03B729B28A8A0054CEC4 /* OlvideContrasena.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OlvideContrasena.swift; sourceTree = "<group>"; };
+		2D8F03BC29B7DF280054CEC4 /* IphoneIpadFirebase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IphoneIpadFirebase.entitlements; sourceTree = "<group>"; };
 		2D981AB12975C39000C07350 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2DA040D6297B25650067E86C /* UsuarioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioModel.swift; sourceTree = "<group>"; };
 		2DA09FD92979CA8D00976BDA /* PlantaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantaModel.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D8F03BB29B7DAC20054CEC4 /* FacebookLogin in Frameworks */,
 				7DD9BCECE52ED4D5ADA26805 /* Pods_IphoneIpadFirebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +208,7 @@
 		CFE73A3D25B75D9D002DB2A6 /* IphoneIpadFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				2D8F03BC29B7DF280054CEC4 /* IphoneIpadFirebase.entitlements */,
 				2D18738C2975D72C00C2FA25 /* ViewModel */,
 				2D89FC032968F27800AE5258 /* Model */,
 				CFE73A4E25B764F1002DB2A6 /* View */,
@@ -293,6 +297,9 @@
 			dependencies = (
 			);
 			name = IphoneIpadFirebase;
+			packageProductDependencies = (
+				2D8F03BA29B7DAC20054CEC4 /* FacebookLogin */,
+			);
 			productName = IphoneIpadFirebase;
 			productReference = CFE73A3B25B75D9D002DB2A6 /* IphoneIpadFirebase.app */;
 			productType = "com.apple.product-type.application";
@@ -320,6 +327,9 @@
 				Base,
 			);
 			mainGroup = CFE73A3225B75D9D002DB2A6;
+			packageReferences = (
+				2D8F03B929B7DAC20054CEC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = CFE73A3C25B75D9D002DB2A6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -560,6 +570,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = IphoneIpadFirebase/IphoneIpadFirebase.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"IphoneIpadFirebase/Preview Content\"";
 				DEVELOPMENT_TEAM = 7U8Z4PHGBC;
@@ -583,6 +594,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = IphoneIpadFirebase/IphoneIpadFirebase.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"IphoneIpadFirebase/Preview Content\"";
 				DEVELOPMENT_TEAM = 7U8Z4PHGBC;
@@ -622,6 +634,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2D8F03B929B7DAC20054CEC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2D8F03BA29B7DAC20054CEC4 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D8F03B929B7DAC20054CEC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CFE73A3325B75D9D002DB2A6 /* Project object */;
 }

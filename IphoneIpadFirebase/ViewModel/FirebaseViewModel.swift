@@ -11,8 +11,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 import GoogleSignIn
-//import GoogleSignInSwift
-import GoogleUtilities
+import FacebookLogin
 
 class FirebaseViewModel : ObservableObject{
     
@@ -23,7 +22,6 @@ class FirebaseViewModel : ObservableObject{
     @Published var selectedTab = 0
     @Published var habitacionesShow = [HabitacionModel]()
     @Published var plantasActuales = [PlantasModel]()
-    //@Published var recordatoriosShow = [RecordatorioModel]()
     @Published var Usuario = UsuarioModel(id: "  ", nombre: "   ", correo: "   ", foto: "   ")
     @Published var habitacionActual = HabitacionModel(id: "   ", nombre: "   ", tipo: "   ")
     @Published var plantaActual = PlantasModel(id: "", nombre: "", foto: "", iluminacion: "", abonoNum: 0, abonoPeriod: "", proxRecordatorio: Date(), riegoNum: 0, riegoPeriod: "")
@@ -121,13 +119,44 @@ class FirebaseViewModel : ObservableObject{
         self.Usuario.correo = email ?? "nadie.com"
     }
     
+    //AUTENTICACION POR FACEBOOK
+    func iniciaFacebook(success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
+        let loginManager = LoginManager()
+        
+        loginManager.logIn(permissions: ["email"], from: nil){ loginManagerResult, error in
+            
+            if let error = error{
+                print("error al iniciar con facebook")
+                failure(error)
+            }
+            let token = loginManagerResult?.token?.tokenString
+            //success(true)
+            let credencial = FacebookAuthProvider.credential(withAccessToken: token!)
+            Auth.auth().signIn(with: credencial){ dataResult, error in
+                if let error = error{
+                    print("error al iniciar con facebook en firebase")
+                    failure(error)
+                }
+                let id = dataResult?.user.uid ?? "No id"
+                let nombre = dataResult?.user.displayName ?? "No nombre"
+                let email = dataResult?.user.email ?? "No email"
+                print("acceso correcto por Facebook, id: \(id), nombre \(nombre), email: \(email)")
+                
+                self.Usuario.id = id
+                self.Usuario.nombre = nombre
+                self.Usuario.correo = email
+                print("acceso correcto por Facebook, id: \(self.Usuario.id), nombre \(self.Usuario.nombre), email: \(self.Usuario.correo)")
+                success(true)
+            }
+            
+        }
+    }
+    
     //GUARDA EN BASE DE DATOS
     func AgregarUsuario(nombre: String, correo: String, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
         let db = Firestore.firestore() //crea conexion
-        print("entre a agregar fire, idMANDA:\(self.Usuario.id)")
         
         let campos : [String:Any] = ["nombre": nombre, "correo": correo, "foto": "gs://fir-crud-af577.appspot.com/imagenes/perfil-de-usuario.png"]
-        print("nombre: \(nombre) , correo: \(correo)")
         db.collection("Usuarios").document(self.Usuario.id).setData(campos){error in
             if let error = error{
                 failure(error)

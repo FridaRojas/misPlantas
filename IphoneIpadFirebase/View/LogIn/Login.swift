@@ -105,7 +105,6 @@ struct Login: View {
                     HStack(spacing: 25){
                         Button(action:{
                             loginShow.iniciaGoogle(presenting: getRootViewController()){ done in
-                                print("se logueo por Google")
                                 guard let id = Auth.auth().currentUser?.uid else {return}
                                 loginShow.Usuario.id =  id
                                 //existe el usuario?
@@ -118,9 +117,7 @@ struct Login: View {
                                         //primera vez, crea usuario en db
                                         loginShow.obtieneDatosGoogle()
                                         loginShow.AgregarUsuario(nombre: loginShow.Usuario.nombre, correo: loginShow.Usuario.correo){ done in
-                                            print("agrego usuario a firestore")
                                             loginShow.AgregarHabitacion(nombre: "Sala de estar", tipo: "Sala"){ done in
-                                                print("agregue habitacion")
                                                 UserDefaults.standard.set(true, forKey: "sesion")
                                                 loginShow.show = true
                                             } failure: { error in
@@ -149,7 +146,40 @@ struct Login: View {
                             .shadow(radius: 10)
                         }
                         Button(action:{
-                            
+                            loginShow.iniciaFacebook(){ done in
+                                print("iiiniiiiicioooo con facebook")
+                                //existe el usuario?
+                                loginShow.existeId(){ done in
+                                    if done{
+                                        //ya existe usuario
+                                        print("ya existe el id")
+                                        UserDefaults.standard.set(true, forKey: "sesion")
+                                        loginShow.show = true
+                                    }else{
+                                        //primera vez, crea usuario en db
+                                        print("no existe el id")
+                                        loginShow.AgregarUsuario(nombre: loginShow.Usuario.nombre, correo: loginShow.Usuario.correo){ done in
+                                            print("agrego el usuario a firebase")
+                                            loginShow.AgregarHabitacion(nombre: "Sala de estar", tipo: "Sala"){ done in
+                                                UserDefaults.standard.set(true, forKey: "sesion")
+                                                loginShow.show = true
+                                            } failure: { error in
+                                                errorFirebase = true
+                                            }
+                                            
+                                        } failure: { error in
+                                            errorFirebase = true
+                                        }
+                                    }
+                                    
+                                }failure: { error in
+                                    errorFirebase = true
+                                }
+                                
+                            } failure: { error in
+                                
+                                errorFirebase = true
+                            }
                         }){
                                 Image("facebook")
                                     .resizable()
