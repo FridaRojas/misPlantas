@@ -39,9 +39,12 @@
 		2D8ADF902967AF2A00CAD46C /* ConfiguracionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF8F2967AF2A00CAD46C /* ConfiguracionView.swift */; };
 		2D8ADF922967BBA200CAD46C /* AgregarPlantaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF912967BBA200CAD46C /* AgregarPlantaView.swift */; };
 		2D8ADF942967BC4400CAD46C /* BuscaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ADF932967BC4400CAD46C /* BuscaView.swift */; };
+		2D8C738E29C251E9008D145F /* PreguntasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C738D29C251E9008D145F /* PreguntasView.swift */; };
+		2D8C739029C255B9008D145F /* ComentariosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C738F29C255B9008D145F /* ComentariosView.swift */; };
 		2D8E5577296E187800C065CB /* AgregarHabitacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */; };
 		2D8F03B829B28A8A0054CEC4 /* OlvideContrasena.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8F03B729B28A8A0054CEC4 /* OlvideContrasena.swift */; };
 		2D8F03BB29B7DAC20054CEC4 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8F03BA29B7DAC20054CEC4 /* FacebookLogin */; };
+		2D8F03BE29B92D460054CEC4 /* MailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8F03BD29B92D460054CEC4 /* MailViewModel.swift */; };
 		2D981AB22975C39000C07350 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D981AB12975C39000C07350 /* GoogleService-Info.plist */; };
 		2DA040D7297B25650067E86C /* UsuarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA040D6297B25650067E86C /* UsuarioModel.swift */; };
 		2DA09FDA2979CA8E00976BDA /* PlantaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA09FD92979CA8D00976BDA /* PlantaModel.swift */; };
@@ -90,9 +93,12 @@
 		2D8ADF8F2967AF2A00CAD46C /* ConfiguracionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguracionView.swift; sourceTree = "<group>"; };
 		2D8ADF912967BBA200CAD46C /* AgregarPlantaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarPlantaView.swift; sourceTree = "<group>"; };
 		2D8ADF932967BC4400CAD46C /* BuscaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscaView.swift; sourceTree = "<group>"; };
+		2D8C738D29C251E9008D145F /* PreguntasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreguntasView.swift; sourceTree = "<group>"; };
+		2D8C738F29C255B9008D145F /* ComentariosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComentariosView.swift; sourceTree = "<group>"; };
 		2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarHabitacionView.swift; sourceTree = "<group>"; };
 		2D8F03B729B28A8A0054CEC4 /* OlvideContrasena.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OlvideContrasena.swift; sourceTree = "<group>"; };
 		2D8F03BC29B7DF280054CEC4 /* IphoneIpadFirebase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IphoneIpadFirebase.entitlements; sourceTree = "<group>"; };
+		2D8F03BD29B92D460054CEC4 /* MailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailViewModel.swift; sourceTree = "<group>"; };
 		2D981AB12975C39000C07350 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2DA040D6297B25650067E86C /* UsuarioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioModel.swift; sourceTree = "<group>"; };
 		2DA09FD92979CA8D00976BDA /* PlantaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantaModel.swift; sourceTree = "<group>"; };
@@ -162,6 +168,7 @@
 				2D02562429807B8F00713BC4 /* GoogleSignInViewModel.swift */,
 				2D0256312989C77A00713BC4 /* PlantNetViewModel.swift */,
 				2D025635298D979700713BC4 /* RecordatorioViewModel.swift */,
+				2D8F03BD29B92D460054CEC4 /* MailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -266,6 +273,8 @@
 				2D1873992978D1D300C2FA25 /* ImagenFirebase.swift */,
 				2D025639298DA6A300713BC4 /* ListaRecordatoriosView.swift */,
 				2D325BC629A6A3F10071EEFE /* EleccionAgregaview.swift */,
+				2D8C738D29C251E9008D145F /* PreguntasView.swift */,
+				2D8C738F29C255B9008D145F /* ComentariosView.swift */,
 			);
 			path = Elementos;
 			sourceTree = "<group>";
@@ -403,11 +412,13 @@
 				2D8ADF922967BBA200CAD46C /* AgregarPlantaView.swift in Sources */,
 				2D02562A2981D2CD00713BC4 /* EditaUsuario.swift in Sources */,
 				2D89FC002968C4F800AE5258 /* FiltroHabitaciones.swift in Sources */,
+				2D8C738E29C251E9008D145F /* PreguntasView.swift in Sources */,
 				2D1873922977702800C2FA25 /* ImagePicker.swift in Sources */,
 				2D89FBFE2968C40500AE5258 /* NavBarHabitaciones.swift in Sources */,
 				2D8F03B829B28A8A0054CEC4 /* OlvideContrasena.swift in Sources */,
 				2D89FBFC2968BFDA00AE5258 /* CeldaHabitaciones.swift in Sources */,
 				2D025636298D979700713BC4 /* RecordatorioViewModel.swift in Sources */,
+				2D8F03BE29B92D460054CEC4 /* MailViewModel.swift in Sources */,
 				2DA040D7297B25650067E86C /* UsuarioModel.swift in Sources */,
 				2D89FC022968C99600AE5258 /* Habitacion.swift in Sources */,
 				2DA82B662971F66D0089DB25 /* FechaModel.swift in Sources */,
@@ -420,6 +431,7 @@
 				2D025638298DA25E00713BC4 /* CardDia.swift in Sources */,
 				2D02562C2981F75000713BC4 /* EditaHabitacion.swift in Sources */,
 				2D18739A2978D1D300C2FA25 /* ImagenFirebase.swift in Sources */,
+				2D8C739029C255B9008D145F /* ComentariosView.swift in Sources */,
 				2D618BB9296CE6E500E8FF7F /* CardInfoView.swift in Sources */,
 				2D0256322989C77A00713BC4 /* PlantNetViewModel.swift in Sources */,
 				2D1873962978A55500C2FA25 /* HabitacionModel.swift in Sources */,

@@ -11,6 +11,9 @@ import FirebaseAuth
 struct ConfiguracionView: View {
     @EnvironmentObject var loginShow : FirebaseViewModel
     @State var modal = false
+    @State var modalPreguntas = false
+    @State var modalComentarios = false
+    @State var modalSobreAplicacion = false
     @State var recordatorios = true
     
     var body: some View {
@@ -23,6 +26,9 @@ struct ConfiguracionView: View {
             
             Text(loginShow.Usuario.nombre)
                 .font(.custom("Noteworthy", size: 40))
+                .foregroundColor(Color.black)
+            Text(loginShow.Usuario.correo)
+                .font(.custom("Noteworthy", size: 20))
                 .foregroundColor(Color.black)
             Button(action:{
                 modal.toggle()
@@ -50,12 +56,6 @@ struct ConfiguracionView: View {
                                 .foregroundColor(Color("primario"))
                             Toggle("Recordatorios de Riego", isOn: $recordatorios).foregroundColor(.black)
                         }
-                        HStack{
-                            Image(systemName: "square.3.layers.3d.middle.filled")
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(Color("primario"))
-                            Toggle("Recordatorios de Abono", isOn: $recordatorios).foregroundColor(.black)
-                        }
                     }.padding()
                         .background(Color.white)
                         .cornerRadius(30)
@@ -66,29 +66,47 @@ struct ConfiguracionView: View {
                     }
                     
                     VStack{
-                        //List{
-                        HStack{
-                            Image(systemName: "bubble.left")
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(Color("primario"))
-                            Text("Enviar comentarios").foregroundColor(.black)
-                            Spacer()
-                        }.background(Color.white)
-                        HStack{
-                            Image(systemName: "questionmark.circle")
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(Color("primario"))
-                            Text("Preguntas frecuentes").foregroundColor(.black)
-                            Spacer()
-                        }.background(Color.white)
-                        HStack{
-                            Image(systemName: "exclamationmark.circle")
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(Color("primario"))
-                            Text("Sobre la aplicacion").foregroundColor(.black)
-                            Spacer()
-                        }.background(Color.white)
-                        //}
+                        Button(action:{
+                            modalComentarios.toggle()
+                        }){
+                            HStack{
+                                Image(systemName: "bubble.left")
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(Color("primario"))
+                                Text("Enviar comentarios").foregroundColor(.black)
+                                Spacer()
+                            }.background(Color.white)
+                        }.sheet(isPresented: $modalComentarios){
+                            ComentariosView(modal: $modalComentarios).presentationDetents([.medium])
+                        }
+                        
+                        Button(action:{
+                            modalPreguntas.toggle()
+                        }){
+                            HStack{
+                                Image(systemName: "questionmark.circle")
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(Color("primario"))
+                                Text("Preguntas frecuentes").foregroundColor(.black)
+                                Spacer()
+                            }.background(Color.white)
+                        }.sheet(isPresented: $modalPreguntas){
+                            PreguntasView(modal: $modalPreguntas).presentationDetents([.large])
+                        }
+                        Button(action:{
+                            modalSobreAplicacion.toggle()
+                        }){
+                            HStack{
+                                Image(systemName: "exclamationmark.circle")
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(Color("primario"))
+                                Text("Sobre la aplicacion").foregroundColor(.black)
+                                Spacer()
+                            }.background(Color.white)
+                        }.sheet(isPresented: $modalSobreAplicacion){
+                            PreguntasView(modal: $modalSobreAplicacion).presentationDetents([.large])
+                        }
+                        
                     }.padding()
                         .background(Color.white)
                         .cornerRadius(30)
@@ -113,22 +131,6 @@ struct ConfiguracionView: View {
                                 Spacer()
                             }.background(Color.white)
                         }
-                        
-                        HStack{
-                            Image(systemName: "trash")
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(Color("primario"))
-                            Text("Eliminar cuenta").foregroundColor(.black)
-                            Spacer()
-                        }.background(Color.white)
-                        HStack{
-                            Image(systemName: "exclamationmark.circle")
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(Color("primario"))
-                            Text("Sobre la aplicacion").foregroundColor(.black)
-                            Spacer()
-                        }.background(Color.white)
-                        //}
                     }.padding()
                         .background(Color.white)
                         .cornerRadius(30)
