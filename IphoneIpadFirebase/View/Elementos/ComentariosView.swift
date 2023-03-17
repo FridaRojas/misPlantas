@@ -12,10 +12,38 @@ struct ComentariosView: View {
     
     var body: some View {
         VStack(alignment: .center){
-            Text("¡Hola!, puedes enviar un correo a: misPlantas@gmail.com con el asunto 'comentario MisPlantas', te agradecemos los comentarios :)").foregroundColor(Color("primario"))
-            Text("misPlantas@gmail.com con el asunto 'comentario MisPlantas' te agradecemos los comentarios :)").foregroundColor(Color("primario")).bold()
-            Text("te agradecemos los comentarios :)").foregroundColor(Color("primario"))
-        }.background(Color.white)
+            VStack{
+                Spacer()
+                HStack{
+                    Spacer()
+                    Image(systemName: "bubble.left.circle.fill").font(.largeTitle).foregroundColor(Color("primario"))
+                    Text("Envia tus comentarios")
+                        .font(.custom("Noteworthy", size: 25))
+                        .foregroundColor(Color("primario"))
+                    Spacer()
+                }.padding()
+                Spacer()
+                Text("¡Hola!, puedes enviar un correo a: ")
+                    .font(.custom("Noteworthy", size: 20))
+                    .foregroundColor(Color.black)
+                Text("misPlantas@gmail.com")
+                    .font(.custom("Noteworthy", size: 20))
+                    .foregroundColor(Color.black).bold()
+                Text("con el asunto:")
+                    .font(.custom("Noteworthy", size: 20))
+                    .foregroundColor(Color.black)
+                Text("'comentario MisPlantas'")
+                    .font(.custom("Noteworthy", size: 20))
+                    .foregroundColor(Color.black)
+                Text("Te agradecemos la ayuda!")
+                    .padding(.vertical)
+                    .font(.custom("Noteworthy", size: 20))
+                    .foregroundColor(Color.black)
+                Spacer()
+            }//.background(Color.white.opacity(0.4))
+            
+        }.padding().background(Color.white)
+            .ignoresSafeArea(.all)
         
     }
 }

@@ -12,26 +12,67 @@ struct PreguntasView: View {
     var body: some View {
         VStack{
             VStack(alignment: .center){
-                Text("PREGUNTAS FRECUENTES").font(.title).foregroundColor(Color("primario")).bold()
+                Text("PREGUNTAS FRECUENTES").padding()
+                    .font(.custom("Noteworthy", size: 20))
+                    .font(.title).foregroundColor(Color.black).bold()
+            }
+            ScrollView{
+                VStack(alignment: .leading){
+                    HStack{
+                        //Image(systemName: "circle.fill")
+                        Text("¿Cómo identificar una planta?")
+                            .padding(.horizontal)
+                            .font(.custom("Noteworthy", size: 18))
+                            .foregroundColor(Color("primario")).bold()
+                        Spacer()
+                    }
+                    Text("Al tomar la fotografia, asegurate que tenga una luz adecuada y salga unicamente la especie a identificar, puedes tomar fotografia de la hoja, rama o planta completa")
+                        .padding(.horizontal)
+                        .font(.custom("Noteworthy", size: 15))
+                        .foregroundColor(Color.gray)
+                }.padding(.vertical)//.background(Color.white.opacity(0.6)).cornerRadius(10)
+                VStack(alignment: .leading){
+                    HStack{
+                        Text("¿Cómo identificar una planta?")
+                            .padding(.horizontal)
+                            .font(.custom("Noteworthy", size: 18))
+                            .foregroundColor(Color("primario")).bold()
+                        Spacer()
+                    }
+                    Text("Al tomar la fotografia, asegurate que tenga una luz adecuada y salga unicamente la especie a identificar, puedes tomar fotografia de la hoja, rama o planta completa")
+                        .padding(.horizontal)
+                        .font(.custom("Noteworthy", size: 15))
+                        .foregroundColor(Color.gray)
+                }.padding(.vertical)//.background(Color.white.opacity(0.6)).cornerRadius(10)
+                VStack(alignment: .leading){
+                    HStack{
+                        Text("¿Cómo identificar una planta?")
+                            .padding(.horizontal)
+                            .font(.custom("Noteworthy", size: 18))
+                            .foregroundColor(Color("primario")).bold()
+                        Spacer()
+                    }
+                    Text("Al tomar la fotografia, asegurate que tenga una luz adecuada y salga unicamente la especie a identificar, puedes tomar fotografia de la hoja, rama o planta completa")
+                        .padding(.horizontal)
+                        .font(.custom("Noteworthy", size: 15))
+                        .foregroundColor(Color.gray)
+                }.padding(.vertical)//.background(Color.white.opacity(0.6)).cornerRadius(10)
+                VStack(alignment: .leading){
+                    HStack{
+                        Text("¿Cómo identificar una planta?")
+                            .padding(.horizontal)
+                            .font(.custom("Noteworthy", size: 18))
+                            .foregroundColor(Color("primario")).bold()
+                        Spacer()
+                    }
+                    Text("Al tomar la fotografia, asegurate que tenga una luz adecuada y salga unicamente la especie a identificar, puedes tomar fotografia de la hoja, rama o planta completa")
+                        .padding(.horizontal)
+                        .font(.custom("Noteworthy", size: 15))
+                        .foregroundColor(Color.gray)
+                }.padding(.vertical)//.background(Color.white.opacity(0.6)).cornerRadius(10)
                 Spacer()
             }
-            VStack(alignment: .leading){
-                Text("Pregunta1........?").font(.title3).foregroundColor(Color("primario")).bold()
-                Text("Respuesta super extra mega largaaaaaaaaaaaaaaaa").foregroundColor(Color("primario"))
-            }
-            VStack(alignment: .leading){
-                Text("Pregunta1........?").font(.title3).foregroundColor(Color("primario")).bold()
-                Text("Respuesta super extra mega largaaaaaaaaaaaaaaaa").foregroundColor(Color("primario"))
-            }
-            VStack(alignment: .leading){
-                Text("Pregunta1........?").font(.title3).foregroundColor(Color("primario")).bold()
-                Text("Respuesta super extra mega largaaaaaaaaaaaaaaaa").foregroundColor(Color("primario"))
-            }
-            VStack(alignment: .leading){
-                Text("Pregunta1........?").font(.title3).foregroundColor(Color("primario")).bold()
-                Text("Respuesta super extra mega largaaaaaaaaaaaaaaaa").foregroundColor(Color("primario"))
-            }
-            Spacer()
+            
         }.padding()
             .background(Color.white).ignoresSafeArea(.all)
     }
