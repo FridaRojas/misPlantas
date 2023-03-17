@@ -15,7 +15,7 @@ struct GifView: View {
                 Spacer()
                 GifImage("espere")
                     .frame(width: 150, height: 150)
-                    .cornerRadius(15)
+                    .cornerRadius(90)
                 Spacer()
             
             }
