@@ -104,7 +104,7 @@ struct ConfiguracionView: View {
                                 Spacer()
                             }.background(Color.white)
                         }.sheet(isPresented: $modalSobreAplicacion){
-                            PreguntasView(modal: $modalSobreAplicacion).presentationDetents([.large])
+                            SobreAplicacionView(modal: $modalSobreAplicacion).presentationDetents([.medium])
                         }
                         
                     }.padding()
