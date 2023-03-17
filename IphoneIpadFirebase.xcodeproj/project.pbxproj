@@ -45,6 +45,7 @@
 		2D8C739629C512EC008D145F /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C739529C512EC008D145F /* GifView.swift */; };
 		2D8C739F29C51FFD008D145F /* SobreAplicacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C739E29C51FFC008D145F /* SobreAplicacionView.swift */; };
 		2D8C73A129C53225008D145F /* espere.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D8C73A029C53224008D145F /* espere.gif */; };
+		2D8C73A329C53374008D145F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D8C73A229C53374008D145F /* Launch Screen.storyboard */; };
 		2D8E5577296E187800C065CB /* AgregarHabitacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */; };
 		2D8F03B829B28A8A0054CEC4 /* OlvideContrasena.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8F03B729B28A8A0054CEC4 /* OlvideContrasena.swift */; };
 		2D8F03BB29B7DAC20054CEC4 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8F03BA29B7DAC20054CEC4 /* FacebookLogin */; };
@@ -102,6 +103,7 @@
 		2D8C739529C512EC008D145F /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		2D8C739E29C51FFC008D145F /* SobreAplicacionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SobreAplicacionView.swift; sourceTree = "<group>"; };
 		2D8C73A029C53224008D145F /* espere.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = espere.gif; sourceTree = "<group>"; };
+		2D8C73A229C53374008D145F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2D8E5576296E187800C065CB /* AgregarHabitacionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarHabitacionView.swift; sourceTree = "<group>"; };
 		2D8F03B729B28A8A0054CEC4 /* OlvideContrasena.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OlvideContrasena.swift; sourceTree = "<group>"; };
 		2D8F03BC29B7DF280054CEC4 /* IphoneIpadFirebase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IphoneIpadFirebase.entitlements; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				CFE73A4725B75D9F002DB2A6 /* Info.plist */,
 				CFE73A4425B75D9F002DB2A6 /* Preview Content */,
 				2D1873882975CD3400C2FA25 /* AppDelegate.swift */,
+				2D8C73A229C53374008D145F /* Launch Screen.storyboard */,
 			);
 			path = IphoneIpadFirebase;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				CFE73A4625B75D9F002DB2A6 /* Preview Assets.xcassets in Resources */,
 				CFE73A4325B75D9F002DB2A6 /* Assets.xcassets in Resources */,
 				2D8C73A129C53225008D145F /* espere.gif in Resources */,
+				2D8C73A329C53374008D145F /* Launch Screen.storyboard in Resources */,
 				2D981AB22975C39000C07350 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
