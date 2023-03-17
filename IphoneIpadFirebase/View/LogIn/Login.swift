@@ -16,6 +16,7 @@ struct Login: View {
     @State private var pass = ""
     @State var modal = false
     @State var modalOlvide = false
+    @State var cargando = false
     @EnvironmentObject var loginShow : FirebaseViewModel
     var device = UIDevice.current.userInterfaceIdiom
     
@@ -60,6 +61,7 @@ struct Login: View {
                         Button(action:{
                             loginShow.login(email: email, pass: pass){ resultado in
                                 UserDefaults.standard.set(true, forKey: "sesion")
+                                cargando.toggle()
                                 loginShow.show.toggle()
                                 loginShow.obtieneUsuario(){ done in
                                 } failure: { error in
@@ -112,11 +114,13 @@ struct Login: View {
                                     if done{
                                         //ya existe usuario
                                         UserDefaults.standard.set(true, forKey: "sesion")
+                                        cargando.toggle()
                                         loginShow.show = true
                                     }else{
                                         //primera vez, crea usuario en db
                                         loginShow.obtieneDatosGoogle()
                                         loginShow.AgregarUsuario(nombre: loginShow.Usuario.nombre, correo: loginShow.Usuario.correo){ done in
+                                            cargando.toggle()
                                             loginShow.AgregarHabitacion(nombre: "Sala de estar", tipo: "Sala"){ done in
                                                 UserDefaults.standard.set(true, forKey: "sesion")
                                                 loginShow.show = true
@@ -154,12 +158,14 @@ struct Login: View {
                                         //ya existe usuario
                                         print("ya existe el id")
                                         UserDefaults.standard.set(true, forKey: "sesion")
+                                        cargando.toggle()
                                         loginShow.show = true
                                     }else{
                                         //primera vez, crea usuario en db
                                         print("no existe el id")
                                         loginShow.AgregarUsuario(nombre: loginShow.Usuario.nombre, correo: loginShow.Usuario.correo){ done in
                                             print("agrego el usuario a firebase")
+                                            cargando.toggle()
                                             loginShow.AgregarHabitacion(nombre: "Sala de estar", tipo: "Sala"){ done in
                                                 UserDefaults.standard.set(true, forKey: "sesion")
                                                 loginShow.show = true
@@ -212,6 +218,9 @@ struct Login: View {
                     .onTapGesture {
                         self.hideKeyboard()
                     }
+            }
+            if cargando {
+                GifView()
             }
         }.background(Image("hojitas").resizable())
             .edgesIgnoringSafeArea(.all)

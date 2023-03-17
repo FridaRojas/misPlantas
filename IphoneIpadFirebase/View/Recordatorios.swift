@@ -24,11 +24,23 @@ struct Recordatorios: View {
                         Spacer()
                     }
                 }else{
-                    Spacer(minLength: 50)
-                    ScrollView{
-                        VStack{
-                            CalendarioView(recordatorios: recordatorios, fechaAct: $fecha)
-                        }.padding()
+                    if recordatorios.count != 0 {
+                        Spacer(minLength: 50)
+                        ScrollView{
+                            VStack{
+                                CalendarioView(recordatorios: recordatorios, fechaAct: $fecha)
+                            }.padding()
+                        }
+                    }else{
+                        HStack{
+                            Spacer()
+                            VStack{
+                                Spacer()
+                                Text("Aun no cuentas con recordatorios").foregroundColor(.gray)
+                                Spacer(minLength: 150)
+                            }
+                            Spacer()
+                        }
                     }
                 }
                 
@@ -42,19 +54,9 @@ struct Recordatorios: View {
                 }}
             
             if recordatorios.isEmpty {
-                VStack{
-                    Spacer()
-                    HStack{
-                        Spacer()
-                        VStack{
-                            Image("carga")
-                                .resizable().frame(width: 150, height: 150)
-                            Text("Identificando tu plata...").background(Color.white)
-                        }.padding().background(Color.white).cornerRadius(15)
-                        Spacer()
-                    }
-                    Spacer()
-                }.background(Color.white.opacity(0.9)).ignoresSafeArea(.all)
+                if recordatorios.count != 0{
+                    GifView()
+                }
             }
         }
         

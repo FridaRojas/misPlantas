@@ -193,19 +193,7 @@ struct AgregarHabitacionView: View {
                     }
                 }
             if progress {
-                HStack{
-                    Spacer()
-                    VStack{
-                        Spacer()
-                        Image("carga")
-                            .resizable()
-                            .frame(width: 150, height: 150)
-                            .background(Color.white)
-                            .cornerRadius(15)
-                        Spacer()
-                }
-                    Spacer()
-                }.background(Color.white.opacity(0.3)).ignoresSafeArea(.all)
+                GifView()
             }
             
         }

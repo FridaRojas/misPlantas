@@ -38,20 +38,7 @@ struct DetallePlanta: View {
                 .navigationBarTitle("")
             
             if loginShow.plantaActual.foto.isEmpty {
-                HStack{
-                    Spacer()
-                    VStack{
-                        Spacer()
-                        Image("carga")
-                            .resizable()
-                            .frame(width: 150, height: 150)
-                            .background(Color.white)
-                            .cornerRadius(15)
-                        Spacer()
-                    
-                    }
-                    Spacer()
-                }.background(Color.white.opacity(0.5)).ignoresSafeArea(.all)
+                GifView()
             }
         }
     }

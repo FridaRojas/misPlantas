@@ -196,19 +196,7 @@ struct BuscaView: View {
             }
             
             if progress {
-                VStack{
-                    Spacer()
-                    HStack{
-                        Spacer()
-                        VStack{
-                            Image("carga")
-                                .resizable().frame(width: 150, height: 150)
-                            Text("Identificando tu plata...").background(Color.white)
-                        }.padding().background(Color.white).cornerRadius(15)
-                        Spacer()
-                    }
-                    Spacer()
-                }.background(Color.white.opacity(0.9)).ignoresSafeArea(.all)
+                GifView()
             }
         }
         

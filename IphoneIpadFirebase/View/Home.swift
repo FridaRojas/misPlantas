@@ -49,20 +49,7 @@ struct Home: View {
             }
             
             if loginShow.habitacionesShow.isEmpty {
-                HStack{
-                    Spacer()
-                    VStack{
-                        Spacer()
-                        Image("carga")
-                            .resizable()
-                            .frame(width: 150, height: 150)
-                            .background(Color.white)
-                            .cornerRadius(15)
-                        Spacer()
-                    
-                    }
-                    Spacer()
-                }.background(Color.white.opacity(0.9)).ignoresSafeArea(.all)
+                GifView()
             }
         }
     }

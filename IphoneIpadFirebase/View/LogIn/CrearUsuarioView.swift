@@ -15,11 +15,12 @@ struct CrearUsuarioView: View {
     @State var correo : String = ""
     @State var contras : String = ""
     @State var nombre : String = ""
+    @State var cargando = false
     @EnvironmentObject var loginShow : FirebaseViewModel
     var device = UIDevice.current.userInterfaceIdiom
     
     var body: some View {
-        VStack{
+        ZStack{
             VStack{
                 ScrollView{
                     Spacer()
@@ -68,9 +69,6 @@ struct CrearUsuarioView: View {
                         Button(action:{
                             //inicia sesion
                             loginShow.crearUsuario(correo: correo, pass: contras){ done in
-                                UserDefaults.standard.set(true, forKey: "sesion")
-                                loginShow.show.toggle()
-                                print("se logueo")
                                 guard let id = Auth.auth().currentUser?.uid else {return}
                                 loginShow.Usuario.id =  id
                                 //crea usuario en db
@@ -78,10 +76,11 @@ struct CrearUsuarioView: View {
                                     correo = ""
                                     contras = ""
                                     nombre = ""
-                                    print("agrego usuario a firebase")
                                     loginShow.AgregarHabitacion(nombre: "Sala de estar", tipo: "Sala"){ done in
-                                        print("agregue aplicacion")
+                                        UserDefaults.standard.set(true, forKey: "sesion")
+                                        loginShow.show.toggle()
                                         modal.toggle()
+                                        cargando.toggle()
                                     } failure: { error in
                                         //progress=false
                                         errorFirebase = true
@@ -121,7 +120,9 @@ struct CrearUsuarioView: View {
                     self.hideKeyboard()
                 }
             }.padding().background(Color.white.opacity(0.5))
-                
+            if cargando {
+                GifView()
+            }
         }.background(Image("fondo1").resizable())
             .edgesIgnoringSafeArea(.all)
     }

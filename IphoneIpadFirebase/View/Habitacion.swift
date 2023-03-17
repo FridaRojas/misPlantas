@@ -37,20 +37,7 @@ struct Habitacion: View {
             //cargando...
             if loginShow.plantasActuales.isEmpty {
                 if loginShow.plantasActuales.count != 0  {
-                    HStack{
-                        Spacer()
-                        VStack{
-                            Spacer()
-                            Image("carga")
-                                .resizable()
-                                .frame(width: 150, height: 150)
-                                .background(Color.white)
-                                .cornerRadius(15)
-                            Spacer()
-                            
-                        }
-                        Spacer()
-                    }.background(Color.white.opacity(0.5)).ignoresSafeArea(.all)
+                    GifView()
                 }
             }
             
