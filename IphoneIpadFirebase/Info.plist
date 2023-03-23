@@ -41,6 +41,8 @@
 	<string>8efac86084a08c2fca1ef842837b7f42</string>
 	<key>FacebookDisplayName</key>
 	<string>MisPlantas</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

@@ -58,11 +58,23 @@
 		CFE73A3F25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A3E25B75D9D002DB2A6 /* IphoneIpadFirebaseApp.swift */; };
 		CFE73A4125B75D9D002DB2A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A4025B75D9D002DB2A6 /* ContentView.swift */; };
 		CFE73A4325B75D9F002DB2A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFE73A4225B75D9F002DB2A6 /* Assets.xcassets */; };
-		CFE73A4625B75D9F002DB2A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFE73A4525B75D9F002DB2A6 /* Preview Assets.xcassets */; };
 		CFE73A5125B76522002DB2A6 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A5025B76521002DB2A6 /* Home.swift */; };
 		CFE73A5425B7653E002DB2A6 /* NavBarDetallePlanta.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A5325B7653E002DB2A6 /* NavBarDetallePlanta.swift */; };
 		CFE73A5725B7654B002DB2A6 /* CeldaPlantasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE73A5625B7654B002DB2A6 /* CeldaPlantasView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2D84CC9929CA78D800050DB8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2D02562429807B8F00713BC4 /* GoogleSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewModel.swift; sourceTree = "<group>"; };
@@ -368,6 +380,7 @@
 				CFE73A3825B75D9D002DB2A6 /* Frameworks */,
 				CFE73A3925B75D9D002DB2A6 /* Resources */,
 				48169B1DC9A3124E59905568 /* [CP] Embed Pods Frameworks */,
+				2D84CC9929CA78D800050DB8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -421,7 +434,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFE73A4625B75D9F002DB2A6 /* Preview Assets.xcassets in Resources */,
 				CFE73A4325B75D9F002DB2A6 /* Assets.xcassets in Resources */,
 				2D8C73A129C53225008D145F /* espere.gif in Resources */,
 				2D8C73A329C53374008D145F /* Launch Screen.storyboard in Resources */,
