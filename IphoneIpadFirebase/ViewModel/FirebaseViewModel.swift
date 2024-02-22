@@ -10,8 +10,10 @@ import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseMessaging
 import GoogleSignIn
 import FacebookLogin
+import UserNotifications
 
 class FirebaseViewModel : ObservableObject{
     
@@ -152,6 +154,42 @@ class FirebaseViewModel : ObservableObject{
         }
     }
     
+    //NOTIFICACIONES PUSH
+    
+    /*
+    func scheduleNotification(title: String, message: String, date: Date) {
+        // Configurar el contenido de la notificación
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = message
+        
+        // Configurar el disparador de la notificación
+        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+        
+        // Crear la solicitud de notificación
+        let request = UNNotificationRequest(identifier: "recordatorioID", content: content, trigger: trigger)
+        
+        // Registrar la solicitud de notificación en el centro de notificaciones
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error al programar la notificación: \(error.localizedDescription)")
+            } else {
+                print("Notificación programada correctamente")
+            }
+        }
+        
+        // Enviar la solicitud de notificación a Firebase Cloud Messaging
+        //Messaging.messaging().
+        Messaging.messaging().send(request.content.userInfo) { error in
+            if let error = error {
+                print("Error al enviar la notificación a Firebase Cloud Messaging: \(error.localizedDescription)")
+            } else {
+                print("Notificación enviada correctamente a Firebase Cloud Messaging")
+            }
+        }
+    }*/
+
     //GUARDA EN BASE DE DATOS
     func AgregarUsuario(nombre: String, correo: String, success : @escaping(_ done : Bool) ->(), failure: @escaping (_ error: Error) -> ()){
         let db = Firestore.firestore() //crea conexion
